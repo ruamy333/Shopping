@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Shopping_Mall.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Shopping Mall</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Css/Header.css" />
+    <link rel="stylesheet" type="text/css" href="Css/Footer.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <a href="/Index.aspx">
+                <div class="headerTitle">Shopping Mall</div>
+
+            </a>
+            <a href="/View/ProductInfo/ProductEditor.aspx"><div class="headerLink">Product</div></a>
+        </div>
+        <div class="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="footer">Shopping ©2015 All Rights Reserved.</div>
+    </form>
+</body>
+</html>

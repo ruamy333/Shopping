@@ -1,0 +1,50 @@
+﻿body {
+	*margin:0px auto;
+	_margin:0px auto;
+	margin:0px auto;
+	width: 993px;
+    height:auto;
+    background-color:#f3f2f2;
+    font-family: "微軟正黑體","Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.header{
+	width: 993px;
+	height: 155px;
+	background-image: url("..\\Picture\\shopping-carts.png");
+    background-repeat:no-repeat;
+    font-family:"微軟正黑體";
+    background-color: #79c0c7;
+    background-position:98% -15px;
+}
+
+.headerTitle
+{
+    width: 470px;
+    font-family:"微軟正黑體", Arial, Helvetica, sans-serif;
+    font-size: 3.3em;
+    padding-top: 30px;
+    padding-left: 20px;
+    font-weight: bold;
+    float:left;
+    color: #373737;
+}
+.content
+{
+    width:993px;
+    height: auto;
+    background-color:white;
+    margin:0px;
+}
+
+.headerLink
+{
+    width:130px;
+    height:155px;
+    float:left;
+    line-height:260px;
+    text-align:center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #373737;
+}
