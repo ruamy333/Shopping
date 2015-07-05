@@ -1,16 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductEditor.aspx.cs" Inherits="Shopping_Mall.ProductManage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../../js/jquery-2.1.4.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Css/ProductManage.css" />
+    <link rel="stylesheet" type="text/css" href="Css/ProductEditor.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
-        
+			<div class="content-header">
+				<h2>產品新增</h2>
+			</div>
         <div class="formBox">
             <div class="title">商品名稱：</div>
-            <asp:TextBox ID="txtName"  class="textBox form-control " runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtName"  class="form-control textBox " runat="server"></asp:TextBox>
         </div>
         
         <div class="formBox">
@@ -46,4 +46,5 @@
             <asp:Button ID="btnCancle" class="btn btn-default" runat="server" Text="取消" OnClick="btnCancle_Click"/>
         </div>
     </div>
+        </div>
 </asp:Content>

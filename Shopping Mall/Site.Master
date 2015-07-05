@@ -6,29 +6,85 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Shopping Mall</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Css/Header.css" />
-    <link rel="stylesheet" type="text/css" href="Css/Footer.css" />
+    <link href="Css\Common.css" rel="stylesheet" />
+    <link href="Css\Header.css" rel="stylesheet" />
+    <link href="Css\Footer.css" rel="stylesheet" />
+    <script src="/js/jquery-2.1.4.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="header">
-            <a href="/Index.aspx">
-                <div class="headerTitle">Shopping Mall</div>
-
-            </a>
-            <a href="/View/user.aspx"><div class="headerLink">Product</div></a>
-            <a href="/View/ProductInfo/ProductInformation.aspx"><div class="headerLink">Product Info</div></a>
-            <a href="/View/ProductInfo/ProductEditor.aspx"><div class="headerLink">Product Insert</div></a>
-        </div>
-        <div class="content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    <div id="wrapper-bg">
+	    <div id="wrapper">
+            <div id="header" class="container">
+			    <div id="logo">
+				    <h1><a href="/Index.aspx"><span>Radiantech</span></a></h1>
+			    </div>
+			    <div id="menu">
+				    <ul>
+                        <%
+                            if(s.Equals("user")){
+                                Response.Write("<script type='text/javascript'>$(document).ready(function () { $('#nav2').addClass('active'); });</script>");
+                            }
+                            else if (s.Equals("index"))
+                            {
+                                Response.Write("<script type='text/javascript'>$(document).ready(function () { $('#nav1').addClass('active'); });</script>");
+                            } %>
+					    <li id="nav1"><a href="/Index.aspx" accesskey="1" title="">Homepage</a></li>
+					    <li id="nav2"><a href="/View/user.aspx" accesskey="2" title="">Products</a></li>
+					    <li id="nav3"><a href="#" accesskey="3" title="">Applications</a></li>
+					    <li id="nav4"><a href="#" accesskey="4" title="">Support</a></li>
+                        <li id="nav5"><a href="#" accesskey="5" title="">Login</a></li>
+				    </ul>
+			    </div>
+		    </div>
+            <div id="content" class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 
-            </asp:ContentPlaceHolder>
-        </div>
-        <div class="footer">Shopping ©2015 All Rights Reserved.</div>
+                </asp:ContentPlaceHolder>
+            </div>
+            </div>
+            <div id="footer-content" class="container">
+		    <div id="fbox1">
+			    <h2>Recent Updates</h2>
+			    <ul class="style3">
+				    <li class="first">
+					    <p class="date"><a href="#">April<b>20</b></a></p>
+					    <h3>Amet sed volutpat mauris</h3>
+					    <p><a href="#">Mauris tempus nibh sodales adipiscing dolore.</a></p>
+				    </li>
+				    <li>
+					    <p class="date"><a href="#">April<b>18</b></a></p>
+					    <h3>Sagittis diam dolor sit amet</h3>
+					    <p><a href="#">Duis arcu tortor fringilla sed  sed magna.</a></p>
+				    </li>
+				    <li>
+					    <p class="date"><a href="#">April<b>15</b></a></p>
+					    <h3>Adipiscing sed consequat</h3>
+					    <p><a href="#">Pharetra ac velit sed in volutpat nisl mauris vel.</a></p>
+				    </li>
+			    </ul>
+		    </div>
+		    <div id="fbox2">
+			    <h2>About</h2>
+			    <p><strong>捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>
+		    </div>
+		    <div id="fbox3">
+			    <h2>Contact Us</h2>
+			    <ul class="style5">
+				    <li class="first"><span class="address">Address</span> <span class="address-01">30075台灣新竹科學工業園區 <br />
+					    工業東一路2-1號</span> </li>
+				    <li> <span class="mail">Mail</span> <span class="mail-01"><a href="#">service@radiantech.com.tw</a></span> </li>
+				    <li> <span class="phone">Phone</span> <span class="phone-01">+886-3-577 7818 分機 8735</span> </li>
+				    <li> <span class="phone">Fax</span> <span class="phone-01">+886-3-577 7817</span> </li>
+			    </ul>
+		    </div>
+	    </div>
+    </div>
+    <div id="footer">
+	    <p>Copyright © 2005 - 2015 Radiantech, Inc. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+    </div>
     </form>
 </body>
 </html>

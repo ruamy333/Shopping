@@ -1,50 +1,103 @@
-﻿body {
-	*margin:0px auto;
-	_margin:0px auto;
-	margin:0px auto;
-	width: 993px;
-    height:auto;
-    background-color:#f3f2f2;
-    font-family: "微軟正黑體","Helvetica Neue", Arial, Helvetica, sans-serif;
+﻿/** WRAPPER */
+#wrapper-bg
+{
+	overflow: hidden;
+	background: url(../Picture/bg05.jpg) repeat;
 }
 
-.header{
-	width: 993px;
-	height: 155px;
-	background-image: url("..\\Picture\\shopping-carts.png");
-    background-repeat:no-repeat;
-    font-family:"微軟正黑體";
-    background-color: #79c0c7;
-    background-position:98% -15px;
+#wrapper
+{
+	margin-top: 30px;
+	padding-bottom: 50px;
+	background: #FFF;
+	box-shadow: 0px 10px 0px rgba(0,0,0,0.03), 0px -10px 0px rgba(0,0,0,0.03);
 }
 
-.headerTitle
+/** HEADER */
+#header
 {
-    width: 470px;
-    font-family:"微軟正黑體", Arial, Helvetica, sans-serif;
-    font-size: 3.3em;
-    padding-top: 30px;
-    padding-left: 20px;
-    font-weight: bold;
-    float:left;
-    color: #373737;
-}
-.content
-{
-    width:993px;
-    height: auto;
-    background-color:white;
-    margin:0px;
+	overflow: hidden;
+	border-bottom: 1px solid #E7E7E7;
 }
 
-.headerLink
+/** LOGO */
+#logo
 {
-    width:125px;
-    height:155px;
-    float:left;
-    line-height:260px;
-    text-align:center;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #373737;
+	float: left;
+	width: 300px;
+}
+
+#logo h1 a
+{
+	display: block;
+	line-height: 100px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.3em;
+	color: #3E3E3E;
+}
+
+#logo span
+{
+	color: #466CE8;
+}
+
+/** MENU */
+#menu
+{
+	float: right;
+	width: 900px;
+}
+
+#menu ul
+{
+	float: right;
+	margin: 0px;
+	padding: 30px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li
+{
+	float: left;
+	border-left: 1px solid #E7E7E7;
+}
+
+#menu a
+{
+	display: block;
+	padding: 10px 15px;
+	margin: 0em 0.8em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1em;
+	font-weight: 700;
+	color: #5A8DF4;
+}
+
+#menu .active a
+{
+	background: #466CE8;
+	border-radius: 5px;
+	box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.1);
+	border: 1px solid #4C76C9;
+	color: #FFFFFF;
+}
+
+#menu .active a:hover
+{
+	background-color: #5384E6;
+}
+
+#menu .active a:active
+{
+	background-color: #6191F2;
+}
+
+#menu a:hover
+{
+	text-decoration: none;
 }
