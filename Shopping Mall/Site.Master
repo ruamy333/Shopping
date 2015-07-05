@@ -19,7 +19,9 @@
                 <div class="headerTitle">Shopping Mall</div>
 
             </a>
-            <a href="/View/ProductInfo/ProductEditor.aspx"><div class="headerLink">Product</div></a>
+            <a href="/View/user.aspx"><div class="headerLink">Product</div></a>
+            <a href="/View/ProductInfo/ProductInformation.aspx"><div class="headerLink">Product Info</div></a>
+            <a href="/View/ProductInfo/ProductEditor.aspx"><div class="headerLink">Product Insert</div></a>
         </div>
         <div class="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

@@ -39,12 +39,12 @@
 
 .headerLink
 {
-    width:130px;
+    width:125px;
     height:155px;
     float:left;
     line-height:260px;
     text-align:center;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #373737;
 }

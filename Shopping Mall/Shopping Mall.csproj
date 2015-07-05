@@ -68,12 +68,16 @@
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
     <Content Include="Css\Index.css" />
+    <Content Include="Css\user.css" />
+    <Content Include="View\ProductInfo\Css\prodInfoStyle.css" />
     <Content Include="View\ProductInfo\Css\ProductManage.css" />
     <Content Include="Index.aspx" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="View\ProductInfo\ProductEditor.aspx" />
     <Content Include="Test.aspx" />
+    <Content Include="View\ProductInfo\ProductInformation.aspx" />
+    <Content Include="View\user.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +111,20 @@
     </Compile>
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductInfo\ProductInformation.aspx.cs">
+      <DependentUpon>ProductInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ProductInfo\ProductInformation.aspx.designer.cs">
+      <DependentUpon>ProductInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
