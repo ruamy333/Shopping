@@ -8,7 +8,7 @@
 
         <div class="contentLeft">
             <div class="sidebarContent">
-                商品1<br/>
+                Product1<br/>
                 商品2<br/>
                 商品3<br/>
             </div>
