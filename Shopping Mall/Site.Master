@@ -24,7 +24,7 @@
 			    <div id="menu">
 				    <ul>
                         <%
-                            if(s.Equals("user")){
+                            if(s.Equals("product")){
                                 Response.Write("<script type='text/javascript'>$(document).ready(function () { $('#nav2').addClass('active'); });</script>");
                             }
                             else if (s.Equals("index"))
