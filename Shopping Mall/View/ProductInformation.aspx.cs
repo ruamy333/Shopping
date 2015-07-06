@@ -10,7 +10,7 @@ namespace Shopping_Mall.View.ProductInfo
 {
     public partial class ProductInformation : System.Web.UI.Page
     {
-        private DBFunction db = new DBFunction();
+        private DBFunction db = new DBFunction("product");
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -12,7 +12,7 @@ namespace Shopping_Mall
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBFunction db = new DBFunction();
+            DBFunction db = new DBFunction("product");
             String[] arr = db.searchByColumn("product_name");
             for (int i = 0; i < arr.Length; i++)
             {

@@ -13,7 +13,7 @@ namespace Shopping_Mall.View
         public String leftbarStr = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBFunction db = new DBFunction();
+            DBFunction db = new DBFunction("product");
             String[] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {

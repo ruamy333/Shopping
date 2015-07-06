@@ -10,7 +10,7 @@ namespace Shopping_Mall.View
 {
     public partial class Login : System.Web.UI.Page
     {
-        private DBFunction db = new DBFunction();
+        private DBFunction db = new DBFunction("user_account");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,18 +32,11 @@ namespace Shopping_Mall.View
         }
         private bool verify()
         {
-            db.changeTableName("user_account");
             String acc = account.Text;
             String pwd = password.Text;
             String correspondPwd = db.searchRowByColumn("password","account",acc)[0];
-            if (correspondPwd.Equals(pwd))
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
+            if (correspondPwd.Equals(pwd))return true;
+            else return false;
         }
     }
 }

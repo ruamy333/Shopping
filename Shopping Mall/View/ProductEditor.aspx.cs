@@ -28,7 +28,7 @@ namespace Shopping_Mall
             }
             else
             {
-                DBFunction db = new DBFunction();
+                DBFunction db = new DBFunction("product");
                 String[] arr2 = db.searchSchema("name");
                 List<String> list = new List<string>();
                 list.Add("");
