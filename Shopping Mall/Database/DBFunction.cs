@@ -7,7 +7,7 @@ namespace Shopping_Mall.Database
 {
     public class DBFunction
     {
-        private String tableName = "product";
+        private String tableName;
         //依照欄位查詢
         public String[] searchByColumn(String fieldName)
         {
@@ -94,6 +94,12 @@ namespace Shopping_Mall.Database
             DBConnector db = new DBConnector();
             String sqlStr = "UPDATE " + tableName + " SET " + modifyColumn + " = " + modifyValue + " WHERE " + conditionColumn + " = '" + conditionValue + "'";
             return db.sql(sqlStr);
+        }
+
+        //更動tablename
+        public void changeTableName(String name) 
+        {
+            tableName = name;
         }
 
     }

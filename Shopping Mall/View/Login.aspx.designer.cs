@@ -31,13 +31,13 @@ namespace Shopping_Mall.View {
         protected global::System.Web.UI.WebControls.TextBox account;
         
         /// <summary>
-        /// pwd 控制項。
+        /// password 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pwd;
+        protected global::System.Web.UI.WebControls.TextBox password;
         
         /// <summary>
         /// btnLogin 控制項。
