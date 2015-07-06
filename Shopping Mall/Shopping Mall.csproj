@@ -74,12 +74,12 @@
     <Content Include="Picture\pic2.jpg" />
     <Content Include="Picture\pic3.jpg" />
     <Content Include="Picture\shopping-carts.png" />
-    <Content Include="View\ProductInfo\Css\prodInfoStyle.css" />
-    <Content Include="View\ProductInfo\Css\ProductEditor.css" />
+    <Content Include="View\Css\prodInfoStyle.css" />
+    <Content Include="View\Css\ProductEditor.css" />
     <Content Include="Index.aspx" />
-    <Content Include="View\ProductInfo\ProductEditor.aspx" />
+    <Content Include="View\ProductEditor.aspx" />
     <Content Include="Test.aspx" />
-    <Content Include="View\ProductInfo\ProductInformation.aspx" />
+    <Content Include="View\ProductInformation.aspx" />
     <Content Include="View\user.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -93,11 +93,11 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductInfo\ProductEditor.aspx.cs">
+    <Compile Include="View\ProductEditor.aspx.cs">
       <DependentUpon>ProductEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\ProductInfo\ProductEditor.aspx.designer.cs">
+    <Compile Include="View\ProductEditor.aspx.designer.cs">
       <DependentUpon>ProductEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,11 +115,11 @@
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductInfo\ProductInformation.aspx.cs">
+    <Compile Include="View\ProductInformation.aspx.cs">
       <DependentUpon>ProductInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\ProductInfo\ProductInformation.aspx.designer.cs">
+    <Compile Include="View\ProductInformation.aspx.designer.cs">
       <DependentUpon>ProductInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\user.aspx.cs">

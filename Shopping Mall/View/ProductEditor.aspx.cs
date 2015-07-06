@@ -17,7 +17,7 @@ namespace Shopping_Mall
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Index.aspx");
+            Response.Redirect("/Index.aspx");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Shopping_Mall
                 }
                 //list.Add(txtSummary.Text);
                 String str = db.insert(arr2, list.ToArray());
-                Response.Write("<script>alert('新增成功!');location.href='../../Index.aspx';</script>");
+                Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
             }
         }
     }

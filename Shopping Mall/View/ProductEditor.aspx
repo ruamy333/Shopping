@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../../js/jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="Css/ProductEditor.css" />
+    <link href="../Css/Common.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
@@ -41,10 +42,9 @@
         <div class="summaryBox">
             <asp:TextBox ID="txtSummary" CssClass="form-control summary" Rows="6" TextMode="MultiLine" runat="server"></asp:TextBox>
         </div>
-        <div class="formBox">
-            <asp:Button ID="btnSubmit" class="btn btn-default" runat="server" Text="送出" OnClick="btnSubmit_Click"/>
-            <asp:Button ID="btnCancle" class="btn btn-default" runat="server" Text="取消" OnClick="btnCancle_Click"/>
+        <div class="buttonBox">
+            <asp:Button ID="btnSubmit" class="button-style" runat="server" Text="送出" OnClick="btnSubmit_Click"/>
+            <asp:Button ID="btnCancle" class="button-style" runat="server" Text="取消" OnClick="btnCancle_Click"/>
         </div>
     </div>
-        </div>
 </asp:Content>
