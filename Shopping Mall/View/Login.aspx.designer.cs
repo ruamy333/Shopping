@@ -7,19 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace Shopping_Mall.View.ProductInfo {
+namespace Shopping_Mall.View {
     
     
-    public partial class ProductInformation {
-        
-        /// <summary>
-        /// productImage 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image productImage;
+    public partial class Login {
         
         /// <summary>
         /// productName 控制項。
@@ -31,39 +22,30 @@ namespace Shopping_Mall.View.ProductInfo {
         protected global::System.Web.UI.WebControls.Label productName;
         
         /// <summary>
-        /// priceLabel 控制項。
+        /// account 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label priceLabel;
+        protected global::System.Web.UI.WebControls.TextBox account;
         
         /// <summary>
-        /// numberDropList 控制項。
+        /// pwd 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList numberDropList;
+        protected global::System.Web.UI.WebControls.TextBox pwd;
         
         /// <summary>
-        /// btnPurchase 控制項。
+        /// btnLogin 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPurchase;
-        
-        /// <summary>
-        /// introLabel 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label introLabel;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
     }
 }

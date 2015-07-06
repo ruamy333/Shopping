@@ -61,6 +61,7 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
+    <Content Include="View\Css\LoginStyle.css" />
     <Content Include="View\Css\Product.css" />
     <Content Include="js\jquery-2.1.4.min.js" />
     <Content Include="Picture\bg01.jpg" />
@@ -74,9 +75,10 @@
     <Content Include="Picture\pic2.jpg" />
     <Content Include="Picture\pic3.jpg" />
     <Content Include="Picture\shopping-carts.png" />
-    <Content Include="View\Css\prodInfoStyle.css" />
+    <Content Include="View\Css\ProdInfoStyle.css" />
     <Content Include="View\Css\ProductEditor.css" />
     <Content Include="Index.aspx" />
+    <Content Include="View\Login.aspx" />
     <Content Include="View\ProductEditor.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="View\ProductInformation.aspx" />
@@ -92,6 +94,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\ProductEditor.aspx.cs">
       <DependentUpon>ProductEditor.aspx</DependentUpon>
@@ -155,7 +164,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56005</DevelopmentServerPort>
+          <DevelopmentServerPort>54775</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:55972/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

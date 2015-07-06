@@ -30,12 +30,16 @@
                             else if (s.Equals("index"))
                             {
                                 Response.Write("<script type='text/javascript'>$(document).ready(function () { $('#nav1').addClass('active'); });</script>");
+                            }
+                            else if (s.Equals("login"))
+                            {
+                                Response.Write("<script type='text/javascript'>$(document).ready(function () { $('#nav5').addClass('active'); });</script>");
                             } %>
 					    <li id="nav1"><a href="/Index.aspx" accesskey="1" title="">Homepage</a></li>
 					    <li id="nav2"><a href="/View/Product.aspx" accesskey="2" title="">Products</a></li>
 					    <li id="nav3"><a href="#" accesskey="3" title="">Applications</a></li>
 					    <li id="nav4"><a href="#" accesskey="4" title="">Support</a></li>
-                        <li id="nav5"><a href="#" accesskey="5" title="">Login</a></li>
+                        <li id="nav5"><a href="/View/Login.aspx" accesskey="5" title="">Login</a></li>
 				    </ul>
 			    </div>
 		    </div>

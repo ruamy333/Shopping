@@ -1,33 +1,52 @@
-﻿.contentBlock {
-    height:800px;
-    width:100%;
-}
-.contentLeft {
-    width:20%;
-    height:100%;
+﻿
+/*left bar*/
+.leftbar {
+    height:490px;
+    width:250px;
     float:left;
-    background-color: #F0F0F0;
+    padding:10px;
+}
+.leftbar-type
+{
+    height:28px;
+    width:230px;
+	font-size: 1.3em;
+	color: #0f18d4;
+    font-weight:800;
+	overflow: hidden;
+    border-radius:5px;
+}
+.leftbar-type:hover
+{
+    color: #555cf1;
+}
+.leftbar-baseline
+{
+    height:15px;
+    width:250px;
+    border-top:5px solid #2b33d4;
+}
+ul
+{
+    line-height:1.5;
+    padding-left:30px;
+    margin-bottom:30px;
+}
+
+.contentBlock {
+    height:600px;
+    width:1200px;
 }
 .contentRight {
-    width:80%;
+    width:910px;
     height:100%;
     float:left;
-}
-.sidebarContent {
     margin-left:20px;
-    margin-top:20px;
-    width:100%;
-    height:100%;
-}
-.sectionContent {
-    margin-left:2%;
-    width:98%;
-    height:100%;
 }
 .sectionBoxTop {
     margin-top:2%;
     width:100%;
-    height:48%;
+    height:38%;
 }
 .sectionBoxLeft {
     width:35%;
@@ -43,7 +62,7 @@
 .sectionBoxBottom {
     border-top: 1px solid #E7E7E7;
     width:100%;
-    height:57%;
+    height:67%;
     margin-top:3%;
 }
 .image {
