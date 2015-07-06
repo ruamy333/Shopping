@@ -1,5 +1,6 @@
 ﻿.contentBlock {
     height:800px;
+    width:100%;
 }
 .contentLeft {
     width:20%;
@@ -19,29 +20,51 @@
     height:100%;
 }
 .sectionContent {
-    margin-left:20px;
-    width:100%;
+    margin-left:2%;
+    width:98%;
     height:100%;
 }
+.sectionBoxTop {
+    margin-top:2%;
+    width:100%;
+    height:48%;
+}
 .sectionBoxLeft {
-    width:45%;
+    width:35%;
     height:40%;
     float:left;
 }
 .sectionBoxRight {
-    width:50%;
+    width:60%;
     height:40%;
     float:left;
     margin-left:5%;
 }
 .sectionBoxBottom {
+    border-top: 1px solid #E7E7E7;
     width:100%;
-    height:55%;
-    margin-top:5%;
+    height:57%;
+    margin-top:3%;
 }
 .image {
     height:100%;
     display: block;
     background-repeat: no-repeat;
     background-size: 100% auto;
+}
+.content-header
+{
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+	font-size: 1.0em;
+	color: #515151;
+}
+.content-text
+{
+    height:24px;
+    padding-top:5px;
+    width:auto;
+    margin-left:5px;
+    font-size:18px;
 }
