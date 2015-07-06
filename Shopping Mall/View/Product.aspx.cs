@@ -25,16 +25,6 @@ namespace Shopping_Mall.View
                 }
                 leftbarStr += "</ul>";
             }
-
-            String[] arr = db.searchByColumn("name");
-            Label1.Text = arr[0];
-            Label2.Text = arr[1];
-            Label3.Text = arr[2];
-            //for (int i = 1; i < 4; i++)
-            //{
-            //        ((Label)FindControl("Label" + i.ToString())).Text = arr[i] + "<br/>";
-            //}
-
             
         }
     }
