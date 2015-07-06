@@ -13,13 +13,13 @@ namespace Shopping_Mall.View.ProductInfo {
     public partial class ProductInformation {
         
         /// <summary>
-        /// productName 控制項。
+        /// linkProduct 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label productName;
+        protected global::System.Web.UI.WebControls.HyperLink linkProduct;
         
         /// <summary>
         /// productImage 控制項。
@@ -29,6 +29,15 @@ namespace Shopping_Mall.View.ProductInfo {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image productImage;
+        
+        /// <summary>
+        /// productName 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label productName;
         
         /// <summary>
         /// priceLabel 控制項。
@@ -47,5 +56,23 @@ namespace Shopping_Mall.View.ProductInfo {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList numberDropList;
+        
+        /// <summary>
+        /// btnPurchase 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPurchase;
+        
+        /// <summary>
+        /// introLabel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label introLabel;
     }
 }

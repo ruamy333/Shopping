@@ -13,14 +13,36 @@ namespace Shopping_Mall.View.ProductInfo
         protected void Page_Load(object sender, EventArgs e)
         {
             DBFunction db = new DBFunction();
-            productName.Text = "蛋";
+            productName.Text = "Mini OTDR: FiberPal OT-8800";
             String[] arr = db.searchByRow("name", productName.Text);
             priceLabel.Text = arr[3];
             for (int i = 1; i <= int.Parse(arr[4]); i++)
             {
                 numberDropList.Items.Add(i+"");
             }
-            //productImage.ImageUrl = arr[5];
+            productImage.ImageUrl = arr[5];
+            introLabel.Text = arr[6];
         }
+        
+        protected void btnPurchase_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ProductInformation.aspx");
+        }
+
+        protected void linkProduct_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Index.aspx");
+        }
+
+        //private void sidebar() 
+        //{
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        Label link = new Label();
+        //        link.Text = "link" + i.ToString();
+
+        //    }
+        //}
+
     }
 }
