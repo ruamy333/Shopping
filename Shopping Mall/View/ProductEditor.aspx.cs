@@ -39,7 +39,7 @@ namespace Shopping_Mall
                 if (FileUpload1.HasFile)
                 {
                     String fileName = FileUpload1.FileName;
-                    String savePath = Server.MapPath("../../UploadPic/");
+                    String savePath = Server.MapPath("../UploadPic/");
                     String saveResult = savePath + fileName;
                     String fileExtension = System.IO.Path.GetExtension(saveResult).ToLower();  //取得上傳的檔案類型
                     if (fileExtension == ".gif" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".jpg")
@@ -56,7 +56,7 @@ namespace Shopping_Mall
                 {
                     list.Add("");
                 }
-                //list.Add(txtSummary.Text);
+                list.Add(txtSummary.Text);
                 String str = db.insert(arr2, list.ToArray());
                 Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
             }

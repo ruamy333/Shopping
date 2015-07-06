@@ -61,7 +61,7 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
-    <Content Include="Css\user.css" />
+    <Content Include="View\Css\Product.css" />
     <Content Include="js\jquery-2.1.4.min.js" />
     <Content Include="Picture\bg01.jpg" />
     <Content Include="Picture\bg01.png" />
@@ -80,7 +80,7 @@
     <Content Include="View\ProductEditor.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="View\ProductInformation.aspx" />
-    <Content Include="View\user.aspx" />
+    <Content Include="View\Product.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -122,12 +122,12 @@
     <Compile Include="View\ProductInformation.aspx.designer.cs">
       <DependentUpon>ProductInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\user.aspx.cs">
-      <DependentUpon>user.aspx</DependentUpon>
+    <Compile Include="View\Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\user.aspx.designer.cs">
-      <DependentUpon>user.aspx</DependentUpon>
+    <Compile Include="View\Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

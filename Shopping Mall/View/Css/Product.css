@@ -1,0 +1,62 @@
+﻿.content-middle {
+    height:500px;
+}
+
+/*left bar*/
+.leftbar {
+    height:490px;
+    width:250px;
+    float:left;
+    padding:10px;
+}
+.leftbar-type
+{
+    height:28px;
+    width:230px;
+	font-size: 1.3em;
+	color: #0f18d4;
+    font-weight:800;
+	overflow: hidden;
+    border-radius:5px;
+}
+    .leftbar-type:hover
+    {
+        color: #555cf1;
+    }
+.leftbar-baseline
+{
+    height:15px;
+    width:250px;
+    border-top:5px solid #2b33d4;
+}
+ul
+{
+    line-height:1.5;
+    padding-left:30px;
+    margin-bottom:30px;
+}
+
+.product {
+    width:350px;
+    float:left;
+    padding:10px; 
+}
+.image {
+    width:200px;
+    height:100px;
+}
+.sale {
+    width:700px;
+    height:100px;
+    float:left;
+}
+.SaleColumn {
+    width:200px;
+    height:100px;
+    float:left;
+    border-right:solid 1px;
+    border-bottom:solid 1px;
+    text-align:center;
+    line-height:100px;
+}
+

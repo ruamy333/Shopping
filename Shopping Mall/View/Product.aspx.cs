@@ -10,9 +10,22 @@ namespace Shopping_Mall.View
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        public String leftbarStr = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             DBFunction db = new DBFunction();
+            String[] arrType = db.searchGroupBy("type");
+            for (int i = 0; i < arrType.Length; i++)
+            {
+                leftbarStr += "<a href='#'><div class='leftbar-type'>" + arrType[i] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[] arr1 = db.searchRowByColumn("name", "type", arrType[i]);
+                for (int j = 0; j < arr1.Length; j++)
+                {
+                    leftbarStr += "<a href='#'><li>" + arr1[j] + "</li></a>";
+                }
+                leftbarStr += "</ul>";
+            }
+
             String[] arr = db.searchByColumn("name");
             Label1.Text = arr[0];
             Label2.Text = arr[1];
@@ -21,7 +34,8 @@ namespace Shopping_Mall.View
             //{
             //        ((Label)FindControl("Label" + i.ToString())).Text = arr[i] + "<br/>";
             //}
-       
+
+            
         }
     }
 }

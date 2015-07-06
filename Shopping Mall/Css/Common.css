@@ -41,12 +41,14 @@ p
 
 a
 {
-	color: #0000FF;
+	color: #000;
+    text-decoration:none;
 }
 
 a:hover
 {
 	text-decoration: none;
+    color: #606060;
 }
 
 a img

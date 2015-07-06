@@ -15,6 +15,13 @@ namespace Shopping_Mall.Database
             String sqlStr = "SELECT " + fieldName + " FROM " + tableName;
             return db.sqlSelect(sqlStr);
         }
+        //Group by查詢
+        public String[] searchGroupBy(String fieldName)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT [" + fieldName + "] FROM " + tableName + " GROUP BY [" + fieldName + "]";
+            return db.sqlSelect(sqlStr);
+        }
         //查詢Schema
         public String[] searchSchema(String fieldName)
         {
@@ -30,6 +37,14 @@ namespace Shopping_Mall.Database
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " = '" + value + "'";
+
+            return db.sqlSelect(sqlStr); 
+        }
+        //依照欄位查詢列
+        public String[] searchRowByColumn(String fieldName, String column, String value)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT " + fieldName + " FROM " + tableName + " WHERE " + column + " = '" + value + "'";
 
             return db.sqlSelect(sqlStr); 
         }
