@@ -11,7 +11,11 @@ namespace Shopping_Mall
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString["l"] != null)
+            {
+                Session.Clear();
+                Response.Redirect("Index.aspx");
+            }
         }
     }
 }
