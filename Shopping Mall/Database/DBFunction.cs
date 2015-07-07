@@ -18,27 +18,33 @@ namespace Shopping_Mall.Database
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT " + fieldName + " FROM " + tableName;
-            return db.sqlSelect(sqlStr);
+            String[][] sqlArr2d = db.sqlSelect(sqlStr);
+            String[] sqlArr1d = new String[sqlArr2d.Length];
+            for (int i = 0; i < sqlArr2d.Length; i++)
+            {
+                sqlArr1d[i] = sqlArr2d[i][0];
+            }
+            return sqlArr1d;
         }
         //Group by查詢
-        public String[] searchGroupBy(String fieldName)
+        public String[][] searchGroupBy(String fieldName)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT [" + fieldName + "] FROM " + tableName + " GROUP BY [" + fieldName + "]";
             return db.sqlSelect(sqlStr);
         }
         //查詢Schema
-        public String[] searchSchema(String fieldName)
+        public String[][] searchSchema(String fieldName)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT id FROM sysobjects WHERE name = '" + tableName + "'";
-            String[] id = db.sqlSelect(sqlStr);
+            String[] id = db.sqlSelect(sqlStr)[0];
 
             String sqlResult = "SELECT name FROM syscolumns WHERE id='" + id[0] + "'";
             return db.sqlSelect(sqlResult);
         }
         //查詢列
-        public String[] searchByRow(String column, String value)
+        public String[][] searchByRow(String column, String value)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " = '" + value + "'";
@@ -46,7 +52,7 @@ namespace Shopping_Mall.Database
             return db.sqlSelect(sqlStr); 
         }
         //依照欄位查詢列
-        public String[] searchRowByColumn(String fieldName, String column, String value)
+        public String[][] searchRowByColumn(String fieldName, String column, String value)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT " + fieldName + " FROM " + tableName + " WHERE " + column + " = '" + value + "'";
@@ -54,7 +60,7 @@ namespace Shopping_Mall.Database
             return db.sqlSelect(sqlStr); 
         }
         //查詢範圍內的資料列
-        public String[] searchByRow(String column, int minValue, int maxValue)
+        public String[][] searchByRow(String column, int minValue, int maxValue)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " >= " + minValue + " AND " + column + " <= " + maxValue;

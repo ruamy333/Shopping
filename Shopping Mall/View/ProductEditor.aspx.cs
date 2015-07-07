@@ -30,7 +30,12 @@ namespace Shopping_Mall
             else
             {
                 DBFunction db = new DBFunction("product");
-                String[] arr2 = db.searchSchema("name");
+                String[][] arr2 = db.searchSchema("name");
+                String[] schemaArr = new String[arr2.Length];
+                for(int i=0; i<arr2.Length; i++)
+                {
+                    schemaArr[i] = arr2[i][0];
+                }
                 List<String> list = new List<string>();
                 list.Add("");
                 list.Add(txtName.Text);
@@ -67,7 +72,7 @@ namespace Shopping_Mall
                     DBFunction dbDiscount = new DBFunction("discount");
                     list.Add(dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text));
                 }
-                String str = db.insert(arr2, list.ToArray());
+                String str = db.insert(schemaArr, list.ToArray());
                 Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
             }
         }

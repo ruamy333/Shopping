@@ -81,11 +81,12 @@ namespace Shopping_Mall.Database
             return res.ToArray();
         }*/
 
-        public String[] sqlSelect(String strSQL)
+        public String[][] sqlSelect(String strSQL)
         {
             //打開連接
             myConn.Open();
-            List<String> res = new List<string>();
+            List<string> res1d;
+            List<string[]> res2d = new List<string[]>();
 
             SqlCommand myCommand = new SqlCommand(strSQL, myConn);
             try
@@ -94,8 +95,15 @@ namespace Shopping_Mall.Database
                 if (reader.HasRows)
                 {
                     while (reader.Read())
-                        for (int i = 0; i<reader.FieldCount; i++ )
-                            res.Add(reader[i].ToString());
+                    {
+                        res1d = new List<string>();
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            res1d.Add(reader[i].ToString()); 
+                        }
+                        res2d.Add(res1d.ToArray());
+                        
+                    }
                 }
             }
             catch (System.Exception ex) { }
@@ -104,7 +112,7 @@ namespace Shopping_Mall.Database
                 if (myConn.State == ConnectionState.Open)
                     myConn.Close();
             }
-            return res.ToArray();
+            return res2d.ToArray();
         }
 
         public String sqlGetID(String cmd)

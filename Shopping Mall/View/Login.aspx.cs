@@ -22,12 +22,11 @@ namespace Shopping_Mall.View
             if (account.Text.Equals("admin") && password.Text.Equals("admin"))
             {
                 Session["account"] = "admin";
-                Response.Write("<Script language='JavaScript'>alert('登入成功');location.href='/Index.aspx';</Script>");
             }
             else if (verify())
             {
                 Session["account"] = account.Text;
-                Response.Write("<Script language='JavaScript'>alert('登入成功');location.href='/Index.aspx';</Script>");
+                Response.Redirect("../Index.aspx");
             }
             else 
             {
@@ -38,7 +37,7 @@ namespace Shopping_Mall.View
         {
             String acc = account.Text;
             String pwd = password.Text;
-            String[] arr = db.searchRowByColumn("password", "account", acc);
+            String[] arr = db.searchRowByColumn("password", "account", acc)[0];
             if (arr.Length==0) return false;
             else if (arr[0].Equals(pwd)) return true;
             else return false;

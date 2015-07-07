@@ -16,22 +16,22 @@ namespace Shopping_Mall
             String[] arr = db.searchByColumn("product_name");
             for (int i = 0; i < arr.Length; i++)
             {
-                Response.Write(arr[i] + "<br/>");
+                Response.Write(arr[i][0] + "<br/>");
             }
 
-            String[] arr2 = db.searchSchema("name");
+            String[][] arr2 = db.searchSchema("name");
             for (int i = 0; i < arr2.Length; i++)
             {
-                Response.Write(arr2[i] + "<br/>");
+                Response.Write(arr2[i][0] + "<br/>");
             }
 
-            String[] arr3 = db.searchByRow("product_color","黑");
+            String[] arr3 = db.searchByRow("product_color","黑")[0];
             for (int i = 0; i < arr3.Length; i++)
             {
                 Response.Write(arr3[i]);
             }
 
-            String[] arr4 = db.searchByRow("product_price", 20, 30);
+            String[] arr4 = db.searchByRow("product_price", 20, 30)[0];
             for (int i = 0; i < arr4.Length; i++)
             {
                 Response.Write(arr4[i] + "<br/>");

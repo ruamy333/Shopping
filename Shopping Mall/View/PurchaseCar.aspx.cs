@@ -12,8 +12,7 @@ namespace Shopping_Mall.View
     {
         public String shoppingList = "";
         private DBFunction db = new DBFunction("purchaseList");
-        private String[] arrOrder;
-        int arrOrderLen;
+        private String[][] arrOrder;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,19 +30,16 @@ namespace Shopping_Mall.View
         private void showList()
         {
             arrOrder = db.searchRowByColumn("ID, product_name, price, num", "account", "root");
-            arrOrderLen = db.searchRowByColumn("account", "account", "root").Length;
-            int tmp = 0;
             int total = 0;
-            for (int i = 0; i < arrOrderLen; i++)
+            for (int i = 0; i < arrOrder.Length; i++)
             {
-                int price = Convert.ToInt32(arrOrder[tmp + 2]) * Convert.ToInt32(arrOrder[tmp + 3]);
+                int price = Convert.ToInt32(arrOrder[i][2]) * Convert.ToInt32(arrOrder[i][3]);
                 total += price;
-                shoppingList += "<div class='center-column'><div class='column-name'><span class='content-text'>" + arrOrder[tmp + 1] + "</span></div>"
-                    + "<div class='column-priceAndnum'>" + arrOrder[tmp + 2] + "</div>"
-                    + "<div class='column-priceAndnum'>" + arrOrder[tmp + 3] + "</div>"
+                shoppingList += "<div class='center-column'><div class='column-name'><span class='content-text'>" + arrOrder[i][1] + "</span></div>"
+                    + "<div class='column-priceAndnum'>" + arrOrder[i][2] + "</div>"
+                    + "<div class='column-priceAndnum'>" + arrOrder[i][3] + "</div>"
                     + "<div class='column-priceAndnum'>" + price + "</div>"
-                    + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[tmp] + "' class='button-style'>刪除</a></div></div>";
-                tmp += 4;                
+                    + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][0] + "' class='button-style'>刪除</a></div></div>";              
             }
             //計算總金額
             totalPrice.Text += total + "元";         
