@@ -22,6 +22,7 @@ namespace Shopping_Mall.View
             if (account.Text.Equals("admin") && password.Text.Equals("admin"))
             {
                 Session["account"] = "admin";
+                Response.Redirect("../Index.aspx");
             }
             else if (verify())
             {
