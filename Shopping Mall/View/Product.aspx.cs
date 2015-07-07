@@ -35,11 +35,14 @@ namespace Shopping_Mall.View
             String[] arrNum = db.searchByColumn("num");
             for (int a = 0; a <= (arrName.Length / 2); a++)
             {
-                rightStr += "<div class ='product'>";
+                if (2 * a == arrName.Length)
+                    break;
+                else
+                    rightStr += "<div class ='product'>";
                 for (int b = 0; b < 2; b++)
                 {
                     if(2*a+b<arrName.Length)
-                        rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#' class='fontsize'>" + arrName[2 * a + b] + "</a></div><p class='fontsize'>" + "價格：" + "</p><div class='information'>" + arrPrice[2 * a + b] + "</div><p class='fontsize'>" + "數量：" + "</p><div class='information'>" + arrNum[2 * a + b] + "</div></div>";
+                        rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#'>" + arrName[2 * a + b] + "</a></div><div class='information'><b style='font-size=0.5cm'>價格：</b>" + arrPrice[2 * a + b] + "<b style='font-size=0.5cm;padding-left:10px;'>數量：</b>" + arrNum[2 * a + b] + "</div></div>";
                 }
                 rightStr += "</div>";
             }
