@@ -21,7 +21,7 @@ namespace Shopping_Mall.View
         {
             if (verify())
             {
-                Response.Write("<Script language='JavaScript'>alert('登入成功');</Script>");
+                Response.Write("<Script language='JavaScript'>alert('登入成功');location.href='/Index.aspx';</Script>");
                 //Response.Redirect("/Index.aspx");
             }
             else 
@@ -34,8 +34,9 @@ namespace Shopping_Mall.View
         {
             String acc = account.Text;
             String pwd = password.Text;
-            String correspondPwd = db.searchRowByColumn("password","account",acc)[0];
-            if (correspondPwd.Equals(pwd))return true;
+            String[] arr = db.searchRowByColumn("password", "account", acc);
+            if (arr.Length==0) return false;
+            else if (arr[0].Equals(pwd)) return true;
             else return false;
         }
     }
