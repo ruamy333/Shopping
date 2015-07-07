@@ -10,7 +10,6 @@
             <%=leftbarStr %>
     </div>
     <div class="rightbar">
-    <h1>商品區</h1>
         <%=rightStr %>
         
     </div>
