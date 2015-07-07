@@ -1,0 +1,77 @@
+﻿.content {
+    width:1200px;
+    overflow:auto;
+}
+.content-top {
+    margin-top:20px;
+    width:1180px;
+
+}
+.content-center {
+    margin-left:10px;
+    margin-top:20px;
+    width:1180px;
+
+}
+.center-column {
+    margin-bottom:10px;
+    width:auto;
+    height:69px;
+    border-bottom: 1px solid #E7E7E7;
+}
+.column-name {
+    margin-top:33px;
+    width:620px;
+    height:35px;
+    float:left;
+    border-right: 1px solid #E7E7E7;
+}
+.column-priceAndnum {
+    margin-top:33px;
+    margin-left:5px;
+    width:115px;
+    height:35px;
+    float:left;
+    border-right: 1px solid #E7E7E7;
+}
+.column-delete {
+    margin-left:10px;
+    width:90px;
+    height:60px;
+    float:left;
+}
+.content-bottom {
+    margin:10px;
+    margin-bottom:20px;
+    width:1145px;
+    height:auto;
+}
+.bottom-left {
+    float:right;
+    margin-right:30px;
+    margin-top:28px;
+    width:auto;
+    height:auto;
+}
+.bottom-right {
+    float:right;
+    margin-right:20px;
+    width:auto;
+    height:auto;
+}
+.content-header
+{
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	color: #515151;
+}
+.content-text
+{
+    height:24px;
+    padding-top:5px;
+    width:auto;
+    margin-left:5px;
+    font-size:18px;
+}

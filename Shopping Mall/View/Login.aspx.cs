@@ -10,7 +10,7 @@ namespace Shopping_Mall.View
 {
     public partial class Login : System.Web.UI.Page
     {
-        private DBFunction db = new DBFunction("user_account");
+        private DBFunction db = new DBFunction("account");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +22,6 @@ namespace Shopping_Mall.View
             if (verify())
             {
                 Response.Write("<Script language='JavaScript'>alert('登入成功');location.href='/Index.aspx';</Script>");
-                //Response.Redirect("/Index.aspx");
             }
             else 
             {
