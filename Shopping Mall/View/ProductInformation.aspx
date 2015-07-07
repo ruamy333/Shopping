@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css"
         href="Css/ProdInfoStyle.css" media="screen" />
     <link rel="stylesheet" type="text/css"
-        href="Css/Common.css" media="screen" />
+        href="../Css/Common.css" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
@@ -24,7 +24,7 @@
                         <div class="content-text">數量：
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
                             <br/> 
-                            <asp:Button ID="btnPurchase" class="button-style" runat="server" Text="購買" OnClick="btnPurchase_Click"/>
+                            <asp:Button ID="btnPurchase" class="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
                         </div>
                     </div>     
                 </div>
