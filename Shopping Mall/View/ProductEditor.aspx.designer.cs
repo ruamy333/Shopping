@@ -49,6 +49,33 @@ namespace Shopping_Mall {
         protected global::System.Web.UI.WebControls.TextBox txtNum;
         
         /// <summary>
+        /// radiobtnDiscount 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList radiobtnDiscount;
+        
+        /// <summary>
+        /// txtDiscountType 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiscountType;
+        
+        /// <summary>
+        /// txtDiscountContent 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiscountContent;
+        
+        /// <summary>
         /// FileUpload1 控制項。
         /// </summary>
         /// <remarks>

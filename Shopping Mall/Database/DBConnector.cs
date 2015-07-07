@@ -107,5 +107,30 @@ namespace Shopping_Mall.Database
             return res.ToArray();
         }
 
+        public String sqlGetID(String cmd)
+        {
+            SqlCommand myCommand = new SqlCommand(cmd, myConn);
+            try
+            {
+                myConn.Open();
+                SqlDataReader reader = myCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    String res = reader["id"].ToString();
+                    myConn.Close();
+                    return res;
+                }
+                else
+                {
+                    myConn.Close();
+                    return "";
+                }
+            }
+            catch (System.Exception ex)
+            {
+                myConn.Close();
+                return "";
+            }
+        }
     }
 }

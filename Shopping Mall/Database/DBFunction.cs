@@ -100,5 +100,13 @@ namespace Shopping_Mall.Database
             String sqlStr = "UPDATE " + tableName + " SET " + modifyColumn + " = " + modifyValue + " WHERE " + conditionColumn + " = '" + conditionValue + "'";
             return db.sql(sqlStr);
         }
+        //新增列並回傳ID
+        public String insertAndSearchID(String type, String content)
+        {
+            DBConnector db = new DBConnector();
+            String s = "INSERT INTO discount ([type],[content]) values ('" + type + "','" + content + "') SELECT TOP 1 [discountID] AS id FROM discount ORDER BY id DESC";
+            return db.sqlGetID(s);
+        }
+        
     }
 }
