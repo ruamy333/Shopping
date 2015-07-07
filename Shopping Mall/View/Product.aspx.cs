@@ -39,7 +39,7 @@ namespace Shopping_Mall.View
                 for (int b = 0; b < 2; b++)
                 {
                     if(2*a+b<arrName.Length)
-                        rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><p class='fontsize'>" + "名稱：" + "</p><div class='name'>" + arrName[2 * a + b] + "</div><p class='fontsize'>" + "價格：" + "</p><div class='information'>" + arrPrice[2 * a + b] + "</div><p class='fontsize'>" + "數量：" + "</p><div class='information'>" + arrNum[2 * a + b] + "</div></div>";
+                        rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#' class='fontsize'>" + arrName[2 * a + b] + "</a></div><p class='fontsize'>" + "價格：" + "</p><div class='information'>" + arrPrice[2 * a + b] + "</div><p class='fontsize'>" + "數量：" + "</p><div class='information'>" + arrNum[2 * a + b] + "</div></div>";
                 }
                 rightStr += "</div>";
             }
