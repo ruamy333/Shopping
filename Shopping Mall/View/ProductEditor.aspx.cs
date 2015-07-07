@@ -10,6 +10,7 @@ namespace Shopping_Mall
 {
     public partial class ProductManage : System.Web.UI.Page
     {
+        public String[] discountStr = {"",""};
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -57,8 +58,43 @@ namespace Shopping_Mall
                     list.Add("");
                 }
                 list.Add(txtSummary.Text);
+                if (radiobtnDiscount.SelectedIndex == 0)
+                {
+                    list.Add("");
+                }
+                else
+                {
+                    DBFunction dbDiscount = new DBFunction("discount");
+                    list.Add(dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text));
+                }
                 String str = db.insert(arr2, list.ToArray());
                 Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
+            }
+        }
+        protected void radiobtnDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDiscountType.Visible = false;
+            txtDiscountContent.Visible = false;
+            discountStr[0] = "";
+            discountStr[1] = "";
+            switch (radiobtnDiscount.SelectedIndex)
+            {
+                case 1:
+                    txtDiscountType.Visible = true;
+                    discountStr[1] = "% off";
+                break;
+                case 2:
+                    txtDiscountType.Visible = true;
+                    txtDiscountContent.Visible = true;
+                    discountStr[0] = "買";
+                    discountStr[1] = "送";
+                break;
+                case 3:
+                    txtDiscountType.Visible = true;
+                    txtDiscountContent.Visible = true;
+                    discountStr[0] = "滿";
+                    discountStr[1] = "送";
+                break;
             }
         }
     }

@@ -30,8 +30,21 @@
         <div class="formBox">
             <div class="title">商品數量：</div>
             <asp:TextBox ID="txtNum"  class="textBox form-control " runat="server" TextMode="Number"></asp:TextBox>
+        </div>
+        <div class="summaryBox">
+            <div class="title">折扣方式：</div>
+            <asp:RadioButtonList ID="radiobtnDiscount" runat="server" OnSelectedIndexChanged="radiobtnDiscount_SelectedIndexChanged" AutoPostBack="true">
+                <asp:ListItem Selected="True">無</asp:ListItem>
+                <asp:ListItem>____ % off</asp:ListItem>
+                <asp:ListItem>買____送____</asp:ListItem>
+                <asp:ListItem>滿____送____</asp:ListItem>
+            </asp:RadioButtonList>
+            <div class="discountDetail">
+             <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number"></asp:TextBox>
+             <%=discountStr[1] %><asp:TextBox ID="txtDiscountContent" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number"></asp:TextBox>
             </div>
-         <div class="formBox">
+        </div>
+        <div class="formBox">
             <div class="title">上傳圖片：</div>
              <asp:FileUpload ID="FileUpload1" runat="server" />
         </div>

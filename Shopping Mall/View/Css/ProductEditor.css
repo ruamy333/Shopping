@@ -43,7 +43,6 @@
     overflow-y:no-content;
 }
 .form-control {
-  display: block;
   width: 100%;
   height: auto;
   padding: 6px 12px;
@@ -73,7 +72,6 @@
 {
     width:350px;
     height: auto;
-    float:left;
 }
 .content-header
 {
@@ -82,4 +80,19 @@
 	margin-bottom: 2em;
 	font-size: 1.5em;
 	color: #515151;
+}
+.discountDetail
+{ 
+    width:820px;
+    height:auto;
+    margin:10px;
+    margin-left:120px;
+    margin-bottom:20px;
+    font-size:18px;
+    letter-spacing:10px;
+}
+.discountTextBox
+{
+    width:35px;
+    height: auto;
 }
