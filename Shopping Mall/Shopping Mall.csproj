@@ -82,6 +82,7 @@
     <Content Include="Index.aspx" />
     <Content Include="View\Css\PurchaseCarStyle.css" />
     <Content Include="View\Login.aspx" />
+    <Content Include="View\Orders.aspx" />
     <Content Include="View\ProductEditor.aspx" />
     <Content Include="View\ProductInformation.aspx" />
     <Content Include="View\Product.aspx" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="View\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Orders.aspx.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Orders.aspx.designer.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\ProductEditor.aspx.cs">
       <DependentUpon>ProductEditor.aspx</DependentUpon>

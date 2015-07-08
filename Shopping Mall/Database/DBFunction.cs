@@ -12,7 +12,15 @@ namespace Shopping_Mall.Database
         {
             tableName = name;
         }
-       
+
+        //依照欄位查詢
+        public String[][] searchAll()
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT * FROM " + tableName;
+
+            return db.sqlSelect(sqlStr);
+        }
         //依照欄位查詢
         public String[][] searchByColumn(String fieldName)
         {

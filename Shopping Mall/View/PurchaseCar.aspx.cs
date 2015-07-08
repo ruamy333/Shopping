@@ -33,12 +33,26 @@ namespace Shopping_Mall.View
         //送出btn
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            DBFunction dbOrder = new DBFunction("orderList");
+            String[][] attributes = dbOrder.searchSchema("name");
+            String[] schemaArr = new String[attributes.Length];
+            for (int i = 0; i < attributes.Length; i++)
+            {
+                schemaArr[i] = attributes[i][0];
+            }
+            for (int i = 0; i < arrOrder.Length; i++ )
+            {
+                int price = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][4]);
+                String[] values = new String[] { "", Session["account"].ToString(), arrOrder[i][2], arrOrder[i][4], price.ToString() };
+                dbOrder.insert(schemaArr, values);
+            }
+
             Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");
         }
         //列出購買清單      
         private void showList()
         {
-            arrOrder = db.innerJoin("product.ID, purchaseList.ID, product.name, product.price, purchaseList.num, product.picture", "product", "product.name", "purchaseList.product_name", "purchaseList.account", "root");
+            arrOrder = db.innerJoin("product.ID, purchaseList.ID, product.name, product.price, purchaseList.num, product.picture", "product", "product.name", "purchaseList.product_name", "purchaseList.account", Session["account"].ToString());
             int total = 0;
             for (int i = 0; i < arrOrder.Length; i++)
             {
