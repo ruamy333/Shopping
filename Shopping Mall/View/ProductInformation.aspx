@@ -23,9 +23,11 @@
                         </div>
                         <div class="content-text">數量：
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
+                            <asp:Label ID="laseNum" runat="server" Text="　剩餘數量： "></asp:Label>
                         </div>
                         <div class="content-text">
                             <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
+                            <asp:Label ID="alertLogin" runat="server" Text="欲購買請先登入"></asp:Label>
                         </div>
                     </div>     
                 </div>

@@ -49,6 +49,15 @@ namespace Shopping_Mall.View.ProductInfo {
         protected global::System.Web.UI.WebControls.DropDownList numberDropList;
         
         /// <summary>
+        /// laseNum 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label laseNum;
+        
+        /// <summary>
         /// btnPurchase 控制項。
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Shopping_Mall.View.ProductInfo {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPurchase;
+        
+        /// <summary>
+        /// alertLogin 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label alertLogin;
         
         /// <summary>
         /// introLabel 控制項。
