@@ -15,8 +15,7 @@ namespace Shopping_Mall.View.ProductInfo
         protected void Page_Load(object sender, EventArgs e)
         {
             productShow(Request.QueryString["p"]);
-            
-            sidebar();
+            setLeftBar();
         }
         //讀取產品介紹
         private void productShow(String ID) 
@@ -39,12 +38,12 @@ namespace Shopping_Mall.View.ProductInfo
         }
         //左方menu
         public String leftbarStr = "";
-        private void sidebar()
+        private void setLeftBar()
         {
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<a href='Product.aspx'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
@@ -53,6 +52,5 @@ namespace Shopping_Mall.View.ProductInfo
                 leftbarStr += "</ul>";
             }
         }
-
     }
 }
