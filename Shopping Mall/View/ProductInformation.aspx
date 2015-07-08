@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductInformation.aspx.cs" Inherits="Shopping_Mall.View.ProductInfo.ProductInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css"
-        href="Css/ProdInfoStyle.css" media="screen" />
-    <link rel="stylesheet" type="text/css"
-        href="../Css/Common.css" media="screen" />
+    <link href="Css/ProdInfoStyle.css" rel="stylesheet" />
+    <link href="../Css/Common.css" rel="stylesheet" />
+    <script src="../js/jquery.hoverpulse.js"></script>
+    <script src="../js/lefrbar-effect.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
-        <div class="leftbar">
+        <div class="leftbar" id="aa">
                 <%=leftbarStr %>
         </div>
         <div class="contentRight">
