@@ -26,9 +26,9 @@ namespace Shopping_Mall.View
                 array = db.searchByColumn("id,name,type,price,num,picture");
             }
             else
-                {
+            {
                 array = db.searchByRow("type", Request.QueryString["t"]);
-                    }
+            }
             
             //0707 新增
             for (int a = 0; a <= (array.Length / 2); a++)

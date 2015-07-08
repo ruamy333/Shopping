@@ -4,7 +4,7 @@
     height:490px;
     width:250px;
     float:left;
-    padding:10px;
+    margin-left:75px;
 }
 .leftbar-type
 {
@@ -30,9 +30,10 @@
 }
 ul
 {
-    line-height:1.7;
+    line-height:1.9;
     padding-left:30px;
     margin-bottom:10px;
+    font-size:14px;
 }
 .leftbar ul
 {
@@ -43,7 +44,7 @@ ul
     width:1200px;
 }
 .contentRight {
-    width:910px;
+    width:800px;
     height:100%;
     float:left;
     margin-left:20px;
@@ -82,7 +83,6 @@ ul
 .content-header
 {
 	letter-spacing: -1px;
-	text-transform: uppercase;
 	margin-bottom: 2em;
 	font-size: 1.0em;
 	color: #515151;
@@ -94,4 +94,5 @@ ul
     width:auto;
     margin-left:5px;
     font-size:18px;
+    line-height:1.5;
 }
