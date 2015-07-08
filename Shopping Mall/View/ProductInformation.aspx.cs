@@ -14,15 +14,20 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            productShow(Request.QueryString["d"]);
+            String name = Request.QueryString["d"];
+            if (name == null)
+            {
+                name = "Mini OTDR: FiberPal OT-8800";
+            }
+            productShow(name);
             
             sidebar();
         }
         //讀取產品介紹
-        private void productShow(String ID) 
-        {
-            String[][] proArr = db.searchByRow("ID", ID);
+        private void productShow(String name) 
+        {         
 
+            String[][] proArr = db.searchByRow("name", name);
             productName.Text = proArr[0][1];
             priceLabel.Text = proArr[0][3];
             for (int i = 1; i <= int.Parse(proArr[0][4]); i++)
@@ -35,7 +40,17 @@ namespace Shopping_Mall.View.ProductInfo
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Product.aspx");
+            DBFunction dbPurchase = new DBFunction("purchaseList");
+            String[][] attributes = db.searchSchema("name");
+            String[] schemaArr = new String[attributes.Length];
+            for (int i = 1; i < attributes.Length; i++)
+            {
+                schemaArr[i] = attributes[i][0];
+            }
+            String[] values = new String[]{"root", productName.Text, priceLabel.Text, numberDropList.SelectedValue};
+            dbPurchase.insert(schemaArr, values);
+
+            Response.Redirect("Product.aspx");
         }
         //左方menu
         public String leftbarStr = "";

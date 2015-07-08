@@ -29,26 +29,25 @@ namespace Shopping_Mall.View
                 }
                 leftbarStr += "</ul>";
             }
-            
 
-            //0707 新增
-            String[] arrName = db.searchByColumn("name");
-            String[] arrImg = db.searchByColumn("picture");
-            String[] arrPrice = db.searchByColumn("price");
-            String[] arrNum = db.searchByColumn("num");
-            for (int a = 0; a <= (arrName.Length / 2); a++)
-            {
-                if (2 * a == arrName.Length)
-                    break;
-                else
-                    rightStr += "<div class ='product'>";
-                for (int b = 0; b < 2; b++)
-                {
-                    if(2*a+b<arrName.Length)
-                        rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#'>" + arrName[2 * a + b] + "</a></div><div class='information'><b style='font-size=0.5cm'>價格：</b>" + arrPrice[2 * a + b] + "<b style='font-size=0.5cm;padding-left:10px;'>數量：</b>" + arrNum[2 * a + b] + "</div></div>";
-                }
-                rightStr += "</div>";
-            }
+            ////0707 新增
+            //String[] arrName = db.searchByColumn("name");
+            //String[] arrImg = db.searchByColumn("picture");
+            //String[] arrPrice = db.searchByColumn("price");
+            //String[] arrNum = db.searchByColumn("num");
+            //for (int a = 0; a <= (arrName.Length / 2); a++)
+            //{
+            //    if (2 * a == arrName.Length)
+            //        break;
+            //    else
+            //        rightStr += "<div class ='product'>";
+            //    for (int b = 0; b < 2; b++)
+            //    {
+            //        if(2*a+b<arrName.Length)
+            //            rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#'>" + arrName[2 * a + b] + "</a></div><div class='information'><b style='font-size=0.5cm'>價格：</b>" + arrPrice[2 * a + b] + "<b style='font-size=0.5cm;padding-left:10px;'>數量：</b>" + arrNum[2 * a + b] + "</div></div>";
+            //    }
+            //    rightStr += "</div>";
+            //}
 
         }
     }
