@@ -21,6 +21,9 @@ namespace Shopping_Mall.View.ProductInfo
         //讀取產品介紹
         private void productShow(String ID) 
         {
+            if(ID == null){
+                ID = "21";
+            }
             String[][] proArr = db.searchByRow("ID", ID);
 
             productName.Text = proArr[0][1];
@@ -35,7 +38,7 @@ namespace Shopping_Mall.View.ProductInfo
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Product.aspx");
+            Response.Redirect("Product.aspx");
         }
         //左方menu
         public String leftbarStr = "";
