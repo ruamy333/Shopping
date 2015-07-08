@@ -11,7 +11,7 @@
     </div>
     <div class="rightbar">
         <%=rightStr %>
-        
     </div>
+
 </div>
 </asp:Content>

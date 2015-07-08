@@ -14,6 +14,10 @@ namespace Shopping_Mall.View
         public String rightStr = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*String num = Request.QueryString["num"];
+            DBFunction db = new DBFunction("purchaselist");
+            db.insert("num",num);*/
+
             DBFunction db = new DBFunction("product");
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
@@ -46,11 +50,13 @@ namespace Shopping_Mall.View
                             +"<div class='image'><img src=../UploadPic/" + array[2 * a + b][0] + "></div>"
                             +"<div class='name'><a href='#'>" + array[2 * a + b][1] + "</a></div>"
                             +"<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][2] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][3] + "</div>"
+                            +"<div class='information'><a href='PurchaseCar.aspx?d=>"+"購買數量: <input type='number' name='num' value=''><br><input type='submit' value='Submit'></a></div>"
+                            //+"<div class='information'>刪除: <asp:Button ID='Button1' runat='server' Text='Button' /></div>"
                             +"</div>";
                 }
+
                 rightStr += "</div>";
             }
-            
         }
     }
 }
