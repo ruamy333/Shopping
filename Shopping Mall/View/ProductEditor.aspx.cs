@@ -13,7 +13,10 @@ namespace Shopping_Mall
         public String[] discountStr = {"",""};
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["account"] == null || !Session["account"].Equals("admin"))
+            {
+                Response.Redirect("/Index.aspx");
+            }
         }
 
         protected void btnCancle_Click(object sender, EventArgs e)
