@@ -15,20 +15,20 @@ namespace Shopping_Mall.View
         public DBFunction db = new DBFunction("product");
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
             String del = Request.QueryString["d"];
             if (del != null)
             {
                 db.delete("ID", del);
             }
-            
+
             String num = Request.QueryString["num"];
             String ID = Request.QueryString["ID"];
             if (num!=null)
             {
                 String[][] str = db.searchRowByColumn("ID,name,price", "ID", ID);
-                DBFunction db2 = new DBFunction("purchaseList");
+            DBFunction db2 = new DBFunction("purchaseList");
                 String[] value = new String[] { str[0][0], (String)Session["account"], str[0][1], str[0][2], num };
                 //String[] value = { str[0][0], str[0][1], str[0][2], str[0][3], num };
                 String[] attribute = { "ID", "account", "product_name", "price", "num" };
