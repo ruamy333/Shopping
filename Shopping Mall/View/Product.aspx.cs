@@ -15,10 +15,16 @@ namespace Shopping_Mall.View
         public DBFunction db = new DBFunction("product");
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            String n = Request.QueryString["ID"];
+            
             String ID = Request.QueryString["d"];
             db.delete("ID", ID);
+
+            
+            String num = Request.QueryString["num"];
+            DBFunction db2 = new DBFunction("purchaseList");
+            String [] input={"ID","account","product_name","price","num"};
+            String[] value = { "19", "root", "PALM OTDR: FIBERPAL OT-8600", "25600", num };
+            db2.insert(input,value);
             setLeftBar();
             String[][] array;
             if (Request.QueryString["t"] == null)
@@ -45,6 +51,7 @@ namespace Shopping_Mall.View
                             + "<div class='delete'><a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>"
                             + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
                             + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
+                            + "<div class='information'><form action='Product.aspx' method='get' >購買數量：<input type='number' name='num' runat'server'><br><input type='submit' value='Submit'></form></div>"
                             + "</div>";
                 }
 
