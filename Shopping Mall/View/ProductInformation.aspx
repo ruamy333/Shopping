@@ -13,10 +13,10 @@
         <div class="contentRight">
                 <div class="sectionBoxTop">
                     <div class="sectionBoxLeft">
-                        <div class="image"><asp:Image ID="productImage" runat="server" /></div>
+                        <asp:Image ID="productImage" CssClass="image" runat="server" />
                     </div>
                     <div class="sectionBoxRight">
-				        <h2><asp:Label ID="productName" class="content-header" runat="server" ></asp:Label></h2>
+				        <h2><asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label></h2>
                         <br/>             
                         <div class="content-text">價格：
                             <asp:Label ID="priceLabel" runat="server" ></asp:Label>元 <br/>
@@ -25,13 +25,13 @@
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
                         </div>
                         <div class="content-text">
-                            <asp:Button ID="Button1" class="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
+                            <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
                         </div>
                     </div>     
                 </div>
                 <div class="sectionBoxBottom">
                     <br/> 
-                    <asp:Label ID="introLabel" class="content-text" runat="server" ></asp:Label>
+                    <asp:Label ID="introLabel" CssClass="content-text" runat="server" ></asp:Label>
                 </div>
         </div>
     </div>
