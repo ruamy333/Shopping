@@ -9,17 +9,19 @@
 .leftbar-type
 {
     height:28px;
-    width:230px;
-	font-size: 1.3em;
-	color: #0f18d4;
+    width:100%;
+	font-size: 1.2em;
     font-weight:800;
 	overflow: hidden;
-    border-radius:5px;
+    border-bottom: 1px solid #999;
+    margin-top:20px;
 }
 .leftbar-type:hover
 {
-    color: #555cf1;
+    color: #606060;
+    cursor:pointer;
 }
+/* Original leftbar css*/
 .leftbar-baseline
 {
     height:15px;
@@ -28,11 +30,14 @@
 }
 ul
 {
-    line-height:1.5;
+    line-height:1.7;
     padding-left:30px;
-    margin-bottom:30px;
+    margin-bottom:10px;
 }
-
+.leftbar ul
+{
+    background:#eee;
+}
 .contentBlock {
     overflow:auto;
     width:1200px;

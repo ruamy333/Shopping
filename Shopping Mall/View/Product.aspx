@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Css/Common.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Css/Product.css"/>
+    <script src="../js/lefrbar-effect.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
