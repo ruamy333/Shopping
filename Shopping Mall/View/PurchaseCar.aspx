@@ -6,31 +6,37 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
         <div class="content-top">
-            <h2><asp:Label ID="titleLabel" class="content-header" runat="server" Text="購物車"></asp:Label></h2>
+            <h2><asp:Label ID="titleLabel" CssClass="content-header" runat="server" Text="購物車"></asp:Label></h2>
         </div>
         <div class="content-center">
             <div class="center-column">
+                <div class="column-box">
+                    <asp:Label ID="img" CssClass="content-text" runat="server" Text="商品圖示"></asp:Label>
+                </div>
                 <div class="column-name">
-                    <asp:Label ID="name" class="content-text" runat="server" Text="商品名稱"></asp:Label>
+                    <asp:Label ID="name" CssClass="content-text" runat="server" Text="商品名稱"></asp:Label>
                 </div>
-                <div class="column-priceAndnum">
-                    <asp:Label ID="price" class="content-text" runat="server" Text="商品價格"></asp:Label>
+                <div class="column-box">
+                    <asp:Label ID="price" CssClass="content-text" runat="server" Text="商品價格"></asp:Label>
                 </div>
-                <div class="column-priceAndnum">
-                    <asp:Label ID="num" class="content-text" runat="server" Text="數量"></asp:Label>
+                <div class="column-box">
+                    <asp:Label ID="num" CssClass="content-text" runat="server" Text="數量"></asp:Label>
                 </div>
-                <div class="column-priceAndnum">
-                    <asp:Label ID="total" class="content-text" runat="server" Text="單筆金額"></asp:Label>
+                <div class="column-box">
+                    <asp:Label ID="total" CssClass="content-text" runat="server" Text="小計"></asp:Label>
+                </div>
+                <div class="column-box">
+                    <asp:Label ID="discount" CssClass="content-text" runat="server" Text="優惠"></asp:Label>
                 </div>
             </div>
             <%=shoppingList %>
         </div>
         <div class="content-bottom">
             <div class="bottom-right">
-                <asp:Button ID="btnPurchase" class="button-style" runat="server" Text="確定購買" OnClick="btnSubmit_Click"/>
+                <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="確定購買" OnClick="btnSubmit_Click"/>
             </div>
             <div class="bottom-left">
-                <asp:Label ID="totalPrice" class="content-text" runat="server" Text="總金額："></asp:Label>
+                <asp:Label ID="totalPrice" CssClass="content-text" runat="server" Text="總金額："></asp:Label>
             </div>
 
         </div>

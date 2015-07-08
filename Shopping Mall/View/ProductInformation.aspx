@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductInformation.aspx.cs" Inherits="Shopping_Mall.View.ProductInfo.ProductInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css"
-        href="Css/ProdInfoStyle.css" media="screen" />
-    <link rel="stylesheet" type="text/css"
-        href="../Css/Common.css" media="screen" />
+    <link href="Css/ProdInfoStyle.css" rel="stylesheet" />
+    <link href="../Css/Common.css" rel="stylesheet" />
+    <script src="../js/jquery.hoverpulse.js"></script>
+    <script src="../js/lefrbar-effect.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
-        <div class="leftbar">
+        <div class="leftbar" id="aa">
                 <%=leftbarStr %>
         </div>
         <div class="contentRight">
@@ -23,9 +23,11 @@
                         </div>
                         <div class="content-text">數量：
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
+                            <asp:Label ID="laseNum" runat="server" Text="　剩餘數量： "></asp:Label>
                         </div>
                         <div class="content-text">
                             <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
+                            <asp:Label ID="alertLogin" runat="server" Text="欲購買請先登入"></asp:Label>
                         </div>
                     </div>     
                 </div>

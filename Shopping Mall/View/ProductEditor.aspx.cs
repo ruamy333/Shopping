@@ -65,7 +65,7 @@ namespace Shopping_Mall
                 {
                     list.Add("");
                 }
-                list.Add(txtSummary.Text);
+                list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
                 if (radiobtnDiscount.SelectedIndex == 0)
                 {
                     list.Add("");

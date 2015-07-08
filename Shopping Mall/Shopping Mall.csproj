@@ -61,6 +61,8 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
+    <Content Include="js\jquery.hoverpulse.js" />
+    <Content Include="js\lefrbar-effect.js" />
     <Content Include="View\Css\LoginStyle.css" />
     <Content Include="View\Css\Product.css" />
     <Content Include="js\jquery-2.1.4.min.js" />
