@@ -35,17 +35,32 @@ namespace Shopping_Mall.View
                     rightStr += "<div class ='product'>";
                 for (int b = 0; b < 2; b++)
                 {
-                    if(2*a+b<array.Length)
+                    if (2 * a + b < array.Length)
                         rightStr += "<div class ='product-inside'>"
-                            +"<div class='image'><img src=../UploadPic/" + array[2 * a + b][0] + "></div>"
-                            +"<div class='name'><a href='#'>" + array[2 * a + b][1] + "</a></div>"
-                            +"<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][2] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][3] + "</div>"
-                            +"</div>";
+                            + "<div class='image'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><img src=../UploadPic/" + array[2 * a + b][5] + "></a></div>"
+                            + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
+                            + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
+                            + "</div>";
                 }
 
                 rightStr += "</div>";
             }
             
+        }
+
+        private void setLeftBar()
+        {
+            String[][] arrType = db.searchGroupBy("type");
+            for (int i = 0; i < arrType.Length; i++)
+            {
+                leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[][] productArr = db.searchByRow("type", arrType[i][0]);
+                for (int j = 0; j < productArr.Length; j++)
+                {
+                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                }
+                leftbarStr += "</ul>";
+            }
         }
     }
 }
