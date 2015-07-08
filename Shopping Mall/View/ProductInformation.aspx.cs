@@ -37,6 +37,15 @@ namespace Shopping_Mall.View.ProductInfo
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
+            DBFunction dbPurchase = new DBFunction("purchaseList");
+            String[][] attributes = dbPurchase.searchSchema("name");
+            String[] schemaArr = new String[attributes.Length];
+            for (int i = 0; i < attributes.Length; i++)
+            {
+                schemaArr[i] = attributes[i][0];
+            }
+            String[] values = new String[] { "", "root", productName.Text, priceLabel.Text, numberDropList.SelectedValue };
+            dbPurchase.insert(schemaArr, values);
             Response.Redirect("Product.aspx");
         }
         //左方menu

@@ -68,7 +68,7 @@ namespace Shopping_Mall.Database
         public String insert(String[] attributes, String[] value)
         {
             DBConnector db = new DBConnector();
-            String s = "INSERT INTO [product](";
+            String s = "INSERT INTO [" + tableName + "](";
             for (int i = 1; i < attributes.Length-1; i++)
             {
                 s += "[" + attributes[i] + "],";
