@@ -16,8 +16,11 @@ namespace Shopping_Mall.View
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["account"] == null || Session["account"].Equals("admin"))
+            {
+                Response.Redirect("/Index.aspx");
+            }
             showList();
-
             String ID = Request.QueryString["d"];
             db.delete("ID", ID);
         }
@@ -35,7 +38,11 @@ namespace Shopping_Mall.View
             {
                 int price = Convert.ToInt32(arrOrder[i][2]) * Convert.ToInt32(arrOrder[i][3]);
                 total += price;
-                shoppingList += "<div class='center-column'><div class='column-name'><a href='ProductInformation.aspx?d='>" + arrOrder[i][0] + "</a></div>"
+
+                //這裡要取出商品的ID
+                String productid = "17";
+                shoppingList += 
+                    "<div class='center-column'><div class='column-name'><a href='ProductInformation.aspx?p=" + productid + "'>" + arrOrder[i][1] + "</a></div>"
                     + "<div class='column-priceAndnum'>" + arrOrder[i][2] + "</div>"
                     + "<div class='column-priceAndnum'>" + arrOrder[i][3] + "</div>"
                     + "<div class='column-priceAndnum'>" + price + "</div>"

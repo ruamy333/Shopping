@@ -14,13 +14,15 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            productShow(Request.QueryString["d"]);
-            
-            sidebar();
+            productShow(Request.QueryString["p"]);
+            setLeftBar();
         }
         //讀取產品介紹
         private void productShow(String ID) 
         {
+            if(ID == null){
+                ID = "21";
+            }
             String[][] proArr = db.searchByRow("ID", ID);
 
             productName.Text = proArr[0][1];
@@ -35,27 +37,23 @@ namespace Shopping_Mall.View.ProductInfo
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Product.aspx");
+            Response.Redirect("Product.aspx");
         }
         //左方menu
         public String leftbarStr = "";
-        private void sidebar()
+        private void setLeftBar()
         {
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<a href='#'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
-                String[][] productArr = db.searchRowByColumn("name", "type", arrType[i][0]);
+                leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    for (int k = 0; k < productArr[j].Length; k++)
-                    {
-                        leftbarStr += "<a href='#'><li>" + productArr[j][k] + "</li></a>";
-                    }                
+                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
         }
-
     }
 }

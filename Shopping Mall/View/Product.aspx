@@ -10,6 +10,7 @@
             <%=leftbarStr %>
     </div>
     <div class="rightbar">
+
         <%=rightStr %>
     </div>
 

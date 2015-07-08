@@ -23,8 +23,9 @@
                         </div>
                         <div class="content-text">數量：
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
-                            <br/> 
-                            <asp:Button ID="btnPurchase" class="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
+                        </div>
+                        <div class="content-text">
+                            <asp:Button ID="Button1" class="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
                         </div>
                     </div>     
                 </div>

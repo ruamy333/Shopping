@@ -33,6 +33,8 @@ namespace Shopping_Mall
         {
             String[] arr = ContentPlaceHolder1.Page.ToString().Split('_', '.');
             String id = arr[arr.Length - 2];
+            if (id.Equals("productinformation"))
+                id = "product";
             linkStr += "<script type='text/javascript'>$(document).ready(function () { $('#" + id + "').addClass('active'); });</script>";
         }
     }
