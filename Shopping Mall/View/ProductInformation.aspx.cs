@@ -14,6 +14,10 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["account"] == null || Session["account"].Equals("admin"))
+            {
+                btnPurchase.Visible = false;
+            }
             productShow(Request.QueryString["p"]);
             setLeftBar();
         }
