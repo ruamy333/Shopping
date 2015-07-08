@@ -21,6 +21,15 @@ namespace Shopping_Mall.Database
 
             return db.sqlSelect(sqlStr);
         }
+        //Inner join
+        public String[][] innerJoin(String fieldName, String joinTable, String condition1, String condition2, String column, String value)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT " + fieldName + " FROM " + tableName + " INNER JOIN " + joinTable + " ON " + condition1 + "=" + condition2
+                + " WHERE " + column + "='" + value + "'";
+
+            return db.sqlSelect(sqlStr);
+        }
         //Group by查詢
         public String[][] searchGroupBy(String fieldName)
         {

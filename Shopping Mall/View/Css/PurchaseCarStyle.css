@@ -21,18 +21,31 @@
 }
 .column-name {
     margin-top:33px;
-    width:620px;
+    margin-left:5px;
+    width:385px;
     height:35px;
     float:left;
     border-right: 1px solid #E7E7E7;
 }
-.column-priceAndnum {
+.column-box {
     margin-top:33px;
     margin-left:5px;
     width:115px;
     height:35px;
     float:left;
     border-right: 1px solid #E7E7E7;
+}
+.column-img {
+    margin-top:14px;
+    margin-left:5px;
+    width:115px;
+    float:left;
+    border-right: 1px solid #E7E7E7;
+}
+.column-img img {
+    padding:5px;
+    width:62px;
+    height:40px;
 }
 .column-delete {
     margin-left:10px;
@@ -55,7 +68,7 @@
 }
 .bottom-right {
     float:right;
-    margin-right:20px;
+    margin-right:50px;
     width:auto;
     height:auto;
 }

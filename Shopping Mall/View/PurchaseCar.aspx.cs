@@ -22,7 +22,13 @@ namespace Shopping_Mall.View
             }
             showList();
             String ID = Request.QueryString["d"];
-            db.delete("ID", ID);
+         
+            if (ID !=null)
+            {
+                db.delete("ID", ID);
+                Response.Redirect("PurchaseCar.aspx");
+            }
+            
         }
         //送出btn
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -32,21 +38,23 @@ namespace Shopping_Mall.View
         //列出購買清單      
         private void showList()
         {
-            arrOrder = db.searchRowByColumn("ID, product_name, price, num", "account", "root");
+            arrOrder = db.innerJoin("product.ID, purchaseList.ID, product.name, product.price, purchaseList.num, product.picture", "product", "product.name", "purchaseList.product_name", "purchaseList.account", "root");
             int total = 0;
             for (int i = 0; i < arrOrder.Length; i++)
             {
-                int price = Convert.ToInt32(arrOrder[i][2]) * Convert.ToInt32(arrOrder[i][3]);
+                int price = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][4]);
                 total += price;
 
-                //這裡要取出商品的ID
-                String productid = "17";
-                shoppingList += 
-                    "<div class='center-column'><div class='column-name'><a href='ProductInformation.aspx?p=" + productid + "'>" + arrOrder[i][1] + "</a></div>"
-                    + "<div class='column-priceAndnum'>" + arrOrder[i][2] + "</div>"
-                    + "<div class='column-priceAndnum'>" + arrOrder[i][3] + "</div>"
-                    + "<div class='column-priceAndnum'>" + price + "</div>"
-                    + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][0] + "' class='button-style'>刪除</a></div></div>";              
+                //待改
+                String discount = "折扣";
+                shoppingList +=
+                    "<div class='center-column'><div class='column-img'><img src=../UploadPic/" + arrOrder[i][5] + "></div>"
+                    + "<div class='column-name'><a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
+                    + "<div class='column-box'>" + arrOrder[i][3] + "</div>"
+                    + "<div class='column-box'>" + arrOrder[i][4] + "</div>"
+                    + "<div class='column-box'>" + price + "</div>"
+                    + "<div class='column-box'>" + discount + "</div>"
+                    + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "' class='button-style'>刪除</a></div></div>";              
             }
             //計算總金額
             totalPrice.Text += total + "元";         
