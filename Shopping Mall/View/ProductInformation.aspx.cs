@@ -14,7 +14,7 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            productShow(Request.QueryString["d"]);
+            productShow(Request.QueryString["p"]);
             
             sidebar();
         }
@@ -44,14 +44,11 @@ namespace Shopping_Mall.View.ProductInfo
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<a href='#'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
-                String[][] productArr = db.searchRowByColumn("name", "type", arrType[i][0]);
+                leftbarStr += "<a href='Product.aspx'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    for (int k = 0; k < productArr[j].Length; k++)
-                    {
-                        leftbarStr += "<a href='#'><li>" + productArr[j][k] + "</li></a>";
-                    }                
+                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
