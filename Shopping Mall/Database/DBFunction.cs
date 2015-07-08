@@ -14,23 +14,19 @@ namespace Shopping_Mall.Database
         }
        
         //依照欄位查詢
-        public String[] searchByColumn(String fieldName)
+        public String[][] searchByColumn(String fieldName)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT " + fieldName + " FROM " + tableName;
-            String[][] sqlArr2d = db.sqlSelect(sqlStr);
-            String[] sqlArr1d = new String[sqlArr2d.Length];
-            for (int i = 0; i < sqlArr2d.Length; i++)
-            {
-                sqlArr1d[i] = sqlArr2d[i][0];
-            }
-            return sqlArr1d;
+
+            return db.sqlSelect(sqlStr);
         }
         //Group by查詢
         public String[][] searchGroupBy(String fieldName)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT [" + fieldName + "] FROM " + tableName + " GROUP BY [" + fieldName + "]";
+
             return db.sqlSelect(sqlStr);
         }
         //查詢Schema
@@ -41,6 +37,7 @@ namespace Shopping_Mall.Database
             String[] id = db.sqlSelect(sqlStr)[0];
 
             String sqlResult = "SELECT name FROM syscolumns WHERE id='" + id[0] + "'";
+
             return db.sqlSelect(sqlResult);
         }
         //查詢列

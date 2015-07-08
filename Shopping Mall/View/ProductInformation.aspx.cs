@@ -14,26 +14,28 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            productShow();
+            productShow(Request.QueryString["d"]);
+            
             sidebar();
         }
         //讀取產品介紹
-        private void productShow() 
+        private void productShow(String ID) 
         {
-            productName.Text = "Mini OTDR: FiberPal OT-8800";
-            String[] arr = db.searchByRow("name", productName.Text)[0];
-            priceLabel.Text = arr[3];
-            for (int i = 1; i <= int.Parse(arr[4]); i++)
+            String[][] proArr = db.searchByRow("ID", ID);
+
+            productName.Text = proArr[0][1];
+            priceLabel.Text = proArr[0][3];
+            for (int i = 1; i <= int.Parse(proArr[0][4]); i++)
             {
                 numberDropList.Items.Add(i + "");
             }
-            productImage.ImageUrl = "../UploadPic/" + arr[5];
-            introLabel.Text = arr[6];
+            productImage.ImageUrl = "../UploadPic/" + proArr[0][5];
+            introLabel.Text = proArr[0][6];
         }
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Index.aspx");
+            Response.Redirect("/Product.aspx");
         }
         //左方menu
         public String leftbarStr = "";
@@ -54,5 +56,6 @@ namespace Shopping_Mall.View.ProductInfo
                 leftbarStr += "</ul>";
             }
         }
+
     }
 }

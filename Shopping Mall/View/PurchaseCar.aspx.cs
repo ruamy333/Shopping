@@ -35,7 +35,7 @@ namespace Shopping_Mall.View
             {
                 int price = Convert.ToInt32(arrOrder[i][2]) * Convert.ToInt32(arrOrder[i][3]);
                 total += price;
-                shoppingList += "<div class='center-column'><div class='column-name'><span class='content-text'>" + arrOrder[i][1] + "</span></div>"
+                shoppingList += "<div class='center-column'><div class='column-name'><a href='ProductInformation.aspx?d='>" + arrOrder[i][0] + "</a></div>"
                     + "<div class='column-priceAndnum'>" + arrOrder[i][2] + "</div>"
                     + "<div class='column-priceAndnum'>" + arrOrder[i][3] + "</div>"
                     + "<div class='column-priceAndnum'>" + price + "</div>"
