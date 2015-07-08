@@ -25,7 +25,7 @@
                             <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
                         </div>
                         <div class="content-text">
-                            <asp:Button ID="Button1" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
+                            <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
                         </div>
                     </div>     
                 </div>
