@@ -81,7 +81,6 @@
     <Content Include="View\Css\PurchaseCarStyle.css" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\ProductEditor.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="View\ProductInformation.aspx" />
     <Content Include="View\Product.aspx" />
     <Content Include="View\PurchaseCar.aspx" />
@@ -118,13 +117,6 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\ProductInformation.aspx.cs">
       <DependentUpon>ProductInformation.aspx</DependentUpon>

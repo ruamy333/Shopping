@@ -12,43 +12,43 @@ namespace Shopping_Mall.View
     {
         public String leftbarStr = "";
         public String rightStr = "";
+        public DBFunction db = new DBFunction("product");
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBFunction db = new DBFunction("product");
+            setLeftBar();
+            //0707 新增
+            String[][] array = db.searchByColumn("picture,name,price,num");
+            for (int a = 0; a <= (array.Length / 2); a++)
+            {
+                if (2 * a == array.Length)
+                    break;
+                else
+                    rightStr += "<div class ='product'>";
+                for (int b = 0; b < 2; b++)
+                {
+                    if(2*a+b<array.Length)
+                        rightStr += "<div class ='product-inside'>"
+                            +"<div class='image'><img src=../UploadPic/" + array[2 * a + b][0] + "></div>"
+                            +"<div class='name'><a href='#'>" + array[2 * a + b][1] + "</a></div>"
+                            +"<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][2] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][3] + "</div>"
+                            +"</div>";
+                }
+                rightStr += "</div>";
+            }
+        }
+        private void setLeftBar()
+        {
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<a href='#'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
-                String[][] productArr = db.searchRowByColumn("name", "type", arrType[i][0]);
+                leftbarStr += "<a href='Product.aspx'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    for (int k = 0; k < productArr[j].Length; k++)
-                    {
-                        leftbarStr += "<a href='#'><li>" + productArr[j][k] + "</li></a>";
-                    }
+                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
-
-            ////0707 新增
-            //String[] arrName = db.searchByColumn("name");
-            //String[] arrImg = db.searchByColumn("picture");
-            //String[] arrPrice = db.searchByColumn("price");
-            //String[] arrNum = db.searchByColumn("num");
-            //for (int a = 0; a <= (arrName.Length / 2); a++)
-            //{
-            //    if (2 * a == arrName.Length)
-            //        break;
-            //    else
-            //        rightStr += "<div class ='product'>";
-            //    for (int b = 0; b < 2; b++)
-            //    {
-            //        if(2*a+b<arrName.Length)
-            //            rightStr += "<div class ='product-inside'><div class='image'><img src=../UploadPic/" + arrImg[2 * a + b] + "></div><div class='name'><a href='#'>" + arrName[2 * a + b] + "</a></div><div class='information'><b style='font-size=0.5cm'>價格：</b>" + arrPrice[2 * a + b] + "<b style='font-size=0.5cm;padding-left:10px;'>數量：</b>" + arrNum[2 * a + b] + "</div></div>";
-            //    }
-            //    rightStr += "</div>";
-            //}
-
         }
     }
 }

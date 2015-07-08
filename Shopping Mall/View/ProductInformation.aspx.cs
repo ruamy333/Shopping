@@ -14,20 +14,15 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            String name = Request.QueryString["d"];
-            if (name == null)
-            {
-                name = "Mini OTDR: FiberPal OT-8800";
-            }
-            productShow(name);
+            productShow(Request.QueryString["p"]);
             
             sidebar();
         }
         //讀取產品介紹
-        private void productShow(String name) 
-        {         
+        private void productShow(String ID) 
+        {
+            String[][] proArr = db.searchByRow("ID", ID);
 
-            String[][] proArr = db.searchByRow("name", name);
             productName.Text = proArr[0][1];
             priceLabel.Text = proArr[0][3];
             for (int i = 1; i <= int.Parse(proArr[0][4]); i++)
@@ -40,17 +35,7 @@ namespace Shopping_Mall.View.ProductInfo
         //購買btn
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
-            DBFunction dbPurchase = new DBFunction("purchaseList");
-            String[][] attributes = db.searchSchema("name");
-            String[] schemaArr = new String[attributes.Length];
-            for (int i = 1; i < attributes.Length; i++)
-            {
-                schemaArr[i] = attributes[i][0];
-            }
-            String[] values = new String[]{"root", productName.Text, priceLabel.Text, numberDropList.SelectedValue};
-            dbPurchase.insert(schemaArr, values);
-
-            Response.Redirect("Product.aspx");
+            Response.Redirect("/Product.aspx");
         }
         //左方menu
         public String leftbarStr = "";
@@ -59,14 +44,11 @@ namespace Shopping_Mall.View.ProductInfo
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<a href='#'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
-                String[][] productArr = db.searchRowByColumn("name", "type", arrType[i][0]);
+                leftbarStr += "<a href='Product.aspx'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
+                String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    for (int k = 0; k < productArr[j].Length; k++)
-                    {
-                        leftbarStr += "<a href='#'><li>" + productArr[j][k] + "</li></a>";
-                    }                
+                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
