@@ -6,9 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
-			<div class="content-header">
-				<h2>產品新增</h2>
-			</div>
+			<div class="content-header"></div>
         <div class="formBox">
             <div class="title">商品名稱：</div>
             <asp:TextBox ID="txtName"  class="form-control textBox " runat="server"></asp:TextBox>
