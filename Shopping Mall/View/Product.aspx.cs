@@ -74,7 +74,7 @@ namespace Shopping_Mall.View
             String[][] array;
             if (Request.QueryString["t"] == null)
             {
-                array = db.searchByColumn("id,name,type,price,num,picture");
+                array = db.searchByColumn("ID,name,type,price,num,picture,discountID");
             }
             else
             {
@@ -97,21 +97,37 @@ namespace Shopping_Mall.View
                             + "<div class='image'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><img src=../UploadPic/" + array[2 * a + b][5] + "></a></div>"
                             + "<div class='delete'>";
                             //刪除按鈕visible的判斷
-                        if ((String)Session["account"] == "root")
+                        if ((String)Session["account"] == "admin")
                         {
-                                rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>";
-                            }
+                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a>";
+                            rightStr += "<a href='Product.aspx?u=" + array[2 * a + b][0] + "'>update</a></div>";
+                        }
                         else
                         {
                                 rightStr += "</div>";
-                            }
-                            
+                        }
                         rightStr += "</div>"
-                            + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
-                            + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
-                            + "<div class='information'><form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量：<input type='number' name='num' style=width:50px runat'server'><input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br><input class='button-style' type='submit' value='加入購物車'></form></div>"
-                            + "</div>";
-                }
+                        + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>";
+                        if(array[2*a+b][6]!=null){
+                            
+                            String[][] discount = db.innerJoin("ID,discountID", "discount", "product.discountID", "discount.discountID", "ID", array[2 * a + b][0]);
+
+                            //rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b><s>" + array[2 * a + b][3] + "</s>"+discount[0][1]+"元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
+                        }
+                        else{
+                            rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
+                                
+                        }
+                        rightStr+= "<div class='information'>"
+                                + "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量："
+                                + "<input type='number' name='num' style=width:50px runat'server'>"
+                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br>"
+                                + "<input class='button-style' type='submit' value='加入購物車'>"
+                                + "</form>"
+                                + "</div>"
+                                + "</div>";
+                    
+                    }
                 }
 
                 rightStr += "</div>";

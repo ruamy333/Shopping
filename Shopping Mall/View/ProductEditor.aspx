@@ -35,7 +35,6 @@
                 <asp:ListItem Selected="True">無</asp:ListItem>
                 <asp:ListItem>____ % off</asp:ListItem>
                 <asp:ListItem>買____送____</asp:ListItem>
-                <asp:ListItem>滿____送____</asp:ListItem>
             </asp:RadioButtonList>
             <div class="discountDetail">
              <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number"></asp:TextBox>

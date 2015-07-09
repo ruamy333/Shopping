@@ -25,11 +25,11 @@ namespace Shopping_Mall.View
             String[][] arrType = db.searchGroupBy("account");
             for (int i = 0; i < arrType.Length; i++)
             {
-                orderList += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
+                orderList += "<div class='center-column'><div class='column-box'>" + arrType[i][0] + "</div></div><ul>";
                 String[][] productArr = db.searchByRow("account", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    orderList += "<li>TEST</li></a>";
+                    orderList += "<li>" + productArr[j][2] + "</li></a>";
                 }
                 orderList += "</ul>";
             }

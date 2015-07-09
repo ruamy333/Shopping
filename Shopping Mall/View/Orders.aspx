@@ -18,22 +18,11 @@
                 <div class="column-box">
                     <asp:Label ID="name" CssClass="content-text" runat="server" Text="姓名"></asp:Label>
                 </div>
-                <div class="column-name">
-                    <asp:Label ID="productName" CssClass="content-text" runat="server" Text="商品名稱"></asp:Label>
-                </div>
-                <div class="column-box">
-                    <asp:Label ID="num" CssClass="content-text" runat="server" Text="數量"></asp:Label>
-                </div>
                 <div class="column-box">
                     <asp:Label ID="total" CssClass="content-text" runat="server" Text="小計"></asp:Label>
                 </div>
-                <div class="column-box">
-                    <asp:Label ID="discount" CssClass="content-text" runat="server" Text="優惠"></asp:Label>
-                </div>
             </div>
-            <div class="leftbar">
-                <%=orderList %>
-            </div>
+            <%=orderList %>
         </div>
     </div>
 </asp:Content>
