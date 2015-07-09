@@ -47,20 +47,40 @@ namespace Shopping_Mall.View.ProductInfo
         {
             DBFunction dbPurchase = new DBFunction("purchaseList");
             //舊有資料更新
-            String[][] checkArr = dbPurchase.searchRowByColumn("account, num", "product_name", productName.Text);
+            String[][] checkArr = dbPurchase.searchRowByColumn("product_name , num", "account", Session["account"].ToString());
             if (checkArr.Length > 0)
             {
-                for (int i = 0; i < checkArr.Length; i++)
+                bool check = false;
+                int i;
+                for (i = 0; i < checkArr.Length; i++)
                 {
-                    if (checkArr[i][0].Equals(Session["account"]))
-                        dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(numberDropList.SelectedValue), "account", checkArr[i][0]);
-                    else newData(dbPurchase);
+                    if (checkArr[i][0].Equals(productName.Text))
+                    {
+                        check = true;
+                        break;
+                    }
                 }
+                if(check)
+                    dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(numberDropList.SelectedValue), "account", Session["account"].ToString() + "' AND product_name='" + productName.Text);
+                else newData(dbPurchase);
             }
-            else 
+            else
             {
                 newData(dbPurchase);
             }
+            //String[][] checkArr = dbPurchase.searchRowByColumn("account, num", "product_name", productName.Text);
+            //if (checkArr.Length > 0)
+            //{
+            //    for (int i = 0; i < checkArr.Length; i++)
+            //    {
+            //        if (checkArr[i][0].Equals(Session["account"]))
+            //            dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(numberDropList.SelectedValue), "account", checkArr[i][0]);
+            //    }
+            //}
+            //else 
+            //{
+            //    newData(dbPurchase);
+            //}
 
             Response.Redirect("Product.aspx");
         }

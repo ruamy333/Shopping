@@ -54,10 +54,10 @@
     float:left;
 }
 .content-bottom {
-    margin:10px;
-    margin-bottom:20px;
+    margin-top:40px;
+    margin-bottom:70px;
     width:1145px;
-    height:auto;
+    height:60px;
 }
 .bottom-left {
     float:right;
