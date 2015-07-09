@@ -15,6 +15,7 @@ namespace Shopping_Mall
         private String[] schemaArr;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //判斷帳號
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
                 Response.Redirect("/Index.aspx");
@@ -29,9 +30,10 @@ namespace Shopping_Mall
                 }
                 if (!IsPostBack)
                 {
-                    if (Request.QueryString["id"] != null)
+                    //修改商品資訊，載入商品詳細資料
+                    if (Request.QueryString["u"] != null)
                     {
-                        setProductInfo(Request.QueryString["id"]);
+                        setProductInfo(Request.QueryString["u"]);
                     }
                 }
             }
@@ -44,21 +46,24 @@ namespace Shopping_Mall
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            //避免資料空值或負值
             if (txtName.Text.Equals("") || txtNum.Text.Equals("") || txtPrice.Text.Equals(""))
             {
                 Response.Write("<Script language='JavaScript'>alert('請輸入資料');</Script>");
             }
             else
             {
-                if (Request.QueryString["id"] != null)
+                if (Request.QueryString["u"] != null)
                 {
-                    modifyProduct(Request.QueryString["id"]);
+                    //修改詳細資料
+                    modifyProduct(Request.QueryString["u"]);
                 }
                 else
                 {
+                    //新增商品資料
                     addProduct();
                 }
-                
+
             }
         }
         protected void radiobtnDiscount_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,6 +86,8 @@ namespace Shopping_Mall
                 break;
             }
         }
+
+        //由資料庫取得商品資訊並呈現在網頁上
         private void setProductInfo(String productID)
         {
             String[][] productInfo = db.searchByRow("ID", productID);
@@ -89,6 +96,7 @@ namespace Shopping_Mall
             txtPrice.Text = productInfo[0][3];
             txtNum.Text = productInfo[0][4];
             txtSummary.Text = productInfo[0][6].Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " ");
+            
             if (productInfo[0][7].Equals("0"))
             {
                 radiobtnDiscount.SelectedIndex = 0;
@@ -100,6 +108,7 @@ namespace Shopping_Mall
             }
         }
 
+        //新增商品
         private void addProduct()
         {
             List<String> list = new List<string>();
@@ -115,19 +124,27 @@ namespace Shopping_Mall
             Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
         }
 
+        //修改商品詳細資料
         private void modifyProduct(String productID)
         {
-            
+            String[][] productInfo = db.searchByRow("ID", productID);
+            String fileName = productInfo[0][5];
+            if (!fileUpload().Equals(""))
+            {
+                fileName = fileUpload();
+            }
             String data = schemaArr[1] + "='" + txtName.Text + "', " +
                           schemaArr[2] + "='" + dropdownType.SelectedValue + "', " +
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
-                          schemaArr[5] + "='" + fileUpload() + "', " +
+                          schemaArr[5] + "='" + fileName + "', " +
                           schemaArr[6] + "='" + txtSummary.Text + "', " +
                           schemaArr[7] + "='" + getDiscountID();
             db.modifyAll(data,"ID",productID);
+            Response.Redirect("Product.aspx");
         }
 
+        //取得檔案路徑
         private String fileUpload()
         {
             if (FileUpload1.HasFile)
@@ -151,6 +168,8 @@ namespace Shopping_Mall
                 return "";
             }
         }
+
+        //新增優惠至資料庫並取得該筆資料ID
         private String getDiscountID()
         {
             if (radiobtnDiscount.SelectedIndex == 0)
