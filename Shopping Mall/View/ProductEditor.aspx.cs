@@ -51,10 +51,6 @@ namespace Shopping_Mall
             {
                 Response.Write("<Script language='JavaScript'>alert('請輸入資料');</Script>");
             }
-            else if (Int16.Parse(txtPrice.Text) < 0 || Int16.Parse(txtNum.Text) < 0)
-            {
-                Response.Write("<Script language='JavaScript'>alert('數字不可為負值');</Script>");
-            }
             else
             {
                 if (Request.QueryString["u"] != null)
