@@ -1,0 +1,32 @@
+﻿.leftbar {
+    height:490px;
+    width:250px;
+    float:left;
+    margin-left:75px;
+}
+.leftbar-type
+{
+    height:28px;
+    width:100%;
+	font-size: 1.2em;
+    font-weight:800;
+	overflow: hidden;
+    border-bottom: 1px solid #999;
+    margin-top:20px;
+}
+.leftbar-type:hover
+{
+    color: #606060;
+    cursor:pointer;
+}
+ul
+{
+    line-height:1.9;
+    padding-left:30px;
+    margin-bottom:10px;
+    font-size:14px;
+}
+.leftbar ul
+{
+    background:#eee;
+}

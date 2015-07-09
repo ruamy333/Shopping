@@ -34,6 +34,7 @@ namespace Shopping_Mall.View
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             DBFunction dbOrder = new DBFunction("orderList");
+            DBFunction dbProduct = new DBFunction("product");
             String[][] attributes = dbOrder.searchSchema("name");
             String[] schemaArr = new String[attributes.Length];
             for (int i = 0; i < attributes.Length; i++)
@@ -45,6 +46,8 @@ namespace Shopping_Mall.View
                 int price = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][4]);
                 String[] values = new String[] { "", Session["account"].ToString(), arrOrder[i][2], arrOrder[i][4], price.ToString() };
                 dbOrder.insert(schemaArr, values);
+
+                dbProduct.modify("num", int.Parse(arrOrder[i][4]) - int.Parse(arrOrder[i][5]), "name", arrOrder[i][2]);
             }
 
             Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");
@@ -52,21 +55,21 @@ namespace Shopping_Mall.View
         //列出購買清單      
         private void showList()
         {
-            arrOrder = db.innerJoin("product.ID, purchaseList.ID, product.name, product.price, purchaseList.num, product.picture", "product", "product.name", "purchaseList.product_name", "purchaseList.account", Session["account"].ToString());
+            arrOrder = db.innerJoin("product.ID, purchaseList.ID, product.name, product.price, product.num, purchaseList.num, product.picture", "product", "product.name", "purchaseList.product_name", "purchaseList.account", Session["account"].ToString());
             int total = 0;
             for (int i = 0; i < arrOrder.Length; i++)
             {
-                int price = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][4]);
+                int price = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][5]);
                 total += price;
 
                 //待改
                 String discount = "折扣";
                 shoppingList +=
                     "<div class='center-column'><div class='column-img'>"
-                    + "<a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][5] + "></a></div>"
+                    + "<a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][6] + "></a></div>"
                     + "<div class='column-name'><a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
                     + "<div class='column-box'>" + arrOrder[i][3] + "</div>"
-                    + "<div class='column-box'>" + arrOrder[i][4] + "</div>"
+                    + "<div class='column-box'>" + arrOrder[i][5] + "</div>"
                     + "<div class='column-box'>" + price + "</div>"
                     + "<div class='column-box'>" + discount + "</div>"
                     + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "' class='button-style'>刪除</a></div></div>";              

@@ -68,20 +68,6 @@ namespace Shopping_Mall.View.ProductInfo
             {
                 newData(dbPurchase);
             }
-            //String[][] checkArr = dbPurchase.searchRowByColumn("account, num", "product_name", productName.Text);
-            //if (checkArr.Length > 0)
-            //{
-            //    for (int i = 0; i < checkArr.Length; i++)
-            //    {
-            //        if (checkArr[i][0].Equals(Session["account"]))
-            //            dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(numberDropList.SelectedValue), "account", checkArr[i][0]);
-            //    }
-            //}
-            //else 
-            //{
-            //    newData(dbPurchase);
-            //}
-
             Response.Redirect("Product.aspx");
         }
         //新增購物車資料

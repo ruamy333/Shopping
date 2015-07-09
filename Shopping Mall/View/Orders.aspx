@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="Css/PurchaseCarStyle.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../Css/Common.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Css/OrderStyle.css" media="screen" />
+    <script src="../js/lefrbar-effect.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
@@ -29,7 +31,9 @@
                     <asp:Label ID="discount" CssClass="content-text" runat="server" Text="優惠"></asp:Label>
                 </div>
             </div>
-            <%=orderList %>
+            <div class="leftbar">
+                <%=orderList %>
+            </div>
         </div>
     </div>
 </asp:Content>
