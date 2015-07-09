@@ -128,6 +128,12 @@ namespace Shopping_Mall.Database
             String s = "INSERT INTO discount ([type],[content]) values ('" + type + "','" + content + "') SELECT TOP 1 [discountID] AS id FROM discount ORDER BY id DESC";
             return db.sqlGetID(s);
         }
-        
+        //修改字串欄位
+        public String modifyAll(String modify, String conditionColumn, String conditionValue)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "UPDATE " + tableName + " SET " + modify + "' WHERE " + conditionColumn + " = '" + conditionValue + "'";
+            return db.sql(sqlStr);
+        }
     }
 }
