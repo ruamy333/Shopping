@@ -11,12 +11,21 @@ namespace Shopping_Mall
     public partial class ProductManage : System.Web.UI.Page
     {
         public String[] discountStr = {"",""};
+        private DBFunction db = new DBFunction("product");
+        private String[] schemaArr;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
                 Response.Redirect("/Index.aspx");
             }
+            String[][] arr = db.searchSchema("name");
+            schemaArr = new String[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                schemaArr[i] = arr[i][0];
+            }
+            
         }
 
         protected void btnCancle_Click(object sender, EventArgs e)
@@ -32,13 +41,6 @@ namespace Shopping_Mall
             }
             else
             {
-                DBFunction db = new DBFunction("product");
-                String[][] arr2 = db.searchSchema("name");
-                String[] schemaArr = new String[arr2.Length];
-                for(int i=0; i<arr2.Length; i++)
-                {
-                    schemaArr[i] = arr2[i][0];
-                }
                 List<String> list = new List<string>();
                 list.Add("");
                 list.Add(txtName.Text);
@@ -97,12 +99,24 @@ namespace Shopping_Mall
                     discountStr[0] = "買";
                     discountStr[1] = "送";
                 break;
-                case 3:
-                    txtDiscountType.Visible = true;
-                    txtDiscountContent.Visible = true;
-                    discountStr[0] = "滿";
-                    discountStr[1] = "送";
-                break;
+            }
+        }
+        private void setProductInfo()
+        {
+            String[][] productInfo = db.searchByRow("ID","34");
+            txtName.Text = productInfo[0][1];
+            dropdownType.SelectedValue = productInfo[0][2];
+            txtPrice.Text = productInfo[0][3];
+            txtNum.Text = productInfo[0][4];
+            txtSummary.Text = productInfo[0][6].Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " ");
+            if (productInfo[0][7].Equals("0"))
+            {
+                radiobtnDiscount.SelectedIndex = 0;
+            }
+            else
+            {
+                String[][] discountArr = db.innerJoin("discount.type", "discount", "discount.discountID", "product.discountID", "discount.discountID", productInfo[0][7]);
+                radiobtnDiscount.SelectedValue = discountArr[0][0];
             }
         }
     }

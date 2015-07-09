@@ -40,24 +40,6 @@ namespace Shopping_Mall.View {
         protected global::System.Web.UI.WebControls.Label name;
         
         /// <summary>
-        /// productName 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label productName;
-        
-        /// <summary>
-        /// num 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label num;
-        
-        /// <summary>
         /// total 控制項。
         /// </summary>
         /// <remarks>
@@ -65,14 +47,5 @@ namespace Shopping_Mall.View {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label total;
-        
-        /// <summary>
-        /// discount 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label discount;
     }
 }
