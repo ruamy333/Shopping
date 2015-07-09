@@ -28,7 +28,6 @@ namespace Shopping_Mall.View
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                //leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
                 leftbarStr += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
@@ -92,23 +91,27 @@ namespace Shopping_Mall.View
                 for (int b = 0; b < 2; b++)
                 {
                     if (2 * a + b < array.Length)
+                    {
                         rightStr += "<div class ='product-inside'>"
                             + "<div class='ImgDel'>"
                             + "<div class='image'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><img src=../UploadPic/" + array[2 * a + b][5] + "></a></div>"
                             + "<div class='delete'>";
-                            //刪除按鈕visible的判斷
-                            if((String)Session["account"] == "root"){
-                                rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>";
-                            }
-                            else{
-                                rightStr += "</div>";
-                            }
-                            
-                            rightStr+= "</div>"
-                            + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
-                            + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
-                            + "<div class='information'><form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量：<input type='number' name='num' style=width:50px runat'server'><input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br><input class='button-style' type='submit' value='加入購物車'></form></div>"
-                            + "</div>";
+                        //刪除按鈕visible的判斷
+                        if ((String)Session["account"] == "admin")
+                        {
+                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>";
+                        }
+                        else
+                        {
+                            rightStr += "</div>";
+                        }
+
+                        rightStr += "</div>"
+                        + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
+                        + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
+                        + "<div class='information'><form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量：<input type='number' name='num' style=width:50px runat'server'><input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br><input class='button-style' type='submit' value='加入購物車'></form></div>"
+                        + "</div>";
+                    }
                 }
 
                 rightStr += "</div>";
