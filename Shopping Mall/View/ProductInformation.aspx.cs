@@ -89,7 +89,6 @@ namespace Shopping_Mall.View.ProductInfo
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                //leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
                 leftbarStr += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)

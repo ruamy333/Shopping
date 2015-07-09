@@ -36,10 +36,10 @@ ul
 {
     padding-left:30px;
     margin-bottom:10px;
-    font-size:14px;
 }
 .leftbar ul
 {
+    line-height:1.9;
     background:#eee;
 }
 
@@ -49,6 +49,11 @@ ul
     margin-left:10px;
 }
 
+.page {
+    width:800px;
+    height:100px;
+    float:left;
+}
 .product {
     width:800px;
     height:400px;
