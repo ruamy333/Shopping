@@ -62,7 +62,8 @@ namespace Shopping_Mall.View
                 //待改
                 String discount = "折扣";
                 shoppingList +=
-                    "<div class='center-column'><div class='column-img'><img src=../UploadPic/" + arrOrder[i][5] + "></div>"
+                    "<div class='center-column'><div class='column-img'>"
+                    + "<a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][5] + "></a></div>"
                     + "<div class='column-name'><a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
                     + "<div class='column-box'>" + arrOrder[i][3] + "</div>"
                     + "<div class='column-box'>" + arrOrder[i][4] + "</div>"
