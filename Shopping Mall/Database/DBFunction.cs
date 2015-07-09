@@ -38,6 +38,7 @@ namespace Shopping_Mall.Database
 
             return db.sqlSelect(sqlStr);
         }
+
         //Group by查詢
         public String[][] searchGroupBy(String fieldName)
         {
