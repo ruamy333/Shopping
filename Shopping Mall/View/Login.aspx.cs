@@ -43,5 +43,7 @@ namespace Shopping_Mall.View
             else if (arr[0].Equals(pwd)) return true;
             else return false;
         }
+
+
     }
 }

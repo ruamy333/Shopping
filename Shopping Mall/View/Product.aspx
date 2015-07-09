@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Css/Common.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Css/Product.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/Common.css" media="screen" />
     <script src="../js/lefrbar-effect.js"></script>
 </asp:Content>
 
@@ -11,7 +12,23 @@
             <%=leftbarStr %>
     </div>
     <div class="rightbar">
+        <!--防止空值-->
+        <script type="text/javascript">
+            function validate_required(field, alerttxt) {
+                with (field) {
+                    if (value == null || value == "")
+                    { alert(alerttxt); return false }
+                    else { return true }
+                }
+            }
 
+            function validate_form(thisform) {
+                with (thisform) {
+                    if (validate_required(num, "請選擇數量") == false)
+                    { email.focus(); return false }
+                }
+            }
+        </script>
         <%=rightStr %>
     </div>
 
