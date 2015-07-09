@@ -55,16 +55,16 @@ ul
     height:240px;
 }
 .sectionBoxLeft {
-    width:35%;
-    height:210px;
+    width:310px;
+    height:250px;
     float:left;
 }
 .sectionBoxRight {
-    margin-top:30px;
-    width:60%;
-    height:220px;
+    margin-top:15px;
+    width:450px;
+    height:235px;
     float:left;
-    margin-left:5%;
+    margin-left:40px;
     line-height:15px;
 }
 .sectionBoxBottom {
@@ -82,9 +82,11 @@ ul
 }
 .content-header
 {
+    font-weight: bold;
+    line-height:1.5;
 	letter-spacing: -1px;
 	margin-bottom: 2em;
-	font-size: 1.0em;
+	font-size: 1.5em;
 	color: #515151;
 }
 .content-text
