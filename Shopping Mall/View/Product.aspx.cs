@@ -38,7 +38,7 @@ namespace Shopping_Mall.View
                 leftbarStr += "</ul>";
             }
         }
-
+        //刪除
         private void delete()
         {
             String del = Request.QueryString["d"];
