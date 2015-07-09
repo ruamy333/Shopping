@@ -24,6 +24,10 @@ namespace Shopping_Mall.View
                 Session["account"] = "admin";
                 Response.Redirect("../Index.aspx");
             }
+            else if(account.Text.Equals("") || password.Text.Equals(""))
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入帳號及密碼');</Script>");
+            }
             else if (verify())
             {
                 Session["account"] = account.Text;

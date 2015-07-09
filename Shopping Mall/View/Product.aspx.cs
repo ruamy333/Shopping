@@ -100,12 +100,13 @@ namespace Shopping_Mall.View
                             //刪除按鈕visible的判斷
                         if ((String)Session["account"] == "admin")
                         {
-                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a>";
-                            rightStr += "<a href='ProductEditor.aspx?u=" + array[2 * a + b][0] + "'>update</a></div>";
+                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:48px;'></a>";
+                            rightStr += "</div><div class='delete'>";
+                            rightStr += "<a href='ProductEditor.aspx?u=" + array[2 * a + b][0] + "'><img src=../Picture/edit.png style='width:48px;'></a></div>";
                         }
                         else
                         {
-                                rightStr += "</div>";
+                            rightStr += "</div>";
                         }
                         rightStr += "</div>"
                         + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>";
