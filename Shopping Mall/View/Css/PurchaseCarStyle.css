@@ -39,6 +39,14 @@
     height:35px;
     float:left;
 }
+.column-box int{
+    margin-left:12px;
+}
+.column-box discount{
+    font-size:18px;
+    font-weight: bold;
+    color: #e41717
+}
 .column-img {
     margin-top:14px;
     margin-left:5px;

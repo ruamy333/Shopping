@@ -89,10 +89,10 @@ namespace Shopping_Mall.View
                     "<div class='center-column'><div class='column-img'>"
                     + "<a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][6] + "></a></div>"
                     + "<div class='column-name'><a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
-                    + "<div class='column-box'>" + arrOrder[i][3] + "</div>"
-                    + "<div class='column-box'>" + arrOrder[i][5] + "</div>"
-                    + "<div class='column-box'>" + subtotal + "</div>"
-                    + "<div class='column-box'>" + dicountStr + "</div>"
+                    + "<div class='column-box'><int>" + arrOrder[i][3] + "</int></div>"
+                    + "<div class='column-box'><int>" + arrOrder[i][5] + "</int></div>"
+                    + "<div class='column-box'><int>" + subtotal + "</int></div>"
+                    + "<div class='column-box'><discount>" + dicountStr + "</discount></div>"
                     + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "' class='button-style'>刪除</a></div></div>";              
             }
             //計算總金額
