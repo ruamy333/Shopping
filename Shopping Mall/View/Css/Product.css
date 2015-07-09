@@ -65,12 +65,16 @@ ul
     margin-right:25px;
     
 }
-.image {
-    width:310px;
+.ImgDel {
+    width:350px;
     height:200px;
-    margin-right:20px;
+}
+.image {
+    width:300px;
+    height:200px;
     border-radius:10px;
     box-shadow:5px 5px 20px 0.2px #ECECEC;
+    float:left;
 }
     .image img {
         height:100%;
@@ -82,8 +86,10 @@ ul
 
 .delete {
     width:30px;
-    height:auto;
+    height:20px;
+    float:left;
 }
+
 .name {
     padding-top:10px;
     width:350px;
