@@ -100,7 +100,7 @@ namespace Shopping_Mall.View
                         if ((String)Session["account"] == "admin")
                         {
                             rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a>";
-                            rightStr += "<a href='Product.aspx?u=" + array[2 * a + b][0] + "'>update</a></div>";
+                            rightStr += "<a href='ProductEditor.aspx?u=" + array[2 * a + b][0] + "'>update</a></div>";
                         }
                         else
                         {
