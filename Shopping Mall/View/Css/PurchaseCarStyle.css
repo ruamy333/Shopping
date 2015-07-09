@@ -13,6 +13,12 @@
     width:1180px;
 
 }
+.center-title {
+    margin-bottom:10px;
+    width:auto;
+    height:69px;
+    border-bottom: 2px solid #999;
+}
 .center-column {
     margin-bottom:10px;
     width:auto;
@@ -25,7 +31,6 @@
     width:385px;
     height:35px;
     float:left;
-    border-right: 1px solid #E7E7E7;
 }
 .column-box {
     margin-top:33px;
@@ -33,7 +38,6 @@
     width:115px;
     height:35px;
     float:left;
-    border-right: 1px solid #E7E7E7;
 }
 .column-img {
     margin-top:14px;

@@ -20,7 +20,19 @@ namespace Shopping_Mall.View
             {
                 Response.Redirect("/Index.aspx");
             }
-            showList();
+            //showList();
+
+            String[][] arrType = db.searchGroupBy("account");
+            for (int i = 0; i < arrType.Length; i++)
+            {
+                orderList += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
+                String[][] productArr = db.searchByRow("account", arrType[i][0]);
+                for (int j = 0; j < productArr.Length; j++)
+                {
+                    orderList += "<li>TEST</li></a>";
+                }
+                orderList += "</ul>";
+            }
         }
 
         private void showList() 

@@ -10,7 +10,7 @@
             <h2><asp:Label ID="titleLabel" CssClass="content-header" runat="server" Text="購物車"></asp:Label></h2>
         </div>
         <div class="content-center">
-            <div class="center-column">
+            <div class="center-title">
                 <div class="column-box">
                     <asp:Label ID="img" CssClass="content-text" runat="server" Text="商品圖示"></asp:Label>
                 </div>

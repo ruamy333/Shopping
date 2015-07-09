@@ -36,10 +36,10 @@ ul
 {
     padding-left:30px;
     margin-bottom:10px;
-    font-size:14px;
 }
 .leftbar ul
 {
+    line-height:1.9;
     background:#eee;
 }
 

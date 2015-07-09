@@ -28,7 +28,6 @@ namespace Shopping_Mall.View
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                //leftbarStr += "<a href='Product.aspx?t=" + arrType[i][0] + "'><div class='leftbar-type'>" + arrType[i][0] + "</div><div class='leftbar-baseline'></div></a><ul>";
                 leftbarStr += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
@@ -61,13 +60,13 @@ namespace Shopping_Mall.View
                     String[] value = new String[] { str[0][0], (String)Session["account"], str[0][1], str[0][2], num };
                     //String[] value = { str[0][0], str[0][1], str[0][2], str[0][3], num };
                     String[] attribute = { "ID", "account", "product_name", "price", "num" };
-                    db2.insert(attribute, value);         
+                    db2.insert(attribute, value);
                 }
                 else
                 {
                     Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
-                }
             }          
+        }
         }
 
         private void pageShow()
@@ -97,22 +96,22 @@ namespace Shopping_Mall.View
                             + "<div class='ImgDel'>"
                             + "<div class='image'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><img src=../UploadPic/" + array[2 * a + b][5] + "></a></div>"
                             + "<div class='delete'>";
-                        //刪除按鈕visible的判斷
+                            //刪除按鈕visible的判斷
                         if ((String)Session["account"] == "root")
                         {
-                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>";
-                        }
+                                rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:50px;'></a></div>";
+                            }
                         else
                         {
-                            rightStr += "</div>";
-                        }
-
+                                rightStr += "</div>";
+                            }
+                            
                         rightStr += "</div>"
-                        + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
-                        + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
-                        + "<div class='information'><form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量：<input type='number' name='num' style=width:50px runat'server'><input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br><input class='button-style' type='submit' value='加入購物車'></form></div>"
-                        + "</div>";
-                    }
+                            + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>"
+                            + "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>"
+                            + "<div class='information'><form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量：<input type='number' name='num' style=width:50px runat'server'><input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br><input class='button-style' type='submit' value='加入購物車'></form></div>"
+                            + "</div>";
+                }
                 }
 
                 rightStr += "</div>";
@@ -122,7 +121,7 @@ namespace Shopping_Mall.View
                 rightStr += "<a href='Product.aspx?pp="+page+"'>"+page+"";
             }
             rightStr += "</div>";
-        }
+            }
 
         private void paging()
         {

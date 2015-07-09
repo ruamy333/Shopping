@@ -18,14 +18,14 @@ namespace Shopping_Mall
             }
             else if (Session["account"].ToString().Equals("admin"))
             {
-                linkStr = "<li id='producteditor'><a href='/View/ProductEditor.aspx'>Add Product</a></li>" +
-                         "<li id='order'><a href='/View/Orders.aspx'>Order</a></li>" +
-                         "<li id='logout'><a href='/Index.aspx?l=0'>Logout</a></li>";
+                linkStr = "<li id='producteditor'><a href='/View/ProductEditor.aspx'>Add Product</a></li>"
+                        + "<li id='order'><a href='/View/Orders.aspx'>Order</a></li>"
+                        + "<li id='logout'><a href='/Index.aspx?l=0'>Logout</a></li>";
             }
             else
             {
-                linkStr = "<li id='purchasecar'><a href='/View/PurchaseCar.aspx'>Shopping car</a></li>" +
-                         "<li id='logout'><a href='/Index.aspx?l=0'>Logout</a></li>";
+                linkStr = "<li id='purchasecar'><a href='/View/PurchaseCar.aspx'>Shopping car</a></li>"
+                        + "<li id='logout'><a href='/Index.aspx?l=0'>Logout</a></li>";
             }
             setMenuLink();
         }
