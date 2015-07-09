@@ -19,13 +19,22 @@ namespace Shopping_Mall
             {
                 Response.Redirect("/Index.aspx");
             }
-            String[][] arr = db.searchSchema("name");
-            schemaArr = new String[arr.Length];
-            for (int i = 0; i < arr.Length; i++)
+            else
             {
-                schemaArr[i] = arr[i][0];
+                String[][] arr = db.searchSchema("name");
+                schemaArr = new String[arr.Length];
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    schemaArr[i] = arr[i][0];
+                }
+                if (!IsPostBack)
+                {
+                    if (Request.QueryString["id"] != null)
+                    {
+                        setProductInfo(Request.QueryString["id"]);
+                    }
+                }
             }
-            
         }
 
         protected void btnCancle_Click(object sender, EventArgs e)
@@ -41,44 +50,15 @@ namespace Shopping_Mall
             }
             else
             {
-                List<String> list = new List<string>();
-                list.Add("");
-                list.Add(txtName.Text);
-                list.Add(dropdownType.SelectedValue);
-                list.Add(txtPrice.Text);
-                list.Add(txtNum.Text);
-                if (FileUpload1.HasFile)
+                if (Request.QueryString["id"] != null)
                 {
-                    String fileName = FileUpload1.FileName;
-                    String savePath = Server.MapPath("../UploadPic/");
-                    String saveResult = savePath + fileName;
-                    String fileExtension = System.IO.Path.GetExtension(saveResult).ToLower();  //取得上傳的檔案類型
-                    if (fileExtension == ".gif" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".jpg")
-                    {
-                        FileUpload1.SaveAs(saveResult);
-                        list.Add(fileName);
-                    }
-                    else
-                    {
-                        list.Add("");
-                    }
+                    modifyProduct(Request.QueryString["id"]);
                 }
                 else
                 {
-                    list.Add("");
+                    addProduct();
                 }
-                list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
-                if (radiobtnDiscount.SelectedIndex == 0)
-                {
-                    list.Add("");
-                }
-                else
-                {
-                    DBFunction dbDiscount = new DBFunction("discount");
-                    list.Add(dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text));
-                }
-                String str = db.insert(schemaArr, list.ToArray());
-                Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
+                
             }
         }
         protected void radiobtnDiscount_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,9 +81,9 @@ namespace Shopping_Mall
                 break;
             }
         }
-        private void setProductInfo()
+        private void setProductInfo(String productID)
         {
-            String[][] productInfo = db.searchByRow("ID","34");
+            String[][] productInfo = db.searchByRow("ID", productID);
             txtName.Text = productInfo[0][1];
             dropdownType.SelectedValue = productInfo[0][2];
             txtPrice.Text = productInfo[0][3];
@@ -117,6 +97,70 @@ namespace Shopping_Mall
             {
                 String[][] discountArr = db.innerJoin("discount.type", "discount", "discount.discountID", "product.discountID", "discount.discountID", productInfo[0][7]);
                 radiobtnDiscount.SelectedValue = discountArr[0][0];
+            }
+        }
+
+        private void addProduct()
+        {
+            List<String> list = new List<string>();
+            list.Add("");
+            list.Add(txtName.Text);
+            list.Add(dropdownType.SelectedValue);
+            list.Add(txtPrice.Text);
+            list.Add(txtNum.Text);
+            list.Add(fileUpload());
+            list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
+            list.Add(getDiscountID());
+            String str = db.insert(schemaArr, list.ToArray());
+            Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
+        }
+
+        private void modifyProduct(String productID)
+        {
+            
+            String data = schemaArr[1] + "='" + txtName.Text + "', " +
+                          schemaArr[2] + "='" + dropdownType.SelectedValue + "', " +
+                          schemaArr[3] + "='" + txtPrice.Text + "', " +
+                          schemaArr[4] + "='" + txtNum.Text + "', " +
+                          schemaArr[5] + "='" + fileUpload() + "', " +
+                          schemaArr[6] + "='" + txtSummary.Text + "', " +
+                          schemaArr[7] + "='" + getDiscountID();
+            db.modifyAll(data,"ID",productID);
+        }
+
+        private String fileUpload()
+        {
+            if (FileUpload1.HasFile)
+            {
+                String fileName = FileUpload1.FileName;
+                String savePath = Server.MapPath("../UploadPic/");
+                String saveResult = savePath + fileName;
+                String fileExtension = System.IO.Path.GetExtension(saveResult).ToLower();  //取得上傳的檔案類型
+                if (fileExtension == ".gif" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".jpg")
+                {
+                    FileUpload1.SaveAs(saveResult);
+                    return fileName;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            else
+            {
+                return "";
+            }
+        }
+        private String getDiscountID()
+        {
+            if (radiobtnDiscount.SelectedIndex == 0)
+            {
+                return "0";
+            }
+            else
+            {
+                DBFunction dbDiscount = new DBFunction("discount");
+                return dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text);
             }
         }
     }
