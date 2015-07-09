@@ -12,7 +12,7 @@
             <%=leftbarStr %>
     </div>
     <div class="rightbar">
-        //防止空值
+        <!--防止空值-->
         <script type="text/javascript">
             function validate_required(field, alerttxt) {
                 with (field) {
