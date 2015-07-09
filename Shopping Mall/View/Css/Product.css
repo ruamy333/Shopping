@@ -49,6 +49,11 @@ ul
     margin-left:10px;
 }
 
+.page {
+    width:800px;
+    height:100px;
+    float:left;
+}
 .product {
     width:800px;
     height:400px;
