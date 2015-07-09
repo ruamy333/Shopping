@@ -13,6 +13,7 @@ namespace Shopping_Mall.View
         public String leftbarStr = "";
         public String rightStr = "";
         public DBFunction db = new DBFunction("product");
+        public Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {         
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
@@ -108,19 +109,22 @@ namespace Shopping_Mall.View
                         }
                         rightStr += "</div>"
                         + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>";
-                        if(array[2*a+b][6]!=null){
+                        if (array[2 * a + b][6] != null && array[2 * a + b][6] != "0")
+                        {
                             
-                            String[][] discount = db.innerJoin("ID,discountID", "discount", "product.discountID", "discount.discountID", "ID", array[2 * a + b][0]);
-
-                            //rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b><s>" + array[2 * a + b][3] + "</s>"+discount[0][1]+"元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
+                            //String[][] discount = db.innerJoin("product.ID,discount.discountID", "discount", "product.discountID", "discount.discountID", "product.ID", array[2 * a + b][0]);
+                            //策略顯示
+                            String [] discount = dis.findingType(Convert.ToInt32(array[2 * a + b][6]), 1, Convert.ToInt32(array[2 * a + b][3]));
+                            rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b><del class='discount'>" + array[2 * a + b][3] + "元</del><t class = 'dis'>" + discount[0] + "</t><b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
                         }
                         else{
                             rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
                                 
                         }
+                        //欄位ID,name,type,price,num,picture,discountID
                         rightStr+= "<div class='information'>"
                                 + "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量："
-                                + "<input type='number' name='num' style=width:50px runat'server'>"
+                                + "<input type='number' name='num' min='1' max='"+array[2*a+b][4]+"' style=width:50px runat'server'>"
                                 + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br>"
                                 + "<input class='button-style' type='submit' value='加入購物車'>"
                                 + "</form>"
@@ -133,7 +137,7 @@ namespace Shopping_Mall.View
                 rightStr += "</div>";
             }
             rightStr += "<div class='page'>";
-            for(int page=1;page<(array.Length/5)+1;page++){
+            for(int page=1;page<(array.Length/3)+1;page++){
                 rightStr += "<a href='Product.aspx?pp="+page+"'>"+page+"";
             }
             rightStr += "</div>";
