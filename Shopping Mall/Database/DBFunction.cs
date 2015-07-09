@@ -13,7 +13,7 @@ namespace Shopping_Mall.Database
             tableName = name;
         }
 
-        //依照欄位查詢
+        //查詢全部
         public String[][] searchAll()
         {
             DBConnector db = new DBConnector();
@@ -26,6 +26,14 @@ namespace Shopping_Mall.Database
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT " + fieldName + " FROM " + tableName;
+
+            return db.sqlSelect(sqlStr);
+        }
+        //依照欄位查詢 order by desc
+        public String[][] searchByColumnOrder(String fieldName)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT " + fieldName + " FROM " + tableName + " ORDER BY ID DESC ";
 
             return db.sqlSelect(sqlStr);
         }
@@ -65,6 +73,14 @@ namespace Shopping_Mall.Database
             String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " = '" + value + "'";
 
             return db.sqlSelect(sqlStr); 
+        }
+        //查詢列order by desc
+        public String[][] searchByRowOrder(String column, String value)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " = '" + value + "' ORDER BY ID DESC ";
+
+            return db.sqlSelect(sqlStr);
         }
         //依照欄位查詢列
         public String[][] searchRowByColumn(String fieldName, String column, String value)
