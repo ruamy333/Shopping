@@ -39,7 +39,11 @@ namespace Shopping_Mall.View.ProductInfo
             }
             if (int.Parse(proArr[0][4]) == 0) laseNum.Text = "　　目前無庫存";
             else laseNum.Text += proArr[0][4] + " 個";
-            productImage.ImageUrl = "../UploadPic/" + proArr[0][5];
+            if (proArr[0][5] == null || proArr[0][5].Equals(""))
+            {
+                productImage.ImageUrl = "../Picture/nonePic.png";
+            }
+            else productImage.ImageUrl = "../UploadPic/" + proArr[0][5];
             introLabel.Text = proArr[0][6];
         }
         //購買btn
