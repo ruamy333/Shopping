@@ -6,7 +6,19 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
-    
+    <script>
+        $(document).ready(function () {
+            $(".image").draggable({
+                revert: true                
+            });
+            
+            $("#buycar").droppable({
+                drop: function (event, ui) {
+                    document.location.href = "Product.aspx";
+                }
+            });
+        });
+  </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,11 +27,12 @@
                 <%=leftbarStr %>
         </div>
         <div class="rightbar">
+            <div id="buycar">
+			    <img src="/Picture/buycar.png" />
+	        </div>
             <%=rightStr %>
         </div>
-        <div id="buycar">
-			<img src="/Picture/buycar.png" />
-	    </div>
+        
     </div>
     <!--防止空值-->
     <script type="text/javascript">

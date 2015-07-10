@@ -185,9 +185,9 @@ namespace Shopping_Mall.View
                                 + "<div class='information'>購買數量："
                                 + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
                                 + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
-                                    + "<input class='button-style' type='submit' value='加入購物車'>"
-                                    + "</form>"
-                                    + "</div>";
+                                + "<input class='button-style' type='submit' value='加入購物車'>"
+                                + "</form>"
+                                + "</div>";
                         }
                     }
                     rightStr += "</div>";
