@@ -145,17 +145,17 @@ namespace Shopping_Mall.View
         //p為分頁碼
         private void pageShow(int num)
         {
+
             String pp = Request.QueryString["pp"];
             Boolean finish =false;
             int index = Convert.ToInt32(pp);
             if (pp == null)
             {
                 index = 1;
-            }
-            
+            }            
                 //首頁click more進來的畫面
                 String[][] array;
-                if (Request.QueryString["t"] == null)
+                if (Request.QueryString["t"] == null || Request.QueryString["t"] == "")
                 {
                     array = db.searchByColumnOrder("ID,name,type,price,num,picture,introduction,discountID");
                 }
@@ -228,14 +228,16 @@ namespace Shopping_Mall.View
                     rightStr += "</div>";
                 }
                 rightStr += "<div class='page'>";
-                for (int page = 1; page <= (array.Length / num) + 1; page++)
+                for (int page = 0; page <= (array.Length / num) ; page++)
                 {
+                    //若資料少於num筆數的頁碼呈現
+                    //以及資料筆數等於總資料長度停止
                     if (num * page == array.Length)
                     {
                     }
                     else
                     {
-                        rightStr += "<a href='Product.aspx?pp=" + page + "'>" + page + "";
+                        rightStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "";
                     }
                 }
                 rightStr += "</div>";
