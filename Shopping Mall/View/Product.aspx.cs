@@ -13,8 +13,8 @@ namespace Shopping_Mall.View
         public String leftbarStr = "";
         public String rightStr = "";
         public String pageStr = "";
-        public DBFunction db = new DBFunction("product");
-        public Discount dis = new Discount();
+        private DBFunction db = new DBFunction("product");
+        private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {         
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
@@ -101,6 +101,7 @@ namespace Shopping_Mall.View
             String[] values = new String[] { "", Session["account"].ToString(), name, price, num };
             dbPurchase.insert(schemaArr, values);
         }
+        
         //num is the amount of items at each page
         //pp為分頁碼
         private void pageShow(int num)
@@ -125,13 +126,13 @@ namespace Shopping_Mall.View
             }
             //0707 新增
             //0708 修改可以回傳ID、購買數量給自己這頁
+            //迴圈與條件重構
             for (int a = 0; a <= (num / 2); a++)
             {
-                if (finish == true)
-                    break;
                 if (2 * a == num)
                     break;
                 else
+#region 欄位product
                     rightStr += "<div class ='product'>";
                 for (int b = 0; b < 2; b++)
                 {
@@ -145,13 +146,20 @@ namespace Shopping_Mall.View
                     if (i == array.Length - 1)
                     {
                         finish = true;
-                        }
-                        rightStr += "<div class ='product-inside'>"
-                            + "<div class='ImgDel'>";
+                    }
+#region 欄位product-inside
+                    rightStr += "<div class ='product-inside'>";
+#region 欄位ImgDel
+                        rightStr += "<div class='ImgDel'>";
+                        //判斷有無優惠方案
                         if (array[i][7] != null && array[i][7] != "0")
                         {
                             discountArr = dis.findingType(Convert.ToInt32(array[i][7]), 1, Convert.ToInt32(array[i][3]));
-                            rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class='dis-box'><div class='dis-text'>" + discountArr[0] + "</div></div></div></a>";
+                            rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'>"
+                                +"<div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'>"
+                                +"<div class='dis-box'><div class='dis-text'>" + discountArr[0] + "</div>"
+                                +"</div>"
+                                +"</div></a>";
                         }
                         else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                         rightStr += "<div class='delete'>";
@@ -169,6 +177,8 @@ namespace Shopping_Mall.View
                         }
                         rightStr += "</div>"
                             + "<div class='name'><a href='ProductInformation.aspx?p=" + array[i][0] + "'>" + array[i][1] + "</a></div>";
+#endregion
+#region 欄位information
                         if (array[i][7] != null && array[i][7] != "0")
                         {
                             //策略顯示
@@ -182,19 +192,26 @@ namespace Shopping_Mall.View
                             rightStr += "<div class='information'>價格：" + array[i][3] + "元　　　"
                                 + "數量：" + array[i][4] + "</div>";
                         }
+#endregion information
+#region 欄位information
                         //欄位ID,name,type,price,num,picture,discountID
-                    rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-                            + "<div class='information'>購買數量："
+                        rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                                + "<div class='information'>購買數量："
                                 + "<input type='number' class='form-control' name='num' min='1' max='" + array[i][4] + "' style=width:50px runat'server'>"
-                                + "<input type='hidden' name='ID' value='" + array[i][0] + "' runat'server'></div>"
-                                + "<input class='button-style' type='submit' value='加入購物車'>"
+                                + "<input type='hidden' name='ID' value='" + array[i][0] + "' runat'server'></div>";
+#endregion 
+                        rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
                                 + "</form>"
                                 + "</div>";
+#endregion
                     }
                 }
                 rightStr += "</div>";
+#endregion 
             }
 
+            #region 欄位page
+            //page
             for (int page = 0; page <= (array.Length / num); page++)
             {
                 //若資料少於num筆數的頁碼呈現
@@ -212,6 +229,7 @@ namespace Shopping_Mall.View
                     }
                 }
             }
+            #endregion
         }
     }
 }
