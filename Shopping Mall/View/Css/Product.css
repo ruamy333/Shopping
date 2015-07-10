@@ -123,10 +123,11 @@ ul
 }
 
 #buycar {
-	display: none;
 	position: absolute;
 }
 
 #buycar img {
 	border: none;
+    width:100px;
+    height:100px;
 }
