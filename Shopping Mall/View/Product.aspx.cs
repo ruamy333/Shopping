@@ -86,7 +86,6 @@ namespace Shopping_Mall.View
                 else{
                     Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
                 }
-                
             }
         }
         //新增購物車資料
@@ -101,92 +100,6 @@ namespace Shopping_Mall.View
             String[] values = new String[] { "", Session["account"].ToString(), name, price, num };
             dbPurchase.insert(schemaArr, values);
         }
-        /*
-        private void pageShow()
-        {
-            String[][] array;
-            if (Request.QueryString["t"] == null)
-            {
-                array = db.searchByColumnOrder("ID,name,type,price,num,picture,introduction,discountID");
-            }
-            else
-            {
-                array = db.searchByRowOrder("type", Request.QueryString["t"]);
-            }
-            //0707 新增
-            //0708 修改可以回傳ID、購買數量給自己這頁
-            for (int a = 0; a <= (array.Length / 2); a++)
-            {
-                if (2 * a == array.Length)
-                    break;
-                else
-                    rightStr += "<div class ='product'>";
-                for (int b = 0; b < 2; b++)
-                {
-                    if (2 * a + b < array.Length)
-                    {
-                        String[] discount = null;
-                        rightStr += "<div class ='product-inside'>"
-                            + "<div class='ImgDel'>";
-                        if (array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
-                        {
-                            discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                            rightStr += "<a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><div class='image' style='background:url(../UploadPic/" + array[2 * a + b][5] + ") no-repeat; background-size:300px 200px;'><t class = 'dis-text'>" + discount[0] + "</t></div></a>";
-                        }
-                        else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'><img src=../UploadPic/" + array[2 * a + b][5] + "></a></div>";
-                        rightStr += "<div class='delete'>";
-
-                        //刪除按鈕visible的判斷
-                        if ((String)Session["account"] == "admin")
-                        {
-                            rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:48px;'></a>";
-                            rightStr += "</div><div class='delete'>";
-                            rightStr += "<a href='ProductEditor.aspx?u=" + array[2 * a + b][0] + "'><img src=../Picture/edit.png style='width:45px;'></a></div>";
-                        }
-                        else
-                        {
-                            rightStr += "</div>";
-                        }
-                        rightStr += "</div>"
-                        + "<div class='name'><a href='ProductInformation.aspx?p=" + array[2 * a + b][0] + "'>" + array[2 * a + b][1] + "</a></div>";
-                        if (array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
-                        {
-                            //String[][] discount = db.innerJoin("product.ID,discount.discountID", "discount", "product.discountID", "discount.discountID", "product.ID", array[2 * a + b][0]);
-                            //策略顯示
-                            String[] discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                            rightStr += "<div class='information'>價格：" 
-                                    + "<del>" + array[2 * a + b][3] + "元</del>　"
-                                    + "<span class = 'discount'>" + discount[0] + "</span>　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
-                        }
-                        else
-                        {
-                            rightStr += "<div class='information'>價格：" + array[2 * a + b][3] + "元　　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
-
-                        }
-                        //欄位ID,name,type,price,num,picture,discountID
-                        rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-                                + "<div class='information'>購買數量："
-                                + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
-                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
-                                + "<input class='button-style' type='submit' value='加入購物車'>"
-                                + "</form>"
-                                + "</div>";
-
-                    }
-                }
-
-                rightStr += "</div>";
-            }
-            rightStr += "<div class='page'>";
-            for (int page = 1; page < (array.Length / 3) + 1; page++)
-            {
-                rightStr += "<a href='Product.aspx?pp=" + page + "'>" + page + "";
-            }
-            rightStr += "</div>";
-        }*/
-
         //num is the amount of items at each page
         //p為分頁碼
         private void pageShow(int num)
@@ -286,7 +199,7 @@ namespace Shopping_Mall.View
                     //以及資料筆數等於總資料長度停止
                     if (num * page != array.Length)
                     {
-                        rightStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "";
+                        rightStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "</a>";
                     }
                 }
                 rightStr += "</div>";

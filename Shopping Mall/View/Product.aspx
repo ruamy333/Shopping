@@ -7,30 +7,29 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="content-middle">
-    <div class="leftbar">
-            <%=leftbarStr %>
+    <div class="content-middle">
+        <div class="leftbar">
+                <%=leftbarStr %>
+        </div>
+        <div class="rightbar">
+            <%=rightStr %>
+        </div>
     </div>
-    <div class="rightbar">
-        <!--防止空值-->
-        <script type="text/javascript">
-            function validate_required(field, alerttxt) {
-                with (field) {
-                    if (value == null || value == "")
-                    { alert(alerttxt); return false }
-                    else { return true }
-                }
+    <!--防止空值-->
+    <script type="text/javascript">
+        function validate_required(field, alerttxt) {
+            with (field) {
+                if (value == null || value == "")
+                { alert(alerttxt); return false }
+                else { return true }
             }
+        }
 
-            function validate_form(thisform) {
-                with (thisform) {
-                    if (validate_required(num, "請選擇數量") == false)
-                    { email.focus(); return false }
-                }
+        function validate_form(thisform) {
+            with (thisform) {
+                if (validate_required(num, "請選擇數量") == false)
+                { email.focus(); return false }
             }
-        </script>
-        <%=rightStr %>
-    </div>
-
-</div>
+        }
+    </script>
 </asp:Content>
