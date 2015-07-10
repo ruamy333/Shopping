@@ -14,6 +14,9 @@
         <div class="rightbar">
             <%=rightStr %>
         </div>
+        <div class="page">
+            <%=pageStr %>
+        </div>
     </div>
     <!--防止空值-->
     <script type="text/javascript">

@@ -12,6 +12,7 @@ namespace Shopping_Mall.View
     {
         public String leftbarStr = "";
         public String rightStr = "";
+        public String pageStr = "";
         public DBFunction db = new DBFunction("product");
         public Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
@@ -21,7 +22,6 @@ namespace Shopping_Mall.View
             PutIntoCart();
             setLeftBar();
             pageShow(6);
-            //paging(page);
         }
 
         private void setLeftBar()
@@ -101,13 +101,13 @@ namespace Shopping_Mall.View
             dbPurchase.insert(schemaArr, values);
         }
         //num is the amount of items at each page
-        //p為分頁碼
+        //pp為分頁碼
         private void pageShow(int num)
         {
-
             String pp = Request.QueryString["pp"];
             Boolean finish =false;
             int index = Convert.ToInt32(pp);
+            //第一次進入沒有回傳值，強制為第一頁
             if (pp == null)
             {
                 index = 1;
@@ -146,9 +146,9 @@ namespace Shopping_Mall.View
                             }
                             rightStr += "<div class ='product-inside'>"
                                 + "<div class='ImgDel'>";
-                            if(array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
+                            if(array[i][7] != null && array[i][7] != "0")
                             {
-                                discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
+                                discountArr = dis.findingType(Convert.ToInt32(array[i][7]), 1, Convert.ToInt32(array[i][3]));
                                 rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discountArr[0] + "</div></div></a>";
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
@@ -156,9 +156,9 @@ namespace Shopping_Mall.View
                             //刪除按鈕visible的判斷
                             if ((String)Session["account"] == "admin")
                             {
-                                rightStr += "<a href='Product.aspx?d=" + array[2 * a + b][0] + "'><img src=../Picture/delete.png style='width:48px;'></a>";
+                                rightStr += "<a href='Product.aspx?d=" + array[i][0] + "'><img src=../Picture/delete.png style='width:48px;'></a>";
                                 rightStr += "</div><div class='delete'>";
-                                rightStr += "<a href='ProductEditor.aspx?u=" + array[2 * a + b][0] + "'><img src=../Picture/edit.png style='width:45px;'></a></div>";
+                                rightStr += "<a href='ProductEditor.aspx?u=" + array[i][0] + "'><img src=../Picture/edit.png style='width:45px;'></a></div>";
                             }
                             else
                             {
@@ -170,21 +170,21 @@ namespace Shopping_Mall.View
                             {
                                 //策略顯示
                             rightStr += "<div class='information'>價格："
-                                    + "<del>" + array[2 * a + b][3] + "元</del>　"
+                                    + "<del>" + array[i][3] + "元</del>　"
                                     + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
+                                    + "數量：" + array[i][4] + "</div>";
                             }
                             else
                             {
-                            rightStr += "<div class='information'>價格：" + array[2 * a + b][3] + "元　　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
+                            rightStr += "<div class='information'>價格：" + array[i][3] + "元　　　"
+                                    + "數量：" + array[i][4] + "</div>";
 
                             }
                             //欄位ID,name,type,price,num,picture,discountID
                         rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                                 + "<div class='information'>購買數量："
-                                + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
-                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
+                                + "<input type='number' class='form-control' name='num' min='1' max='" + array[i][4] + "' style=width:50px runat'server'>"
+                                + "<input type='hidden' name='ID' value='" + array[i][0] + "' runat'server'></div>"
                                     + "<input class='button-style' type='submit' value='加入購物車'>"
                                     + "</form>"
                                     + "</div>";
@@ -192,17 +192,26 @@ namespace Shopping_Mall.View
                     }
                     rightStr += "</div>";
                 }
-                rightStr += "<div class='page'>";
+                
                 for (int page = 0; page <= (array.Length / num) ; page++)
                 {
                     //若資料少於num筆數的頁碼呈現
                     //以及資料筆數等於總資料長度停止
                     if (num * page != array.Length)
                     {
-                        rightStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "</a>";
+                        if (index != page + 1)
+                        {
+                            pageStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "</a>　";
+                        }
+
+                        else
+                        {
+                            pageStr += "<span class='here'>" + index + "</span>　";
+                        }
+                        
                     }
                 }
-                rightStr += "</div>";
+               
         }
     }
 }
