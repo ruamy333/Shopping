@@ -220,10 +220,10 @@ namespace Shopping_Mall.View
                             if (array[i][7] != null && array[i][7] != "0")
                             {
                                 //策略顯示
-                            String[] discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
+                            String[] discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
                             rightStr += "<div class='information'>價格："
                                     + "<del>" + array[2 * a + b][3] + "元</del>　"
-                                    + "<span class = 'discount'>" + discount[1] + "元</span>　　"
+                                    + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
                                     + "數量：" + array[2 * a + b][4] + "</div>";
                             }
                             else
