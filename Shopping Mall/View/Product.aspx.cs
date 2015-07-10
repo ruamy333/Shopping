@@ -284,10 +284,7 @@ namespace Shopping_Mall.View
                 {
                     //若資料少於num筆數的頁碼呈現
                     //以及資料筆數等於總資料長度停止
-                    if (num * page == array.Length)
-                    {
-                    }
-                    else
+                    if (num * page != array.Length)
                     {
                         rightStr += "<a href='Product.aspx?pp=" + (page + 1) + "&t=" + Request.QueryString["t"] + "'>" + (page + 1) + "";
                     }
