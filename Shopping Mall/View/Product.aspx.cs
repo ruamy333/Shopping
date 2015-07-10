@@ -153,6 +153,7 @@ namespace Shopping_Mall.View
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                             rightStr +=  "<div class='delete'>";
+
                             //刪除按鈕visible的判斷
                             if ((String)Session["account"] == "admin")
                             {
@@ -169,25 +170,25 @@ namespace Shopping_Mall.View
                             if (array[i][7] != null && array[i][7] != "0")
                             {
                                 //策略顯示
-                            rightStr += "<div class='information'>價格："
-                                    + "<del>" + array[2 * a + b][3] + "元</del>　"
-                                    + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
+                                rightStr += "<div class='information'>價格："
+                                        + "<del>" + array[2 * a + b][3] + "元</del>　"
+                                        + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
+                                        + "數量：" + array[2 * a + b][4] + "</div>";
                             }
                             else
                             {
-                            rightStr += "<div class='information'>價格：" + array[2 * a + b][3] + "元　　　"
-                                    + "數量：" + array[2 * a + b][4] + "</div>";
-
+                                rightStr += "<div class='information'>價格：" + array[2 * a + b][3] + "元　　　"
+                                        + "數量：" + array[2 * a + b][4] + "</div>";
                             }
+
                             //欄位ID,name,type,price,num,picture,discountID
-                        rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-                                + "<div class='information'>購買數量："
-                                + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
-                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
-                                    + "<input class='button-style' type='submit' value='加入購物車'>"
-                                    + "</form>"
-                                    + "</div>";
+                            rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                                    + "<div class='information'>購買數量："
+                                    + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
+                                    + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
+                                        + "<input class='button-style' type='submit' value='加入購物車'>"
+                                        + "</form>"
+                                        + "</div>";
                         }
                     }
                     rightStr += "</div>";

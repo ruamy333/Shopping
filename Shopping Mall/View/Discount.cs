@@ -35,7 +35,7 @@ namespace Shopping_Mall.View
         //買____送____
         private int type1(int num, int price)
         {
-            num -= num / (int.Parse(splitArr[0]) + int.Parse(splitArr[1]));
+            num -= (num / (int.Parse(splitArr[0]) + int.Parse(splitArr[1]))) * int.Parse(splitArr[1]);
             int total = num * price;
             return total;
         }

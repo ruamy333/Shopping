@@ -6,7 +6,6 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
-    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
