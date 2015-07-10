@@ -115,7 +115,11 @@ ul
     font-size: 32px;
 }
 
+#buycar {
+	display: none;
+	position: absolute;
+}
 
-
-
-
+#buycar img {
+	border: none;
+}
