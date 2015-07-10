@@ -111,21 +111,24 @@ namespace Shopping_Mall.View
                             //String[][] discount = db.innerJoin("product.ID,discount.discountID", "discount", "product.discountID", "discount.discountID", "product.ID", array[2 * a + b][0]);
                             //策略顯示
                             String[] discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                            rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b><del class='discount'>" + array[2 * a + b][3] + "元</del><t class = 'dis'>" + discount[0] + "</t><b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
+                            rightStr += "<div class='information'>價格：" 
+                                    + "<del>" + array[2 * a + b][3] + "元</del>　"
+                                    + "<span class = 'discount'>" + discount[0] + "</span>　　"
+                                    + "數量：" + array[2 * a + b][4] + "</div>";
                         }
                         else
                         {
-                            rightStr += "<div class='information'><b style='font-size=0.5cm'>價格：</b>" + array[2 * a + b][3] + "元<b style='font-size=0.5cm;padding-left:35px;'>數量：</b>" + array[2 * a + b][4] + "</div>";
+                            rightStr += "<div class='information'>價格：" + array[2 * a + b][3] + "元　　　"
+                                    + "數量：" + array[2 * a + b][4] + "</div>";
 
                         }
                         //欄位ID,name,type,price,num,picture,discountID
-                        rightStr += "<div class='information'>"
-                                + "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>購買數量："
-                                + "<input type='number' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
-                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'><br>"
+                        rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                                + "<div class='information'>購買數量："
+                                + "<input type='number' class='form-control' name='num' min='1' max='" + array[2 * a + b][4] + "' style=width:50px runat'server'>"
+                                + "<input type='hidden' name='ID' value='" + array[2 * a + b][0] + "' runat'server'></div>"
                                 + "<input class='button-style' type='submit' value='加入購物車'>"
                                 + "</form>"
-                                + "</div>"
                                 + "</div>";
 
                     }
