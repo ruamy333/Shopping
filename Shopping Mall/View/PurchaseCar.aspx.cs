@@ -93,7 +93,7 @@ namespace Shopping_Mall.View
                     + "<div class='column-box'><int>" + arrOrder[i][5] + "</int></div>"
                     + "<div class='column-box'><int>" + subtotal + "</int></div>"
                     + "<div class='column-box'><discount>" + dicountStr + "</discount></div>"
-                    + "<div class='column-delete'><a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "' class='button-style'>刪除</a></div></div>";              
+                    + "<a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "'><div class='column-delete'></div></a></div>";              
             }
             //計算總金額
             totalPrice.Text += total + "元";         

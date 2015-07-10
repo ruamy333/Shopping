@@ -22,7 +22,7 @@
                             <asp:Label ID="priceLabel" runat="server" ></asp:Label>元 <br/>
                         </div>
                         <div class="content-text">數量：
-                            <asp:DropDownList ID="numberDropList" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="numberDropList" runat="server" CssClass="form-control" Width="60"></asp:DropDownList>
                             <asp:Label ID="laseNum" runat="server" Text="　剩餘數量： "></asp:Label>
                         </div>
                         <div class="content-text">

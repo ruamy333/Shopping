@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductEditor.aspx.cs" Inherits="Shopping_Mall.ProductManage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../../js/jquery-2.1.4.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Css/ProductEditor.css" />
     <link href="../Css/Common.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Css/ProductEditor.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">

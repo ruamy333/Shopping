@@ -60,10 +60,12 @@
     height:40px;
 }
 .column-delete {
-    margin-left:10px;
-    width:90px;
-    height:60px;
+    margin:17px;
+    margin-right:25px;
+    width:48px;
+    height:43px;
     float:left;
+    background-image:url(../../Picture/delete.png);
 }
 .content-bottom {
     margin-top:40px;
