@@ -57,13 +57,49 @@ namespace Shopping_Mall.View
             {
                 if ((String)Session["account"]!=null)
                 {
-
+                    DBFunction dbPurchase = new DBFunction("purchaseList");
+                    String[][] info = db.searchRowByColumn("name, price","ID",ID);
+                    //舊有資料更新
+                    String[][] checkArr = dbPurchase.searchRowByColumn("product_name , num", "account", Session["account"].ToString());
+                    if (checkArr.Length > 0)
+                    {
+                        bool check = false;
+                        int i;
+                        for (i = 0; i < checkArr.Length; i++)
+                        {
+                            if (checkArr[i][0].Equals(info[0][0]))
+                            {
+                                check = true;
+                                break;
+                            }
+                        }
+                        if (check)
+                            dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(num), "account", Session["account"].ToString() + "' AND product_name='" + info[0][0]);
+                        else newData(dbPurchase, info[0][0], num, (int.Parse(num)*int.Parse(info[0][1])).ToString());
+                    }
+                    else
+                    {
+                        newData(dbPurchase, info[0][0], num, (int.Parse(num) * int.Parse(info[0][1])).ToString());
+                    }
+                    Response.Redirect("Product.aspx");
                 }
                 else{
                     Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
                 }
                 
             }
+        }
+        //新增購物車資料
+        private void newData(DBFunction dbPurchase, String name, String num, String price)
+        {
+            String[][] attributes = dbPurchase.searchSchema("name");
+            String[] schemaArr = new String[attributes.Length];
+            for (int i = 0; i < attributes.Length; i++)
+            {
+                schemaArr[i] = attributes[i][0];
+            }
+            String[] values = new String[] { "", Session["account"].ToString(), name, price, num };
+            dbPurchase.insert(schemaArr, values);
         }
         /*
         private void pageShow()
@@ -189,7 +225,7 @@ namespace Shopping_Mall.View
                             break;
                         if (2 * a + b < num)
                         {
-                            String[] discount = null;
+                            String[] discountArr = null;
 
                             int i = 2 * a + b + (index-1) * num;
                             if(i == array.Length-1){
@@ -199,8 +235,8 @@ namespace Shopping_Mall.View
                                 + "<div class='ImgDel'>";
                             if(array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
                             {
-                                discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discount[0] + "</div></div></a>";
+                                discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
+                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discountArr[0] + "</div></div></a>";
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                             rightStr +=  "<div class='delete'>";
@@ -220,7 +256,6 @@ namespace Shopping_Mall.View
                             if (array[i][7] != null && array[i][7] != "0")
                             {
                                 //策略顯示
-                            String[] discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
                             rightStr += "<div class='information'>價格："
                                     + "<del>" + array[2 * a + b][3] + "元</del>　"
                                     + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
