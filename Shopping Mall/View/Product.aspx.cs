@@ -149,7 +149,7 @@ namespace Shopping_Mall.View
                             if(array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
                             {
                                 discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discountArr[0] + "</div></div></a>";
+                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-box><div class=dis-text>" + discountArr[0] + "</div></div></div></a>";
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                             rightStr +=  "<div class='delete'>";
