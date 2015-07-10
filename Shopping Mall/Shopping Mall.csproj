@@ -61,8 +61,10 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
+    <Content Include="js\buycar-scroll.js" />
     <Content Include="js\jquery.hoverpulse.js" />
     <Content Include="js\lefrbar-effect.js" />
+    <Content Include="Picture\buycar.png" />
     <Content Include="View\Css\LoginStyle.css" />
     <Content Include="View\Css\OrderStyle.css" />
     <Content Include="View\Css\Product.css" />
@@ -74,9 +76,6 @@
     <Content Include="Picture\img01.jpg" />
     <Content Include="Picture\img02.jpg" />
     <Content Include="Picture\img03.jpg" />
-    <Content Include="Picture\pic1.jpg" />
-    <Content Include="Picture\pic2.jpg" />
-    <Content Include="Picture\pic3.jpg" />
     <Content Include="Picture\shopping-carts.png" />
     <Content Include="View\Css\ProdInfoStyle.css" />
     <Content Include="View\Css\ProductEditor.css" />

@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="Shopping_Mall.View.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link href="../Css/Common.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Css/Product.css"/>
-    <link rel="stylesheet" type="text/css" href="../Css/Common.css" media="screen" />
+    <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
+    <script src="../js/buycar-scroll.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,6 +16,9 @@
         <div class="rightbar">
             <%=rightStr %>
         </div>
+        <div id="buycar">
+			<img src="/Picture/buycar.png" />
+	    </div>
         <div class="page">
             <%=pageStr %>
         </div>

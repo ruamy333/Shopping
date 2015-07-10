@@ -153,6 +153,7 @@ namespace Shopping_Mall.View
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                             rightStr +=  "<div class='delete'>";
+
                             //刪除按鈕visible的判斷
                             if ((String)Session["account"] == "admin")
                             {
@@ -179,7 +180,6 @@ namespace Shopping_Mall.View
                             rightStr += "<div class='information'>價格：" + array[i][3] + "元　　　"
                                     + "數量：" + array[i][4] + "</div>";
 
-                            }
                             //欄位ID,name,type,price,num,picture,discountID
                         rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                                 + "<div class='information'>購買數量："
