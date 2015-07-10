@@ -225,7 +225,7 @@ namespace Shopping_Mall.View
                             break;
                         if (2 * a + b < num)
                         {
-                            String[] discount = null;
+                            String[] discountArr = null;
 
                             int i = 2 * a + b + (index-1) * num;
                             if(i == array.Length-1){
@@ -235,8 +235,8 @@ namespace Shopping_Mall.View
                                 + "<div class='ImgDel'>";
                             if(array[2 * a + b][7] != null && array[2 * a + b][7] != "0")
                             {
-                                discount = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
-                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discount[0] + "</div></div></a>";
+                                discountArr = dis.findingType(Convert.ToInt32(array[2 * a + b][7]), 1, Convert.ToInt32(array[2 * a + b][3]));
+                                rightStr += "<a href='ProductInformation.aspx?p=" + array[i][0] + "'><div class='image' style='background:url(../UploadPic/" + array[i][5] + ") no-repeat; background-size:300px 200px;'><div class=dis-text>" + discountArr[0] + "</div></div></a>";
                             }
                             else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[i][0] + "'><img src=../UploadPic/" + array[i][5] + "></a></div>";
                             rightStr +=  "<div class='delete'>";
