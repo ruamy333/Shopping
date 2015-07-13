@@ -128,6 +128,7 @@ namespace Shopping_Mall.View
             int index = (page - 1) * num;
             for (int a = index; a < index+num; a++)
             {
+                
                 count++;
 #region 欄位product
                 if(count%2==0){
@@ -153,24 +154,21 @@ namespace Shopping_Mall.View
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'>"
                         + "<div class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
-                        +"<div class='dis-box'><div class='dis-text'>" + discountArr[0] + "</div>"
+                        + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
                         +"</div></a>";
                 }
                 else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[a][0] + "'><img src=" + imageUrl + "></a></div>";
-                rightStr += "<div class='delete'>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
                 {
-                    rightStr += "<a href='Product.aspx?d=" + array[a][0] + "'><img src=../Picture/delete.png style='width:40px;'></a>";
+                    rightStr += "<div class='delete'>";
+                    rightStr += "<a href='Product.aspx?d=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:40px;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
                 }
-                else
-                {
-                    rightStr += "</div>";
-                }
+
                 rightStr += "</div>"
                     + "<div class='name'><a href='ProductInformation.aspx?p=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
 #endregion
@@ -191,7 +189,12 @@ namespace Shopping_Mall.View
 #endregion information
 #region 欄位information
                 //欄位ID,name,type,price,num,picture,discountID
-                rightStr += "<form action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                //1個ASP.NET擁有多個form
+                if (a == 0)
+                {
+                    rightStr += "<form runat'server'></form>";
+                }
+                rightStr += "<form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                         + "<div class='information'>購買數量："
                         + "<input type='number' class='form-control' name='num' min='1' max='" + array[a][4] + "' style=width:50px runat'server'>"
                         + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";

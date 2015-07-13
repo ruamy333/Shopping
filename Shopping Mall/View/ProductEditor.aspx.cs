@@ -12,6 +12,7 @@ namespace Shopping_Mall
     {
         public String[] discountStr = {"",""};
         private DBFunction db = new DBFunction("product");
+        private DBFunction dbDiscount = new DBFunction("discount");
         private String[] schemaArr;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,23 +69,7 @@ namespace Shopping_Mall
         }
         protected void radiobtnDiscount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDiscountType.Visible = false;
-            txtDiscountContent.Visible = false;
-            discountStr[0] = "";
-            discountStr[1] = "";
-            switch (radiobtnDiscount.SelectedIndex)
-            {
-                case 1:
-                    txtDiscountType.Visible = true;
-                    discountStr[1] = "% off";
-                break;
-                case 2:
-                    txtDiscountType.Visible = true;
-                    txtDiscountContent.Visible = true;
-                    discountStr[0] = "買";
-                    discountStr[1] = "送";
-                break;
-            }
+            setSelectedDiscount();
         }
 
         //由資料庫取得商品資訊並呈現在網頁上
@@ -103,11 +88,40 @@ namespace Shopping_Mall
             }
             else
             {
-                String[][] discountArr = db.innerJoin("discount.type", "discount", "discount.discountID", "product.discountID", "discount.discountID", productInfo[0][7]);
+                String[][] discountArr = db.innerJoin("discount.type,discount.content", "discount", "discount.discountID", "product.discountID", "discount.discountID", productInfo[0][7]);
                 radiobtnDiscount.SelectedValue = discountArr[0][0];
+
+                setSelectedDiscount();
+
+                if (discountArr[0][1] != null && discountArr[0][1] != "0")
+                {
+                    String[] arr = discountArr[0][1].Split(',');
+                    txtDiscountType.Text = arr[0];
+                    txtDiscountContent.Text = arr[1];
+                }
             }
         }
 
+        private void setSelectedDiscount()
+        {
+            txtDiscountType.Visible = false;
+            txtDiscountContent.Visible = false;
+            discountStr[0] = "";
+            discountStr[1] = "";
+            switch (radiobtnDiscount.SelectedIndex)
+            {
+                case 1:
+                    txtDiscountType.Visible = true;
+                    discountStr[1] = "% off";
+                    break;
+                case 2:
+                    txtDiscountType.Visible = true;
+                    txtDiscountContent.Visible = true;
+                    discountStr[0] = "買";
+                    discountStr[1] = "送";
+                    break;
+            }
+        }
         //新增商品
         private void addProduct()
         {
@@ -178,7 +192,6 @@ namespace Shopping_Mall
             }
             else
             {
-                DBFunction dbDiscount = new DBFunction("discount");
                 return dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text);
             }
         }
