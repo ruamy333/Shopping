@@ -192,7 +192,7 @@ namespace Shopping_Mall.View
                 //1個ASP.NET擁有多個form
                 rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                         + "<div class='information'>購買數量："
-                        + "<input type='number' id='txt" + array[a][0] + "' name='" + a + "'class='form-control' name='num' min='1' max='" + array[a][4] + "' style=width:50px runat'server'>"
+                        + "<input type='number' id='txt" + array[a][0] + " class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
                         + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
 #endregion 
                 rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
