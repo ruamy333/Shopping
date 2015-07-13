@@ -45,7 +45,7 @@ namespace Shopping_Mall.View
                 orderList += "<div class='center-column'>" 
                     + "<div class='column-boxS'>" + productArr[i][0] + "</div>"
                     + "<div class='column-boxS'>" + accJoinOrder[0][0] + "</div>"
-                    + "<div class='column-boxL'>點擊<ul>";
+                    + "<div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
                 int total = 0;
                 for (int j = 0; j < productArr.Length; j++)
                 {

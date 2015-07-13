@@ -36,9 +36,14 @@
 .column-boxL{
     margin-top:33px;
     margin-left:5px;
-    height:35px;
+    height:auto;
     float:left;
     width:375px;
+}
+.column-retractable {
+    height:35px;
+    width:auto;
+    overflow: hidden;
 }
 /*點擊縮放*/
 ul
@@ -48,9 +53,14 @@ ul
     margin-bottom:10px;
     font-size:14px;
 }
-.content-center ul
+.column-boxL ul
 {
     background:#eee;
+}
+.column-retractable:hover
+{
+    color: #606060;
+    cursor:pointer;
 }
 /*字體*/
 .content-header

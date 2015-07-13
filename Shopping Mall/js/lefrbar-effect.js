@@ -8,7 +8,7 @@ $(document).ready(function () {
         $ul.slideToggle();
     }).siblings('ul').hide();
 
-    $('.column-boxL').click(function () {
+    $('.column-retractable').click(function () {
         var $ul = $(this).next('.column-boxL ul');
         if (!$ul.is(':visible')) {
             $('.column-boxL ul:visible').slideUp();
