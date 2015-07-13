@@ -153,24 +153,21 @@ namespace Shopping_Mall.View
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'>"
                         + "<div class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
-                        +"<div class='dis-box'><div class='dis-text'>" + discountArr[0] + "</div>"
+                        + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
                         +"</div></a>";
                 }
                 else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[a][0] + "'><img src=" + imageUrl + "></a></div>";
-                rightStr += "<div class='delete'>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
                 {
-                    rightStr += "<a href='Product.aspx?d=" + array[a][0] + "'><img src=../Picture/delete.png style='width:40px;'></a>";
+                    rightStr += "<div class='delete'>";
+                    rightStr += "<a href='Product.aspx?d=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:40px;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
                 }
-                else
-                {
-                    rightStr += "</div>";
-                }
+
                 rightStr += "</div>"
                     + "<div class='name'><a href='ProductInformation.aspx?p=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
 #endregion
