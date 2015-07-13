@@ -158,7 +158,7 @@ namespace Shopping_Mall.View
                         +"</div>"
                         +"</div></a>";
                 }
-                else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[a][0] + "'><img src=" + imageUrl + "></a></div>";
+                else rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'><div class='image'><img src=" + imageUrl + "></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -190,13 +190,9 @@ namespace Shopping_Mall.View
 #region 欄位information
                 //欄位ID,name,type,price,num,picture,discountID
                 //1個ASP.NET擁有多個form
-                if (a == 0)
-                {
-                    rightStr += "<form runat'server'></form>";
-                }
-                rightStr += "<form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                         + "<div class='information'>購買數量："
-                        + "<input type='number' class='form-control' name='num' min='1' max='" + array[a][4] + "' style=width:50px runat'server'>"
+                        + "<input type='number' name='"+a+"'class='form-control' name='num' min='1' max='" + array[a][4] + "' style=width:50px runat'server'>"
                         + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
 #endregion 
                 rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
