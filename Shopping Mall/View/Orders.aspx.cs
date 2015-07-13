@@ -56,7 +56,7 @@ namespace Shopping_Mall.View
                 orderList += "</ul></div>"
                     + "<div class='column-boxS'>" + total.ToString() + "</div>";
                 if (productArr[i][5] == null || productArr[i][5].Equals(""))
-                    orderList += "<div class='column-boxM'><div class='button-style'><a href='Orders.aspx?pay=" + dt.ToShortDateString().ToString() + ":" + productArr[i][0] + "'>未繳費</a></div></div>";
+                    orderList += "<div class='column-boxM'><div class='button-style '><a href='Orders.aspx?pay=" + dt.ToShortDateString().ToString() + ":" + productArr[i][0] + "'>未繳費</a></div></div>";
                 else orderList += "<div class='column-boxM'><div class='button-style'>已繳費</div>" + productArr[i][5] + "</div>";
                 if (productArr[i][6] == null || productArr[i][6].Equals(""))
                     orderList += "<div class='column-boxM'><div class='button-style'><a href='Orders.aspx?ship=" + dt.ToShortDateString().ToString() + ":" + productArr[i][0] + "'>未出貨</a></div></div></div>";
