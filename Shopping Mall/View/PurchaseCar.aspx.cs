@@ -60,6 +60,7 @@ namespace Shopping_Mall.View
                 dbOrder.insert(schemaArr, values);
 
                 dbProduct.modify("num", int.Parse(arrOrder[i][4]) - int.Parse(arrOrder[i][5]), "name", arrOrder[i][2]);
+                db.delete("ID", arrOrder[i][1]);
             }
 
             Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");

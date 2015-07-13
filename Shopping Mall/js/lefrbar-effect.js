@@ -8,10 +8,10 @@ $(document).ready(function () {
         $ul.slideToggle();
     }).siblings('ul').hide();
 
-    $('.center-column').click(function () {
-        var $ul = $(this).next('.content-center ul');
+    $('.column-boxL').click(function () {
+        var $ul = $(this).next('.column-boxL ul');
         if (!$ul.is(':visible')) {
-            $('.content-center ul:visible').slideUp();
+            $('.column-boxL ul:visible').slideUp();
         }
         $ul.slideToggle();
     }).siblings('ul').hide();

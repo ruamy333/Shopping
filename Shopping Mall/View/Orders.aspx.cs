@@ -50,7 +50,7 @@ namespace Shopping_Mall.View
                 for (int j = 0; j < productArr.Length; j++)
                 {
                     total += int.Parse(productArr[j][4]);
-                    //orderList += "<li>" + productArr[j][2] + "  " + productArr[j][3] + "</li>";
+                    orderList += "<li>" + productArr[j][2] + "  數量：" + productArr[j][3] + "</li>";
                 }
                 DateTime dt = DateTime.Now;
                 orderList += "</ul></div>"
