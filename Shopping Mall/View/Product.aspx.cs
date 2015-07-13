@@ -13,11 +13,16 @@ namespace Shopping_Mall.View
         public String leftbarStr = "";
         public String rightStr = "";
         public String pageStr = "";
+        public String buycarStr = "";
         private DBFunction db = new DBFunction("product");
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {         
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
+            if (Session["account"] == null || !Session["account"].Equals("admin"))
+            {
+                buycarStr += "<div id='buycar'><img src='/Picture/buycar.png' /></div>";
+            }
             delete();
             PutIntoCart();
             setLeftBar();
