@@ -8,13 +8,17 @@
     <script src="../js/buycar-scroll.js"></script>
     <script>
         $(document).ready(function () {
+            var s = "";
             $(".image").draggable({
-                revert: true                
+                drag: function (event, ui) {
+                    s = $(this).attr("id");
+                },
+                revert: true
             });
             
             $("#buycar").droppable({
                 drop: function (event, ui) {
-                    document.location.href = "Product.aspx";
+                    document.location.href = "Product.aspx?test=" + s;
                 }
             });
         });

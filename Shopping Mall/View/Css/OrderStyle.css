@@ -48,7 +48,7 @@ ul
     margin-bottom:10px;
     font-size:14px;
 }
-.content-center ul
+.center-column ul
 {
     background:#eee;
 }
@@ -90,5 +90,6 @@ ul
 {
 	background-color: #b0c4de;
 }
-.button-style a
-{
+    .button-style a
+    {
+    }
