@@ -139,17 +139,25 @@ namespace Shopping_Mall.View
                 rightStr += "<div class ='product-inside'>";
 #region 欄位ImgDel
                 rightStr += "<div class='ImgDel'>";
+
+                String imageUrl;
+                if (array[a][5] == null || array[a][5].Equals(""))
+                {
+                    imageUrl = "../Picture/nonePic.png";
+                }
+                else imageUrl = "../UploadPic/" + array[a][5];
+
                 //判斷有無優惠方案
                 if (array[a][7] != null && array[a][7] != "0")
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'>"
-                        +"<div class='image' style='background:url(../UploadPic/" + array[a][5] + ") no-repeat; background-size:300px 200px;'>"
+                        + "<div class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
                         +"<div class='dis-box'><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
                         +"</div></a>";
                 }
-                else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[a][0] + "'><img src=../UploadPic/" + array[a][5] + "></a></div>";
+                else rightStr += "<div class='image'><a href='ProductInformation.aspx?p=" + array[a][0] + "'><img src=" + imageUrl + "></a></div>";
                 rightStr += "<div class='delete'>";
 
                 //刪除按鈕visible的判斷
