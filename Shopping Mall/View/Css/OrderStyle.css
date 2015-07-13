@@ -1,4 +1,46 @@
-﻿
+﻿/*各種框*/
+.content {
+    width:1200px;
+    height:1200px;
+    /*overflow:auto;*/
+}
+.content-top {
+    margin-top:20px;
+    width:1180px;
+}
+.content-center {
+    margin-left:10px;
+    margin-top:20px;
+    width:1180px;
+}
+.center-column {
+    margin-bottom:10px;
+    width:auto;
+    height:69px;
+    border-bottom: 1px solid #E7E7E7;
+}
+.column-boxS{
+    margin-top:33px;
+    margin-left:5px;
+    height:35px;
+    float:left;
+    width:115px;
+}
+.column-boxM{
+    margin-top:33px;
+    margin-left:5px;
+    height:35px;
+    float:left;
+    width:215px;
+}
+.column-boxL{
+    margin-top:33px;
+    margin-left:5px;
+    height:35px;
+    float:left;
+    width:375px;
+}
+/*點擊縮放*/
 ul
 {
     line-height:1.9;
@@ -6,7 +48,48 @@ ul
     margin-bottom:10px;
     font-size:14px;
 }
-.content-center ul
+.center-column ul
 {
     background:#eee;
 }
+/*字體*/
+.content-header
+{
+	letter-spacing: -1px;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	color: #515151;
+}
+.content-text
+{
+    height:24px;
+    padding-top:5px;
+    width:auto;
+    margin-left:5px;
+    font-size:18px;
+}
+/*按鈕style*/
+.button-style
+{
+	display: inline-block;
+	margin-top: 2px;
+	padding: 2px 4px;
+	border-radius: 5px;
+	border: 1px solid #2f4f4f;
+	line-height: normal;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 0px rgba(0,0,0,.2);
+	font-size: 12px;
+	font-weight: 200;
+	color: #FFF !important;
+}
+.button-style:hover
+{
+	background-color: #b0c4de;
+}
+    .button-style a
+    {
+    }
