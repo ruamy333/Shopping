@@ -37,8 +37,8 @@
                 <asp:ListItem>買____送____</asp:ListItem>
             </asp:RadioButtonList>
             <div class="discountDetail">
-             <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number"></asp:TextBox>
-             <%=discountStr[1] %><asp:TextBox ID="txtDiscountContent" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number"></asp:TextBox>
+             <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
+             <%=discountStr[1] %><asp:TextBox ID="txtDiscountContent" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
             </div>
         </div>
         <div class="formBox">
