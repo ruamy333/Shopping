@@ -8,8 +8,8 @@
 
     $ad.css({
         top: $(document).height(),
-        left:_diffX,
-        //left: $win.width() - _width - _diffX,
+        //left:_diffX,
+        left: $win.width() - _width - _diffX,
         opacity: 1
     });
 
@@ -18,8 +18,8 @@
 
         $ad.stop().animate({
             top: $this.scrollTop() + $this.height() - _height - _diffY,
-            left:60 + _diffX
-            //left: $this.scrollLeft() + $this.width() - _width - _diffX
+            //left:60 + _diffX
+            left: $this.scrollLeft() + $this.width() - _width - _diffX
         }, _moveSpeed);
     }).scroll();
 });
