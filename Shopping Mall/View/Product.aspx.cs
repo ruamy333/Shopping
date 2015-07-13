@@ -17,15 +17,38 @@ namespace Shopping_Mall.View
         private DBFunction db = new DBFunction("product");
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
-        {         
+        {
+            setLeftBar();
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
                 buycarStr += "<div id='buycar'><img src='/Picture/buycar.png' /></div>";
             }
-            delete();
-            PutIntoCart();
-            setLeftBar();
+
+            String del = Request.QueryString["d"];
+            if (del != null)
+            {
+                delete(del);          
+            }
+
+            String num = Request.QueryString["num"];
+            String ID = Request.QueryString["ID"];
+            if (num != null && num != "")
+            {
+                if ((String)Session["account"] != null)
+                {
+                    PutIntoCart(num,ID);
+                }
+                else
+                {
+                    Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
+                }
+            }
+            else if(ID != null && (num == null || num=="")){
+                Response.Write("<Script language='JavaScript'>alert('請輸入數量');</Script>");
+            }
+
+                    
             pageShow(6);
         }
 
@@ -44,55 +67,40 @@ namespace Shopping_Mall.View
             }
         }
         //刪除
-        private void delete()
+        private void delete(String del)
         {
-            String del = Request.QueryString["d"];
-            if (del != null)
-            {
-                db.delete("ID", del);
-            }
+             db.delete("ID", del);
+             Response.Redirect("Product.aspx");
         }
 
         //click商品數量加入購物車
-        private void PutIntoCart()
-        {
-            String num = Request.QueryString["num"];
-            String ID = Request.QueryString["ID"];
-            if (num != null && num != "")
+        private void PutIntoCart(String num,String ID)
+        {   
+            DBFunction dbPurchase = new DBFunction("purchaseList");
+            String[][] info = db.searchRowByColumn("name, price", "ID", ID);
+            //舊有資料更新
+            String[][] checkArr = dbPurchase.searchRowByColumn("product_name , num", "account", Session["account"].ToString());
+            if (checkArr.Length > 0)
             {
-                if ((String)Session["account"] != null)
+                bool check = false;
+                int i;
+                for (i = 0; i < checkArr.Length; i++)
                 {
-                    DBFunction dbPurchase = new DBFunction("purchaseList");
-                    String[][] info = db.searchRowByColumn("name, price", "ID", ID);
-                    //舊有資料更新
-                    String[][] checkArr = dbPurchase.searchRowByColumn("product_name , num", "account", Session["account"].ToString());
-                    if (checkArr.Length > 0)
+                    if (checkArr[i][0].Equals(info[0][0]))
                     {
-                        bool check = false;
-                        int i;
-                        for (i = 0; i < checkArr.Length; i++)
-                        {
-                            if (checkArr[i][0].Equals(info[0][0]))
-                            {
-                                check = true;
-                                break;
-                            }
-                        }
-                        if (check)
-                            dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(num), "account", Session["account"].ToString() + "' AND product_name='" + info[0][0]);
-                        else newData(dbPurchase, info[0][0], num, (int.Parse(num) * int.Parse(info[0][1])).ToString());
+                        check = true;
+                        break;
                     }
-                    else
-                    {
-                        newData(dbPurchase, info[0][0], num, (int.Parse(num) * int.Parse(info[0][1])).ToString());
-                    }
-                    Response.Redirect("Product.aspx");
                 }
-                else
-                {
-                    Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
-                }
+                if (check)
+                    dbPurchase.modify("num", int.Parse(checkArr[i][1]) + int.Parse(num), "account", Session["account"].ToString() + "' AND product_name='" + info[0][0]);
+                else newData(dbPurchase, info[0][0], num, (int.Parse(num) * int.Parse(info[0][1])).ToString());
             }
+            else
+            {
+                newData(dbPurchase, info[0][0], num, (int.Parse(num) * int.Parse(info[0][1])).ToString());
+            }
+            Response.Redirect("Product.aspx");
         }
         //新增購物車資料
         private void newData(DBFunction dbPurchase, String name, String num, String price)
@@ -197,7 +205,7 @@ namespace Shopping_Mall.View
                 //1個ASP.NET擁有多個form
                 rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
                         + "<div class='information'>購買數量："
-                        + "<input type='number' id='txt" + array[a][0] + " class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
+                        + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
                         + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
 #endregion 
                 rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
