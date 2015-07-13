@@ -13,7 +13,9 @@
                 drag: function (event, ui) {
                     productID = $(this).attr("id");
                 },
-                revert: true
+                revert: true,
+                containment: "#containment-wrapper",
+                scroll: false
             });
             
             $("#buycar").droppable({
@@ -33,9 +35,7 @@
                 <%=leftbarStr %>
         </div>
         <div class="rightbar">
-            <div id="buycar">
-			    <img src="/Picture/buycar.png" />
-	        </div>
+            <%=buycarStr %>
             <%=rightStr %>
         </div>
         
