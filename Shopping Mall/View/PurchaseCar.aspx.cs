@@ -37,15 +37,16 @@ namespace Shopping_Mall.View
             DBFunction dbOrder = new DBFunction("orderList");
             DBFunction dbProduct = new DBFunction("product");
             String[][] attributes = dbOrder.searchSchema("name");
-            String[] schemaArr = new String[attributes.Length];
-            for (int i = 0; i < attributes.Length; i++)
+            String[] schemaArr = new String[attributes.Length+1];
+            int orderID = findOrderID(dbOrder);
+            for (int i = 1; i < attributes.Length+1; i++)
             {
-                schemaArr[i] = attributes[i][0];
+                schemaArr[i] = attributes[i-1][0];
             }
             for (int i = 0; i < arrOrder.Length; i++ )
             {
                 int subtotal = 0;
-                if (arrOrder[i][7] == null)
+                if (arrOrder[i][7] == null || arrOrder[i][7].Equals("0"))
                 {
                     subtotal = Convert.ToInt32(arrOrder[i][3]) * Convert.ToInt32(arrOrder[i][5]);
                 }
@@ -54,13 +55,25 @@ namespace Shopping_Mall.View
                     String[] discountArr = disc.findingType(int.Parse(arrOrder[i][7]), int.Parse(arrOrder[i][5]), int.Parse(arrOrder[i][3]));
                     subtotal = int.Parse(discountArr[1]);
                 }
-                String[] values = new String[] { "", Session["account"].ToString(), arrOrder[i][2], arrOrder[i][4], subtotal.ToString() };
+
+                String[] values = new String[] { "", orderID.ToString(), Session["account"].ToString(), arrOrder[i][2], arrOrder[i][5], subtotal.ToString(), "", "" };
                 dbOrder.insert(schemaArr, values);
 
                 dbProduct.modify("num", int.Parse(arrOrder[i][4]) - int.Parse(arrOrder[i][5]), "name", arrOrder[i][2]);
             }
 
             Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");
+        }
+        //找出現有訂單標號
+        private int findOrderID(DBFunction dbOrder) 
+        {
+            String[][] IDArr = dbOrder.searchGroupBy("ID");
+            int newID = 0;
+            for (int i = 0; i < IDArr.Length; i++)
+            {
+                if (int.Parse(IDArr[i][0]) > newID) newID = int.Parse(IDArr[i][0]);
+            }
+            return ++newID;
         }
         //列出購買清單      
         private void showList()
