@@ -43,7 +43,7 @@ namespace Shopping_Mall.View
                 productArr = db.searchByRow("ID", arrType[i][0]);
                 String[][] accJoinOrder = db.innerJoin("account.name", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
                 orderList += "<div class='center-column'>" 
-                    + "<div class='column-boxS'>" + productArr[i][0] + "</div>"
+                    + "<div class='column-boxS'>" + productArr[0][0] + "</div>"
                     + "<div class='column-boxS'>" + accJoinOrder[0][0] + "</div>"
                     + "<div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
                 int total = 0;
@@ -55,12 +55,12 @@ namespace Shopping_Mall.View
                 DateTime dt = DateTime.Now;
                 orderList += "</ul></div>"
                     + "<div class='column-boxS'>" + total.ToString() + "</div>";
-                if (productArr[i][5] == null || productArr[i][5].Equals(""))
-                    orderList += "<div class='column-boxM'><div class='button-style' style='background-color:#ff4500'><a href='Orders.aspx?pay=" + dt.ToShortDateString().ToString() + ":" + productArr[i][0] + "'>未繳費</a></div></div>";
-                else orderList += "<div class='column-boxM'><div class='button-style'>已繳費</div>" + productArr[i][5] + "</div>";
-                if (productArr[i][6] == null || productArr[i][6].Equals(""))
-                    orderList += "<div class='column-boxM'><div class='button-style' style='background-color:#ff4500'><a href='Orders.aspx?ship=" + dt.ToShortDateString().ToString() + ":" + productArr[i][0] + "'>未出貨</a></div></div></div>";
-                else orderList += "<div class='column-boxM'><div class='button-style'>已出貨</div>" + productArr[i][6] + "</div></div>";
+                if (productArr[0][5] == null || productArr[0][5].Equals(""))
+                    orderList += "<div class='column-boxM'><div class='button-style' style='background-color:#ff4500'><a href='Orders.aspx?pay=" + dt.ToShortDateString().ToString() + ":" + productArr[0][0] + "'>未繳費</a></div></div>";
+                else orderList += "<div class='column-boxM'><div class='button-style'>已繳費</div>" + productArr[0][5] + "</div>";
+                if (productArr[0][6] == null || productArr[0][6].Equals(""))
+                    orderList += "<div class='column-boxM'><div class='button-style' style='background-color:#ff4500'><a href='Orders.aspx?ship=" + dt.ToShortDateString().ToString() + ":" + productArr[0][0] + "'>未出貨</a></div></div></div>";
+                else orderList += "<div class='column-boxM'><div class='button-style'>已出貨</div>" + productArr[0][6] + "</div></div>";
             }
         }
     }
