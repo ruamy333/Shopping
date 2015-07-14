@@ -32,8 +32,8 @@
             <div class="title">折扣方式：</div>
             <asp:RadioButtonList ID="radiobtnDiscount" runat="server" OnSelectedIndexChanged="radiobtnDiscount_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Selected="True">無</asp:ListItem>
-                <asp:ListItem>____ % off</asp:ListItem>
-                <asp:ListItem>買____送____</asp:ListItem>
+                <asp:ListItem>折扣</asp:ListItem>
+                <asp:ListItem>其他</asp:ListItem>
             </asp:RadioButtonList>
             <div class="discountDetail">
              <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
