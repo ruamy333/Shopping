@@ -64,7 +64,19 @@
     <Content Include="js\buycar-scroll.js" />
     <Content Include="js\jquery.hoverpulse.js" />
     <Content Include="js\lefrbar-effect.js" />
+    <Content Include="Picture\bg05.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Picture\buycar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\nonePic.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UploadPic\564507_484779621576439_1408409668_n.jpg">
