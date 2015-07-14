@@ -76,7 +76,6 @@
     <Content Include="Picture\img01.jpg" />
     <Content Include="Picture\img02.jpg" />
     <Content Include="Picture\img03.jpg" />
-    <Content Include="Picture\shopping-carts.png" />
     <Content Include="View\Css\ProdInfoStyle.css" />
     <Content Include="View\Css\ProductEditor.css" />
     <Content Include="Index.aspx" />
@@ -153,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
+    <None Include="Properties\PublishProfiles\OnlineStore.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
