@@ -168,6 +168,9 @@ ul
     }
 #buycar {
 	position: absolute;
+    width:200px;
+    height:200px;
+    padding:50px;
 }
 #buycar img {
 	border: none;

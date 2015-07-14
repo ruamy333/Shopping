@@ -19,10 +19,15 @@ namespace Shopping_Mall
             //判斷帳號
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             }
             else
             {
+                String[][] arrType = db.searchGroupBy("type");
+                for (int i = 0; i < arrType.Length; i++)
+                {
+                    dropdownType.Items.Add(arrType[i][0]);
+                }
                 String[][] arr = db.searchSchema("name");
                 schemaArr = new String[arr.Length];
                 for (int i = 0; i < arr.Length; i++)
@@ -42,7 +47,7 @@ namespace Shopping_Mall
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Index.aspx");
+            Response.Redirect("../Index.aspx");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -50,7 +55,15 @@ namespace Shopping_Mall
             //避免資料空值或負值
             if (txtName.Text.Equals("") || txtNum.Text.Equals("") || txtPrice.Text.Equals(""))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入資料');</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入資料');location.href='ProductEditor.aspx';</Script>");
+            }
+            else if (radiobtnDiscount.SelectedIndex == 1 && txtDiscountType.Text.Equals(""))
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入折扣');location.href='Product.aspx';</Script>");
+            }
+            else if (radiobtnDiscount.SelectedIndex == 2 && (txtDiscountType.Text.Equals("") || txtDiscountContent.Text.Equals("")))
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入優惠');location.href='Product.aspx';</Script>");
             }
             else
             {
@@ -141,7 +154,7 @@ namespace Shopping_Mall
             list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
             list.Add(getDiscountID());
             String str = db.insert(schemaArr, list.ToArray());
-            Response.Write("<script>alert('新增成功!');location.href='/Index.aspx';</script>");
+            Response.Write("<script>alert('新增成功!');location.href='../Index.aspx';</script>");
         }
 
         //修改商品詳細資料

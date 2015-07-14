@@ -23,7 +23,7 @@ namespace Shopping_Mall.View
             }
             showList();
             String deleteID = Request.QueryString["deleteOrder"];
-
+         
             if (deleteID != null)
             {
                 db.delete("ID", deleteID);

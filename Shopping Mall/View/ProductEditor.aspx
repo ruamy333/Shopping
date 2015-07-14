@@ -14,9 +14,6 @@
         <div class="formBox">
             <div class="title">商品類別：</div>
             <asp:DropDownList ID="dropdownType" CssClass="textBox form-control" runat="server">
-                <asp:ListItem>光纖量測產品</asp:ListItem>
-                <asp:ListItem>光纜監測管理系統</asp:ListItem>
-                <asp:ListItem>光電轉換產品</asp:ListItem>
             </asp:DropDownList>
         </div>
 

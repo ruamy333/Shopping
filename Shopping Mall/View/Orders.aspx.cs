@@ -82,7 +82,7 @@ namespace Shopping_Mall.View
                 productArr = db.searchByRow("ID", arrType[i][0]);
                 String[][] accJoinOrder = db.innerJoin("account.name, account.phone, account.address", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
                 orderList += "<div class='center-column'>"
-                    + "<div class='column-boxS'>" + productArr[0][0] + "</div>"                  
+                    + "<div class='column-boxS'>" + productArr[0][0] + "</div>"
                     + "<div class='column-boxS'>" + productArr[0][7] + "</div>"
                     + "<div class='column-boxS'><div class='column-retractable'>" + accJoinOrder[0][0] + "</div><ul>";
                 
