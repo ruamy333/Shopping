@@ -203,14 +203,18 @@ namespace Shopping_Mall.View
 #region 欄位information
                 //欄位ID,name,type,price,num,picture,discountID
                 //1個ASP.NET擁有多個form
-                rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-                        + "<div class='information'>購買數量："
-                        + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
-                        + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
-#endregion 
-                rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
-                        + "</form>"
-                        + "</div>";
+                if ((String)Session["account"] != "admin")
+                {
+                    rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                            + "<div class='information'>購買數量："
+                            + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
+                            + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
+#endregion
+                    rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
+                            + "</form>";
+                            
+                }
+                rightStr += "</div>";
 #endregion
 
                 //是否最後一筆資料、是否每頁顯示上限
