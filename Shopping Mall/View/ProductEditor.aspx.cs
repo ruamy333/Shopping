@@ -82,6 +82,7 @@ namespace Shopping_Mall
             txtNum.Text = productInfo[0][4];
             txtSummary.Text = productInfo[0][6].Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " ");
             
+            //無折扣
             if (productInfo[0][7].Equals("0"))
             {
                 radiobtnDiscount.SelectedIndex = 0;
@@ -89,8 +90,12 @@ namespace Shopping_Mall
             else
             {
                 String[][] discountArr = db.innerJoin("discount.type,discount.content", "discount", "discount.discountID", "product.discountID", "discount.discountID", productInfo[0][7]);
-                radiobtnDiscount.SelectedValue = discountArr[0][0];
+                if (discountArr[0][0].Equals("____ % off"))
+                    radiobtnDiscount.SelectedIndex = 1;
+                else if (discountArr[0][0].Equals("買____送____"))
+                    radiobtnDiscount.SelectedIndex = 2;
 
+                //顯示折扣的欄位
                 setSelectedDiscount();
 
                 if (discountArr[0][1] != null && discountArr[0][1] != "0")
@@ -102,6 +107,7 @@ namespace Shopping_Mall
             }
         }
 
+        //顯示折扣的欄位
         private void setSelectedDiscount()
         {
             txtDiscountType.Visible = false;
@@ -190,9 +196,13 @@ namespace Shopping_Mall
             {
                 return "0";
             }
+            else if (radiobtnDiscount.SelectedIndex == 1)
+            {
+                return dbDiscount.insertAndSearchID("____ % off", txtDiscountType.Text + "," + txtDiscountContent.Text);
+            }
             else
             {
-                return dbDiscount.insertAndSearchID(radiobtnDiscount.SelectedValue, txtDiscountType.Text + "," + txtDiscountContent.Text);
+                return dbDiscount.insertAndSearchID("買____送____", txtDiscountType.Text + "," + txtDiscountContent.Text);
             }
         }
     }
