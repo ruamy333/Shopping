@@ -17,7 +17,7 @@ namespace Shopping_Mall.View
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["account"] == null)              
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             else if (!Session["account"].Equals("admin")) customerShowList();
             else showList();
             
