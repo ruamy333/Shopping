@@ -17,7 +17,7 @@ namespace Shopping_Mall.View
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["account"] == null)              
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             else if (!Session["account"].Equals("admin")) customerShowList();
             else showList();
             
@@ -41,11 +41,21 @@ namespace Shopping_Mall.View
             for (int i = 0; i < arrType.Length; i++)
             {
                 productArr = db.searchByRow("ID", arrType[i][0]);
-                String[][] accJoinOrder = db.innerJoin("account.name", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
+                String[][] accJoinOrder = db.innerJoin("account.name, account.phone, account.address", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
                 orderList += "<div class='center-column'>" 
                     + "<div class='column-boxS'>" + productArr[0][0] + "</div>"
-                    + "<div class='column-boxS'>" + accJoinOrder[0][0] + "</div>"
-                    + "<div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
+                    + "<div class='column-boxS'>" + productArr[0][7] + "</div>"
+                    + "<div class='column-boxS'><div class='column-retractable'>" + accJoinOrder[0][0] + "</div><ul>";
+
+                if ((accJoinOrder[0][1] == null || accJoinOrder[0][1].Equals("")) && (accJoinOrder[0][2] == null || accJoinOrder[0][2].Equals("")))
+                    orderList += "<li>電話：無資料</li><li>地址：無資料</li>";
+                else if (accJoinOrder[0][1] == null || accJoinOrder[0][1].Equals(""))
+                    orderList += "<li>電話：無資料</li><li>地址：" + accJoinOrder[0][2] + "</li>";
+                else if (accJoinOrder[0][2] == null || accJoinOrder[0][2].Equals(""))
+                    orderList += "<li>電話：" + accJoinOrder[0][1] + "</li><li>地址：無資料</li>";
+                else orderList += "<li>電話：" + accJoinOrder[0][1] + "</li><li>地址：" + accJoinOrder[0][2] + "</li>";
+
+                orderList += "</ul></div><div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
                 int total = 0;
                 for (int j = 0; j < productArr.Length; j++)
                 {
@@ -70,11 +80,21 @@ namespace Shopping_Mall.View
             for (int i = 0; i < arrType.Length; i++)
             {
                 productArr = db.searchByRow("ID", arrType[i][0]);
-                String[][] accJoinOrder = db.innerJoin("account.name", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
+                String[][] accJoinOrder = db.innerJoin("account.name, account.phone, account.address", "account", "account.account", "orderList.account", "orderList.ID", arrType[i][0]);
                 orderList += "<div class='center-column'>"
-                    + "<div class='column-boxS'>" + productArr[0][0] + "</div>"
-                    + "<div class='column-boxS'>" + accJoinOrder[0][0] + "</div>"
-                    + "<div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
+                    + "<div class='column-boxS'>" + productArr[0][0] + "</div>"                  
+                    + "<div class='column-boxS'>" + productArr[0][7] + "</div>"
+                    + "<div class='column-boxS'><div class='column-retractable'>" + accJoinOrder[0][0] + "</div><ul>";
+                
+                if ((accJoinOrder[0][1] == null || accJoinOrder[0][1].Equals("")) && (accJoinOrder[0][2] == null || accJoinOrder[0][2].Equals("")))
+                    orderList += "<li>電話：無資料</li><li>地址：無資料</li>";
+                else if (accJoinOrder[0][1] == null || accJoinOrder[0][1].Equals(""))
+                    orderList += "<li>電話：無資料</li><li>地址：" + accJoinOrder[0][2] + "</li>";
+                else if (accJoinOrder[0][2] == null || accJoinOrder[0][2].Equals(""))
+                    orderList += "<li>電話：" + accJoinOrder[0][1] + "</li><li>地址：無資料</li>";
+                else orderList += "<li>電話：" + accJoinOrder[0][1] + "</li><li>地址：" + accJoinOrder[0][2] + "</li>";
+
+                orderList += "</ul></div><div class='column-boxL'><div class='column-retractable'>點擊</div><ul>";
                 int total = 0;
                 for (int j = 0; j < productArr.Length; j++)
                 {

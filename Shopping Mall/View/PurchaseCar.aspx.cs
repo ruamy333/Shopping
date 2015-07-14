@@ -19,14 +19,14 @@ namespace Shopping_Mall.View
         {
             if (Session["account"] == null || Session["account"].Equals("admin"))
             {
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             }
             showList();
-            String ID = Request.QueryString["d"];
-         
-            if (ID !=null)
+            String deleteID = Request.QueryString["deleteOrder"];
+
+            if (deleteID != null)
             {
-                db.delete("ID", ID);
+                db.delete("ID", deleteID);
                 Response.Redirect("PurchaseCar.aspx");
             }
             
@@ -55,15 +55,15 @@ namespace Shopping_Mall.View
                     String[] discountArr = disc.findingType(int.Parse(arrOrder[i][7]), int.Parse(arrOrder[i][5]), int.Parse(arrOrder[i][3]));
                     subtotal = int.Parse(discountArr[1]);
                 }
-
-                String[] values = new String[] { "", orderID.ToString(), Session["account"].ToString(), arrOrder[i][2], arrOrder[i][5], subtotal.ToString(), "", "" };
+                DateTime dt = DateTime.Now;
+                String[] values = new String[] { "", orderID.ToString(), Session["account"].ToString(), arrOrder[i][2], arrOrder[i][5], subtotal.ToString(), "", "", dt.ToShortDateString().ToString() };
                 dbOrder.insert(schemaArr, values);
 
                 dbProduct.modify("num", int.Parse(arrOrder[i][4]) - int.Parse(arrOrder[i][5]), "name", arrOrder[i][2]);
                 db.delete("ID", arrOrder[i][1]);
             }
 
-            Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");
+            Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='../Index.aspx';</Script>");
         }
         //找出現有訂單標號
         private int findOrderID(DBFunction dbOrder) 
@@ -101,13 +101,13 @@ namespace Shopping_Mall.View
 
                 shoppingList +=
                     "<div class='center-column'><div class='column-img'>"
-                    + "<a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][6] + "></a></div>"
-                    + "<div class='column-name'><a href='ProductInformation.aspx?p=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
+                    + "<a href='ProductInformation.aspx?product=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][6] + "></a></div>"
+                    + "<div class='column-name'><a href='ProductInformation.aspx?product=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
                     + "<div class='column-box'><int>" + arrOrder[i][3] + "</int></div>"
                     + "<div class='column-box'><int>" + arrOrder[i][5] + "</int></div>"
                     + "<div class='column-box'><int>" + subtotal + "</int></div>"
                     + "<div class='column-box'><discount>" + dicountStr + "</discount></div>"
-                    + "<a href='PurchaseCar.aspx?d=" + arrOrder[i][1] + "'><div class='column-delete'></div></a></div>";              
+                    + "<a href='PurchaseCar.aspx?deleteOrder=" + arrOrder[i][1] + "'><div class='column-delete'></div></a></div>";              
             }
             //計算總金額
             totalPrice.Text += total + "元";         

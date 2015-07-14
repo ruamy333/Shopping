@@ -61,7 +61,7 @@ namespace Shopping_Mall.View
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
@@ -165,13 +165,13 @@ namespace Shopping_Mall.View
                 if (array[a][7] != null && array[a][7] != "0")
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
-                    rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'>"
+                    rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
                         + "<div id='" + array[a][0]  + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
                         +"</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "'><img src=" + imageUrl + "></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "'><img src=" + imageUrl + "></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -183,7 +183,7 @@ namespace Shopping_Mall.View
                 }
 
                 rightStr += "</div>"
-                    + "<div class='name'><a href='ProductInformation.aspx?p=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
+                    + "<div class='name'><a href='ProductInformation.aspx?product=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
 #endregion
 #region 欄位information
                 if (array[a][7] != null && array[a][7] != "0")
@@ -239,7 +239,7 @@ namespace Shopping_Mall.View
                 {
                     if (page != i + 1)
                     {
-                        pageStr += "<a href='Product.aspx?p=" + (i + 1) + "&t=" + Request.QueryString["t"] + "'>" + (i + 1) + "</a>　";
+                        pageStr += "<a href='Product.aspx?product=" + (i + 1) + "&t=" + Request.QueryString["t"] + "'>" + (i + 1) + "</a>　";
                     }
 
                     else

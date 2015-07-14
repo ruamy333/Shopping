@@ -14,6 +14,9 @@
                     <asp:Label ID="account" CssClass="content-text" runat="server" Text="訂單編號"></asp:Label>
                 </div>
                 <div class="column-boxS">
+                    <asp:Label ID="orderDateLabel" CssClass="content-text" runat="server" Text="下訂日期"></asp:Label>
+                </div>
+                <div class="column-boxS">
                     <asp:Label ID="name" CssClass="content-text" runat="server" Text="姓名"></asp:Label>
                 </div>
                 <div class="column-boxL">

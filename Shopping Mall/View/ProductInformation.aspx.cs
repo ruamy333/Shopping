@@ -20,7 +20,7 @@ namespace Shopping_Mall.View.ProductInfo
                 btnPurchase.Visible = false;
                 alertLogin.Visible = true;
             }
-            productShow(Request.QueryString["p"]);
+            productShow(Request.QueryString["product"]);
             setLeftBar();
         }
         //讀取產品介紹
@@ -97,7 +97,7 @@ namespace Shopping_Mall.View.ProductInfo
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }

@@ -42,9 +42,9 @@ namespace Shopping_Mall.View
         {
             String acc = account.Text;
             String pwd = password.Text;
-            String[] arr = db.searchRowByColumn("password", "account", acc)[0];
+            String[][] arr = db.searchRowByColumn("password", "account", acc);
             if (arr.Length==0) return false;
-            else if (arr[0].Equals(pwd)) return true;
+            else if (arr[0][0].Equals(pwd)) return true;
             else return false;
         }
 
