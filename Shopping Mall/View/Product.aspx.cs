@@ -22,7 +22,7 @@ namespace Shopping_Mall.View
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
-                buycarStr += "<div id='buycar'><img src='../Picture/buycar.png' /></div>";
+                buycarStr += "<div id='buycar'><a href='PurchaseCar.aspx'><img src='../Picture/buycar.png' /></a></div>";
             }
 
             String del = Request.QueryString["d"];

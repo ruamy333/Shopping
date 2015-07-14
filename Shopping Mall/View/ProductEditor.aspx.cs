@@ -19,10 +19,15 @@ namespace Shopping_Mall
             //判斷帳號
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             }
             else
             {
+                String[][] arrType = db.searchGroupBy("type");
+                for (int i = 0; i < arrType.Length; i++)
+                {
+                    dropdownType.Items.Add(arrType[i][0]);
+                }
                 String[][] arr = db.searchSchema("name");
                 schemaArr = new String[arr.Length];
                 for (int i = 0; i < arr.Length; i++)
@@ -42,7 +47,7 @@ namespace Shopping_Mall
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Index.aspx");
+            Response.Redirect("../Index.aspx");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

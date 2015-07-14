@@ -19,7 +19,7 @@ namespace Shopping_Mall.View
         {
             if (Session["account"] == null || Session["account"].Equals("admin"))
             {
-                Response.Redirect("/Index.aspx");
+                Response.Redirect("../Index.aspx");
             }
             showList();
             String ID = Request.QueryString["d"];
@@ -63,7 +63,7 @@ namespace Shopping_Mall.View
                 db.delete("ID", arrOrder[i][1]);
             }
 
-            Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='/Index.aspx';</Script>");
+            Response.Write("<Script language='JavaScript'>alert('購買成功!');location.href='../Index.aspx';</Script>");
         }
         //找出現有訂單標號
         private int findOrderID(DBFunction dbOrder) 
