@@ -25,7 +25,7 @@ namespace Shopping_Mall.View
                 buycarStr += "<div id='buycar'><img src='../Picture/buycar.png' /></div>";
             }
 
-            String del = Request.QueryString["d"];
+            String del = Request.QueryString["del"];
             if (del != null)
             {
                 delete(del);          
@@ -61,7 +61,7 @@ namespace Shopping_Mall.View
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    leftbarStr += "<a href='ProductInformation.aspx?p=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                    leftbarStr += "<a href='ProductInformation.aspx?page=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
@@ -119,7 +119,7 @@ namespace Shopping_Mall.View
         //p為分頁碼
         private void pageShow(int num)
         {
-            String p = Request.QueryString["p"];
+            String p = Request.QueryString["page"];
             int page = Convert.ToInt32(p);
             //第一次進入沒有回傳值，強制為第一頁
             if (p == null)
@@ -128,13 +128,13 @@ namespace Shopping_Mall.View
             }
             //首頁click more進來的畫面
             String[][] array;
-            if (Request.QueryString["t"] == null || Request.QueryString["t"] == "")
+            if (Request.QueryString["type"] == null || Request.QueryString["type"] == "")
             {
                 array = db.searchByColumnOrder("ID,name,type,price,num,picture,introduction,discountID");
             }
             else
             {
-                array = db.searchByRowOrder("type", Request.QueryString["t"]);
+                array = db.searchByRowOrder("type", Request.QueryString["type"]);
             }
             int count=-1;
             //index為每頁第一筆資料在array中的位置
@@ -165,25 +165,25 @@ namespace Shopping_Mall.View
                 if (array[a][7] != null && array[a][7] != "0")
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
-                    rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'>"
+                    rightStr += "<a href='ProductInformation.aspx?page=" + array[a][0] + "'>"
                         + "<div id='" + array[a][0]  + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
                         +"</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?p=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "'><img src=" + imageUrl + "></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?page=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "'><img src=" + imageUrl + "></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
                 {
                     rightStr += "<div class='delete'>";
-                    rightStr += "<a href='Product.aspx?d=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
+                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
                     rightStr += "</div><div class='delete'>";
                     rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
                 }
 
                 rightStr += "</div>"
-                    + "<div class='name'><a href='ProductInformation.aspx?p=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
+                    + "<div class='name'><a href='ProductInformation.aspx?page=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
 #endregion
 #region 欄位information
                 if (array[a][7] != null && array[a][7] != "0")
@@ -239,7 +239,7 @@ namespace Shopping_Mall.View
                 {
                     if (page != i + 1)
                     {
-                        pageStr += "<a href='Product.aspx?p=" + (i + 1) + "&t=" + Request.QueryString["t"] + "'>" + (i + 1) + "</a>　";
+                        pageStr += "<a href='Product.aspx?page=" + (i + 1) + "&type=" + Request.QueryString["type"] + "'>" + (i + 1) + "</a>　";
                     }
 
                     else
