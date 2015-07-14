@@ -64,18 +64,73 @@
     <Content Include="js\buycar-scroll.js" />
     <Content Include="js\jquery.hoverpulse.js" />
     <Content Include="js\lefrbar-effect.js" />
-    <Content Include="Picture\buycar.png" />
+    <Content Include="Picture\buycar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\564507_484779621576439_1408409668_n.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\FOMA6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\images.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\IMG_2423.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\KMS-P100FX3-G1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\MMC-P100FX-AN-G.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\NOCS.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\Optical_RS-232_Receiver.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\OT-8600.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\OT-8800.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\OT-8900%282%29.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\SpongeBob SquarePants.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UploadPic\UFO-320.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\Css\LoginStyle.css" />
     <Content Include="View\Css\OrderStyle.css" />
     <Content Include="View\Css\Product.css" />
     <Content Include="js\jquery-2.1.4.min.js" />
-    <Content Include="Picture\bg01.jpg" />
-    <Content Include="Picture\bg01.png" />
-    <Content Include="Picture\header-photo.jpg" />
-    <Content Include="Picture\header-photo1.jpg" />
-    <Content Include="Picture\img01.jpg" />
-    <Content Include="Picture\img02.jpg" />
-    <Content Include="Picture\img03.jpg" />
+    <Content Include="Picture\bg01.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\bg01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\header-photo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\header-photo1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\img01.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\img02.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\img03.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="View\Css\ProdInfoStyle.css" />
     <Content Include="View\Css\ProductEditor.css" />
     <Content Include="Index.aspx" />
@@ -160,9 +215,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UploadPic\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

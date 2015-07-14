@@ -9,7 +9,7 @@
     <link href="Css\Common.css" rel="stylesheet" />
     <link href="Css\Header.css" rel="stylesheet" />
     <link href="Css\Footer.css" rel="stylesheet" />
-    <script src="/js/jquery-2.1.4.min.js"></script>
+    <script src="<%=Path %>js/jquery-2.1.4.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -23,8 +23,8 @@
 			    </div>
 			    <div id="menu">
 				    <ul>
-					    <li id="index"><a href="/Index.aspx" accesskey="1" title="">Homepage</a></li>
-					    <li id="product"><a href="/View/Product.aspx" accesskey="2" title="">Products</a></li>
+					    <li id="index"><a href="<%=Path %>Index.aspx" accesskey="1" title="">Homepage</a></li>
+					    <li id="product"><a href="<%=Path %>View/Product.aspx" accesskey="2" title="">Products</a></li>
                         <%=linkStr %>
 				    </ul>
 			    </div>
