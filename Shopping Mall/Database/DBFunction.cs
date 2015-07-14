@@ -55,6 +55,14 @@ namespace Shopping_Mall.Database
 
             return db.sqlSelect(sqlStr);
         }
+        //依條件做Group by查詢
+        public String[][] searchGroupBy(String fieldName, String column, String value)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT [" + fieldName + "] FROM " + tableName + " WHERE " + column + " = '" + value + "' GROUP BY [" + fieldName + "]";
+
+            return db.sqlSelect(sqlStr);
+        }
         //查詢Schema
         public String[][] searchSchema(String fieldName)
         {

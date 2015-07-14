@@ -29,7 +29,8 @@ namespace Shopping_Mall
             else
             {
                 linkStr = "<li id='purchasecar'><a href='" + Path + "View/PurchaseCar.aspx'>Shopping car</a></li>"
-                        + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
+                    + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"    
+                    + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }
             setMenuLink();
         }
