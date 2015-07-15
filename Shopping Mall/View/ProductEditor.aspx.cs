@@ -24,10 +24,10 @@ namespace Shopping_Mall
             }
             else
             {
-                String[][] arrType = dbType.searchGroupBy("name");
-                for (int i = 0; i < arrType.Length; i++)
+                String[][] productTypeArr = dbType.searchAll();
+                for (int i = 0; i < productTypeArr.Length; i++)
                 {
-                    dropdownType.Items.Add(arrType[i][0]);
+                    dropdownType.Items.Add(productTypeArr[i][1]);
                 }
                 String[][] arr = db.searchSchema("name");
                 schemaArr = new String[arr.Length];
@@ -60,11 +60,13 @@ namespace Shopping_Mall
             }
             else if (radiobtnDiscount.SelectedIndex == 1 && txtDiscountType.Text.Equals(""))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入折扣');location.href='Product.aspx';</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入折扣')</Script>");
+                setSelectedDiscount();
             }
             else if (radiobtnDiscount.SelectedIndex == 2 && (txtDiscountType.Text.Equals("") || txtDiscountContent.Text.Equals("")))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入優惠');location.href='Product.aspx';</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入優惠')</Script>");
+                setSelectedDiscount();
             }
             else
             {
@@ -89,9 +91,9 @@ namespace Shopping_Mall
         //由資料庫取得商品資訊並呈現在網頁上
         private void setProductInfo(String productID)
         {
-            String[][] productInfo = db.searchByRow("ID", productID);
+            String[][] productInfo = db.innerJoin("*", "type", "product.type", "type.ID", "product.ID", productID);
             txtName.Text = productInfo[0][1];
-            dropdownType.SelectedValue = productInfo[0][2];
+            dropdownType.SelectedValue = productInfo[0][9];
             txtPrice.Text = productInfo[0][3];
             txtNum.Text = productInfo[0][4];
             txtSummary.Text = productInfo[0][6].Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " ");
@@ -145,11 +147,11 @@ namespace Shopping_Mall
         //新增商品
         private void addProduct()
         {
-            String [][] ID = dbType.searchRowByColumn("ID", "name", dropdownType.SelectedValue);
             List<String> list = new List<string>();
             list.Add("");
             list.Add(txtName.Text);
-            list.Add(ID[0][0]);
+            String[][] typeIDArr = dbType.searchByRow("name", dropdownType.SelectedValue);
+            list.Add(typeIDArr[0][0]);
             list.Add(txtPrice.Text);
             list.Add(txtNum.Text);
             list.Add(fileUpload());
@@ -168,9 +170,9 @@ namespace Shopping_Mall
             {
                 fileName = fileUpload();
             }
-            String [][] s = dbType.searchRowByColumn("ID", "name", dropdownType.SelectedValue);
+            String[][] typeIDArr = dbType.searchByRow("name", dropdownType.SelectedValue);
             String data = schemaArr[1] + "='" + txtName.Text + "', " +
-                          schemaArr[2] + "='" + s[0][0] + "', " +
+                          schemaArr[2] + "='" + typeIDArr[0][0] + "', " +
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
                           schemaArr[5] + "='" + fileName + "', " +

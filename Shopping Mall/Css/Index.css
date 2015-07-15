@@ -52,3 +52,11 @@
 	margin-right: 12px;
     margin-left: 12px;
 }
+.columnbox img{
+    height:250px;
+    border-radius:10px;
+    box-shadow:5px 5px 20px 0.2px #ECECEC;
+}
+.columnbox img:hover {
+    opacity:0.6;       
+}

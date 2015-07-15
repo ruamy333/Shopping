@@ -12,6 +12,7 @@ namespace Shopping_Mall.View.ProductInfo
     {
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             alertLogin.Visible = false;
@@ -90,12 +91,12 @@ namespace Shopping_Mall.View.ProductInfo
         public String leftbarStr = "";
         private void setLeftBar()
         {
-            String[][] arrType = db.searchGroupBy("type");
-            for (int i = 0; i < arrType.Length; i++)
+            String[][] productTypeArr = dbType.searchAll();
+
+            for (int i = 0; i < productTypeArr.Length; i++)
             {
-                String[][] s = dbType.searchRowByColumn("name", "ID", arrType[i][0]);
-                leftbarStr += "<div class='leftbar-type'>" + s[0][0] + "</div><ul>";
-                String[][] productArr = db.searchByRow("type", arrType[i][0]);
+                leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
                     leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";

@@ -16,10 +16,13 @@ namespace Shopping_Mall
             Path = Request.ApplicationPath;
             if (Path != "/")
                 Path += "/";
+
+            //未登入
             if (Session["account"] == null)
             {
                 linkStr = "<li id='login'><a href='" + Path + "View/Login.aspx'>Login</a></li>";
             }
+            //管理員登入
             else if (Session["account"].ToString().Equals("admin"))
             {
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
@@ -27,6 +30,7 @@ namespace Shopping_Mall
                         + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
                         + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }
+            //使用者登入
             else
             {
                 linkStr = "<li id='purchasecar'><a href='" + Path + "View/PurchaseCar.aspx'>Shopping car</a></li>"
@@ -35,6 +39,8 @@ namespace Shopping_Mall
             }
             setMenuLink();
         }
+
+        //Menu按鈕被點擊的狀態
         private void setMenuLink()
         {
             String[] arr = ContentPlaceHolder1.Page.ToString().Split('_', '.');
