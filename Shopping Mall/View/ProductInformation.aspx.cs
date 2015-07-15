@@ -11,7 +11,7 @@ namespace Shopping_Mall.View.ProductInfo
     public partial class ProductInformation : System.Web.UI.Page
     {
         private DBFunction db = new DBFunction("product");
-
+        private DBFunction dbType = new DBFunction("type");
         protected void Page_Load(object sender, EventArgs e)
         {
             alertLogin.Visible = false;
@@ -93,7 +93,8 @@ namespace Shopping_Mall.View.ProductInfo
             String[][] arrType = db.searchGroupBy("type");
             for (int i = 0; i < arrType.Length; i++)
             {
-                leftbarStr += "<div class='leftbar-type'>" + arrType[i][0] + "</div><ul>";
+                String[][] s = dbType.searchRowByColumn("name", "ID", arrType[i][0]);
+                leftbarStr += "<div class='leftbar-type'>" + s[0][0] + "</div><ul>";
                 String[][] productArr = db.searchByRow("type", arrType[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {

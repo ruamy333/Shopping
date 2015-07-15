@@ -23,6 +23,7 @@ namespace Shopping_Mall
             else if (Session["account"].ToString().Equals("admin"))
             {
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
+                        + "<li id='producttype'><a href='" + Path + "View/ProductType.aspx'>Add Type</a></li>"
                         + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
                         + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }

@@ -13,6 +13,7 @@ namespace Shopping_Mall
         public String[] discountStr = {"",""};
         private DBFunction db = new DBFunction("product");
         private DBFunction dbDiscount = new DBFunction("discount");
+        private DBFunction dbType = new DBFunction("type");
         private String[] schemaArr;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +24,7 @@ namespace Shopping_Mall
             }
             else
             {
-                String[][] arrType = db.searchGroupBy("type");
+                String[][] arrType = dbType.searchGroupBy("name");
                 for (int i = 0; i < arrType.Length; i++)
                 {
                     dropdownType.Items.Add(arrType[i][0]);
@@ -144,10 +145,11 @@ namespace Shopping_Mall
         //新增商品
         private void addProduct()
         {
+            String [][] ID = dbType.searchRowByColumn("ID", "name", dropdownType.SelectedValue);
             List<String> list = new List<string>();
             list.Add("");
             list.Add(txtName.Text);
-            list.Add(dropdownType.SelectedValue);
+            list.Add(ID[0][0]);
             list.Add(txtPrice.Text);
             list.Add(txtNum.Text);
             list.Add(fileUpload());
@@ -166,8 +168,9 @@ namespace Shopping_Mall
             {
                 fileName = fileUpload();
             }
+            String [][] s = dbType.searchRowByColumn("ID", "name", dropdownType.SelectedValue);
             String data = schemaArr[1] + "='" + txtName.Text + "', " +
-                          schemaArr[2] + "='" + dropdownType.SelectedValue + "', " +
+                          schemaArr[2] + "='" + s[0][0] + "', " +
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
                           schemaArr[5] + "='" + fileName + "', " +
