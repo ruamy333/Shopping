@@ -154,6 +154,7 @@
     <Content Include="View\Product.aspx" />
     <Content Include="View\PurchaseCar.aspx" />
     <Content Include="Web.config" />
+    <Content Include="View\ProductType.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DBConnector.cs" />
@@ -215,6 +216,13 @@
     </Compile>
     <Compile Include="View\PurchaseCar.aspx.designer.cs">
       <DependentUpon>PurchaseCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProductType.aspx.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ProductType.aspx.designer.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
