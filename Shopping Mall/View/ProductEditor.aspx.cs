@@ -59,11 +59,13 @@ namespace Shopping_Mall
             }
             else if (radiobtnDiscount.SelectedIndex == 1 && txtDiscountType.Text.Equals(""))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入折扣');location.href='Product.aspx';</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入折扣')</Script>");
+                setSelectedDiscount();
             }
             else if (radiobtnDiscount.SelectedIndex == 2 && (txtDiscountType.Text.Equals("") || txtDiscountContent.Text.Equals("")))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入優惠');location.href='Product.aspx';</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入優惠')</Script>");
+                setSelectedDiscount();
             }
             else
             {

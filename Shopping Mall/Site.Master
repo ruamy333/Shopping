@@ -37,28 +37,15 @@
             </div>
             <div id="footer-content" class="container">
 		    <div id="fbox1">
-			    <h2>Recent Updates</h2>
-			    <ul class="style3">
-				    <li class="first">
-					    <p class="date"><a href="#">April<b>20</b></a></p>
-					    <h3>Amet sed volutpat mauris</h3>
-					    <p><a href="#">Mauris tempus nibh sodales adipiscing dolore.</a></p>
-				    </li>
-				    <li>
-					    <p class="date"><a href="#">April<b>18</b></a></p>
-					    <h3>Sagittis diam dolor sit amet</h3>
-					    <p><a href="#">Duis arcu tortor fringilla sed  sed magna.</a></p>
-				    </li>
-				    <li>
-					    <p class="date"><a href="#">April<b>15</b></a></p>
-					    <h3>Adipiscing sed consequat</h3>
-					    <p><a href="#">Pharetra ac velit sed in volutpat nisl mauris vel.</a></p>
-				    </li>
-			    </ul>
+			    <h2>Our Mission</h2>
+			    <p>
+                    　　捷耀的使命是藉由啟動光纖網路，規劃讓人類通訊自由流通的新方向。捷耀的理念基礎是必須在準確的量測標準下經過嚴謹的測試後進行網路傳輸。為追求光學量測技術的最終標準，我們集中資源發展高品質的產品，這是我們對客戶所提供的價值核心。<br/>
+                    　　捷耀致力於產品的卓越性能、可靠性和品質，並追求技術進步和製造技術的應用。我們不斷審核和改善品質，且已經深入我們的日常作業中，成為生產作業的其中一部份。為達到此目的，我們不只是挑戰自己，也與供應商合作，以提供尊貴的客戶服務。<br/>
+                </p>
 		    </div>
 		    <div id="fbox2">
 			    <h2>About</h2>
-			    <p><strong>捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>
+			    <p><strong>　　捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>
 		    </div>
 		    <div id="fbox3">
 			    <h2>Contact Us</h2>
