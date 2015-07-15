@@ -18,9 +18,17 @@
     <div id="wrapper-bg">
 	    <div id="wrapper">
             <div id="header" class="container">
+                <div class="logoBox">
 			    <div id="logo">
-				    <h1><a href="<%=Path %>Index.aspx"><span>Radiantech</span></a></h1>
+				        <h1><a href="<%=Path %>Index.aspx">
+                            <span><asp:Label ID="headerLab" runat="server" Text="Radiantech"></asp:Label></span></a>
+				        </h1>                                            
 			    </div>
+                    <div class="edit">
+                        <asp:TextBox ID="headerTxt" runat="server"></asp:TextBox>
+                        <%=editHeaderStr %>
+                    </div>
+                </div>
 			    <div id="menu">
 				    <ul>
 					    <li id="index"><a href="<%=Path %>Index.aspx" accesskey="1" title="">Homepage</a></li>
@@ -45,16 +53,17 @@
 		    </div>
 		    <div id="fbox2">
 			    <h2>About</h2>
-			    <p><strong>　　捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>
+			    <%--<p><strong>捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>--%>
+                <asp:Label ID="introLab" runat="server" Text=""></asp:Label>
 		    </div>
 		    <div id="fbox3">
 			    <h2>Contact Us</h2>
 			    <ul class="style5">
-				    <li class="first"><span class="address">Address</span> <span class="address-01">30075台灣新竹科學工業園區 <br />
-					    工業東一路2-1號</span> </li>
-				    <li> <span class="mail">Mail</span> <span class="mail-01"><a href="#">service@radiantech.com.tw</a></span> </li>
-				    <li> <span class="phone">Phone</span> <span class="phone-01">+886-3-577 7818 分機 8735</span> </li>
-				    <li> <span class="phone">Fax</span> <span class="phone-01">+886-3-577 7817</span> </li>
+				    <li class="first"><span class="address">Address</span> <asp:Label ID="addLab" runat="server" CssClass="address-01" Text=""></asp:Label><%--<span class="address-01">30075台灣新竹科學工業園區 <br />
+					    工業東一路2-1號</span> --%></li>
+				    <li> <span class="mail">Mail</span> <asp:Label ID="mailLab" runat="server" CssClass="mail-01" Text=""></asp:Label> <%--<span class="mail-01"><a href="#">service@radiantech.com.tw</a></span>--%> </li>
+				    <li> <span class="phone">Phone</span> <asp:Label ID="phoneLab" runat="server" CssClass="phone-01" Text=""></asp:Label> <%--<span class="phone-01">+886-3-577 7818 分機 8735</span>--%> </li>
+				    <li> <span class="phone">Fax</span> <asp:Label ID="faxLab" runat="server" CssClass="phone-01" Text=""></asp:Label> <%--<span class="phone-01">+886-3-577 7817</span>--%> </li>
 			    </ul>
 		    </div>
 	    </div>

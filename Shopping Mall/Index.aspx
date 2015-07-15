@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="banner" class="container"> 
-        <img src="Picture/header-photo.jpg" width="1200" height="400" /> </div>
+        <asp:Image ID="indexImage" runat="server" width="1200" height="400"/></div>
 		<div id="three-column" class="container">
 			<header>
 				<h2>Products</h2>
