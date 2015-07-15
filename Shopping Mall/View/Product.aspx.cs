@@ -167,7 +167,7 @@ namespace Shopping_Mall.View
                 if (array[a][7] != null && array[a][7] != "0")
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
-                    rightStr += "<a href='ProductInformation.aspx?page=" + array[a][0] + "'>"
+                    rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
                         + "<div id='" + array[a][0]  + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         +"</div>"
