@@ -60,3 +60,10 @@
 .columnbox img:hover {
     opacity:0.6;       
 }
+
+.editBox {
+    height:40px;
+}
+.edit {
+    float:left;
+}

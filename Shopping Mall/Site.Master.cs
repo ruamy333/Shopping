@@ -12,6 +12,8 @@ namespace Shopping_Mall
     {
         public String linkStr;
         public String editHeaderStr;
+        public String editAboutStr;
+        public String editContactStr;
         public String Path;
         
         private DBFunction db = new DBFunction("indexInfo");
@@ -31,7 +33,10 @@ namespace Shopping_Mall
             //管理員登入
             else if (Session["account"].ToString().Equals("admin"))
             {
+                //修改連結
                 editHeaderStr = "<a href='" + Path + "Index.aspx?edit=header'><img src=../Picture/edit.png style='width:30px;'></a>";
+                editAboutStr = "<a href='" + Path + "Index.aspx?edit=about'><img src=../Picture/edit.png style='width:30px;'></a>";
+                editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=../Picture/edit.png style='width:30px;'></a>";
 
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
                         + "<li id='producttype'><a href='" + Path + "View/ProductType.aspx'>Add Type</a></li>"
@@ -47,25 +52,75 @@ namespace Shopping_Mall
             }
             setMenuLink();
 
-
+            //修改Header
             if (Request.QueryString["edit"] != null)
             {
-                String edit = Request.QueryString["edit"];
-                if (edit.Equals("header"))
+                if (!IsPostBack)
                 {
-                    if (!IsPostBack)
+                    if (Request.QueryString["edit"].ToString().Equals("header"))
                     {
                         headerLab.Visible = false;
                         headerTxt.Visible = true;
+                        btnHeaderSave.Visible = true;
                         headerTxt.Text = headerLab.Text;
+                        editHeaderStr = "";
                     }
-                    else 
+                    else if (Request.QueryString["edit"].ToString().Equals("about")) 
                     {
-                        Response.Write(headerTxt.Text);
-        }
+                        aboutLab.Visible = false;
+                        txtAbout.Visible = true;
+                        btnAboutSave.Visible = true;
+                        txtAbout.Text = aboutLab.Text;
+                        editAboutStr = "";
+                    }
+                    else if (Request.QueryString["edit"].ToString().Equals("contact"))
+                    {
+                        addLab.Visible = false;
+                        mailLab.Visible = false;
+                        phoneLab.Visible = false;
+                        faxLab.Visible = false;
+
+                        txtAddress.Visible = true;
+                        txtMail.Visible = true;
+                        txtPhone.Visible = true;
+                        txtFax.Visible = true;
+
+                        btnContactSave.Visible = true;
+
+                        txtAddress.Text = addLab.Text;
+                        txtMail.Text = mailLab.Text;
+                        txtPhone.Text = phoneLab.Text;
+                        txtFax.Text = faxLab.Text;
+
+                        editContactStr = "";
+                    }
                 }
             }
+        }
 
+        //Header修改儲存按鈕
+        protected void btnHeaderSave_Click(object sender, EventArgs e)
+        {
+            String newHeader = headerTxt.Text;
+            db.modify("header", newHeader, "header", headerLab.Text);
+            Response.Redirect("Index.aspx");
+        }
+        //About修改儲存按鈕
+        protected void btnAboutSave_Click(object sender, EventArgs e)
+        {
+            String newAbout = txtAbout.Text;
+            db.modify("introduction", newAbout, "header", headerLab.Text);
+            Response.Redirect("Index.aspx");
+        }
+        //Contact修改儲存按鈕
+        protected void btnContactSave_Click(object sender, EventArgs e)
+        {
+            String newAddress = txtAddress.Text;
+            String newMail = txtMail.Text;
+            String newPhone = txtPhone.Text;
+            String newFax = txtFax.Text;
+            db.modify("address, mail, phone, fax", newAddress + "," + newMail + "," + newPhone + "," + newFax, "header", headerLab.Text);
+            Response.Redirect("Index.aspx");
         }
 
         private void setIndexInfo()
@@ -73,12 +128,21 @@ namespace Shopping_Mall
             String[][] infoArr = db.searchAll();
 
             headerLab.Text = infoArr[0][0];
-            introLab.Text = infoArr[0][2];
+            aboutLab.Text = infoArr[0][2];
             addLab.Text = infoArr[0][3];
             mailLab.Text = infoArr[0][4];
             phoneLab.Text = infoArr[0][5];
             faxLab.Text = infoArr[0][6];
+            //修改隱藏
             headerTxt.Visible = false;
+            btnHeaderSave.Visible = false;
+            txtAbout.Visible = false;
+            btnAboutSave.Visible = false;
+            txtAddress.Visible = false;
+            txtMail.Visible = false;
+            txtPhone.Visible = false;
+            txtFax.Visible = false;
+            btnContactSave.Visible = false;
         }
 
         //Menu按鈕被點擊的狀態
@@ -89,12 +153,6 @@ namespace Shopping_Mall
             if (id.Equals("productinformation"))
                 id = "product";
             linkStr += "<script type='text/javascript'>$(document).ready(function () { $('#" + id + "').addClass('active'); });</script>";
-        }
-
-        private void storeHeader(String newHeader) 
-        {
-            db.modify("header", newHeader, "header", headerLab.Text);
-            //Response.Redirect("Index.aspx");
         }
     }
 }
