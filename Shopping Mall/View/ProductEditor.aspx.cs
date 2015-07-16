@@ -178,7 +178,7 @@ namespace Shopping_Mall
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
                           schemaArr[5] + "='" + fileName + "', " +
-                          schemaArr[6] + "='" + txtSummary.Text + "', " +
+                          schemaArr[6] + "='" + txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;") + "', " +
                           schemaArr[7] + "='" + getDiscountID();
             db.modifyAll(data,"ID",productID);
             Response.Redirect("Product.aspx");
