@@ -15,7 +15,6 @@ namespace Shopping_Mall
         private DBFunction dbDiscount = new DBFunction("discount");
         private DBFunction dbType = new DBFunction("type");
         private String[] schemaArr;
-        public String v = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -40,9 +39,9 @@ namespace Shopping_Mall
                 if (!IsPostBack)
                 {
                     //修改商品資訊，載入商品詳細資料
-                    if (Request.QueryString["u"] != null)
+                    if (Request.QueryString["product"] != null)
                     {
-                        setProductInfo(Request.QueryString["u"]);
+                        setProductInfo(Request.QueryString["product"]);
                     }
                 }
             }
@@ -58,7 +57,7 @@ namespace Shopping_Mall
             //避免資料空值或負值
             if (txtName.Text.Equals("") || txtNum.Text.Equals("") || txtPrice.Text.Equals(""))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入資料');location.href='ProductEditor.aspx';</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入資料');location.href='ProductEditor.aspx;</Script>");
             }
             else if (radiobtnDiscount.SelectedIndex == 1 && txtDiscountType.Text.Equals(""))
             {
@@ -72,10 +71,10 @@ namespace Shopping_Mall
             }
             else
             {
-                if (Request.QueryString["u"] != null)
+                if (Request.QueryString["product"] != null)
                 {
                     //修改詳細資料
-                    modifyProduct(Request.QueryString["u"]);
+                    modifyProduct(Request.QueryString["product"]);
                 }
                 else
                 {
@@ -178,10 +177,10 @@ namespace Shopping_Mall
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
                           schemaArr[5] + "='" + fileName + "', " +
-                          schemaArr[6] + "='" + txtSummary.Text + "', " +
+                          schemaArr[6] + "='" + txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;") + "', " +
                           schemaArr[7] + "='" + getDiscountID();
             db.modifyAll(data,"ID",productID);
-            Response.Redirect("Product.aspx");
+            Response.Redirect("ProductInformation.aspx?product=" + productID);
         }
 
         //取得檔案路徑

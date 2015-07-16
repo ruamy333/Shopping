@@ -49,7 +49,7 @@
             <%=pageStr %>
         </div>
     </div>
-    <!--防止空值-->
+    <%--<!--防止空值-->
     <script type="text/javascript">
         function validate_required(field, alerttxt) {
             with (field) {
@@ -65,5 +65,5 @@
                 { email.focus(); return false }
             }
         }
-    </script>
+    </script>--%>
 </asp:Content>

@@ -36,7 +36,9 @@ namespace Shopping_Mall.View
             {
                 delete(del);          
             }
-
+            DBFunction db = new DBFunction("indexInfo");
+            String[][] infoArr = db.searchByColumn("phone");
+            String phone = infoArr[0][0].Replace("&nbsp;", " ");
             String num = Request.QueryString["num"];
             String ID = Request.QueryString["ID"];
             if (num != null && num != "")
@@ -47,14 +49,12 @@ namespace Shopping_Mall.View
                 }
                 else
                 {
-                    Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
+                    Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
                 }
             }
             else if(ID != null && (num == null || num=="")){
-                Response.Write("<Script language='JavaScript'>alert('請輸入數量');</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-
-                    
             pageShow(6);
         }
 
@@ -187,7 +187,7 @@ namespace Shopping_Mall.View
                     rightStr += "<div class='delete'>";
                     rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
                 }
 
                 rightStr += "</div>"
