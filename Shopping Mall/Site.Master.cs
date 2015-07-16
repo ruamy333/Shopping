@@ -73,7 +73,7 @@ namespace Shopping_Mall
                         missionLab.Visible = false;
                         txtMission.Visible = true;
                         btnMissionSave.Visible = true;
-                        txtMission.Text = missionLab.Text;
+                        txtMission.Text = missionLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
                         editMissionStr = "";
                     }
                     else if (Request.QueryString["edit"].ToString().Equals("about")) 
@@ -81,7 +81,7 @@ namespace Shopping_Mall
                         aboutLab.Visible = false;
                         txtAbout.Visible = true;
                         btnAboutSave.Visible = true;
-                        txtAbout.Text = aboutLab.Text;
+                        txtAbout.Text = aboutLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
                         editAboutStr = "";
                     }
                     else if (Request.QueryString["edit"].ToString().Equals("contact"))
@@ -98,10 +98,10 @@ namespace Shopping_Mall
 
                         btnContactSave.Visible = true;
 
-                        txtAddress.Text = addLab.Text;
-                        txtMail.Text = mailLab.Text;
-                        txtPhone.Text = phoneLab.Text;
-                        txtFax.Text = faxLab.Text;
+                        txtAddress.Text = addLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
+                        txtMail.Text = mailLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
+                        txtPhone.Text = phoneLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
+                        txtFax.Text = faxLab.Text.Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " "); ;
 
                         editContactStr = "";
                     }
@@ -119,24 +119,24 @@ namespace Shopping_Mall
         //Mission修改儲存按鈕
         protected void btnMissionSave_Click(object sender, EventArgs e)
         {
-            String newMission = txtMission.Text;
+            String newMission = txtMission.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
             db.modify("leftfooter", newMission, "header", headerLab.Text);
             Response.Redirect("Index.aspx");
         }
         //About修改儲存按鈕
         protected void btnAboutSave_Click(object sender, EventArgs e)
         {
-            String newAbout = txtAbout.Text;
+            String newAbout = txtAbout.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
             db.modify("introduction", newAbout, "header", headerLab.Text);
             Response.Redirect("Index.aspx");
         }
         //Contact修改儲存按鈕
         protected void btnContactSave_Click(object sender, EventArgs e)
         {
-            String newAddress = txtAddress.Text;
-            String newMail = txtMail.Text;
-            String newPhone = txtPhone.Text;
-            String newFax = txtFax.Text;
+            String newAddress = txtAddress.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
+            String newMail = txtMail.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
+            String newPhone = txtPhone.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
+            String newFax = txtFax.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;");
             db.modify("address", newAddress, "header", headerLab.Text);
             db.modify("mail", newMail, "header", headerLab.Text);
             db.modify("phone", newPhone, "header", headerLab.Text);
@@ -149,43 +149,12 @@ namespace Shopping_Mall
             String[][] infoArr = db.searchAll();
 
             headerLab.Text = infoArr[0][0];
-            //處理換行
-            if (infoArr[0][2].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][2], "\r\n", RegexOptions.IgnoreCase);
-                aboutLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else aboutLab.Text = infoArr[0][2];
-            if (infoArr[0][3].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][3], "\r\n", RegexOptions.IgnoreCase);
-                addLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else addLab.Text = infoArr[0][3];
-            if (infoArr[0][4].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][4], "\r\n", RegexOptions.IgnoreCase);
-                mailLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else mailLab.Text = infoArr[0][4];
-            if (infoArr[0][5].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][5], "\r\n", RegexOptions.IgnoreCase);
-                phoneLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else phoneLab.Text = infoArr[0][5];
-            if (infoArr[0][6].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][6], "\r\n", RegexOptions.IgnoreCase);
-                faxLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else faxLab.Text = infoArr[0][6];
-            if (infoArr[0][7].Contains("\r\n"))
-            {
-                String[] splitArr = Regex.Split(infoArr[0][7], "\r\n", RegexOptions.IgnoreCase);
-                missionLab.Text += splitArr[0] + "<br/>" + splitArr[1];
-            }
-            else missionLab.Text = infoArr[0][7];
+            aboutLab.Text = infoArr[0][2];
+            addLab.Text = infoArr[0][3];
+            mailLab.Text = infoArr[0][4];
+            phoneLab.Text = infoArr[0][5];
+            faxLab.Text = infoArr[0][6];
+            missionLab.Text = infoArr[0][7];
 
             //修改隱藏
             headerTxt.Visible = false;
