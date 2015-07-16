@@ -12,6 +12,10 @@ namespace Shopping_Mall.View.ProductInfo
     {
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
+        public String imageStr;
+        public String priceStr;
+        private Discount dis = new Discount();
+        private String finalPrice;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +37,23 @@ namespace Shopping_Mall.View.ProductInfo
             String[][] proArr = db.searchByRow("ID", ID);
 
             productName.Text = proArr[0][1];
-            priceLabel.Text = proArr[0][3];
+
+            //判斷有無優惠方案
+            if (proArr[0][7] != null && proArr[0][7] != "0")
+            {
+                String[] discountArr = null;
+                discountArr = dis.findingType(Convert.ToInt32(proArr[0][7]), 1, Convert.ToInt32(proArr[0][3]));
+                imageStr = "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div></div>";
+                priceStr = "<del>" + proArr[0][3] + "元</del><span class = 'discount'>" + discountArr[1] + "元</span>";
+                finalPrice = discountArr[1];
+            }
+            else
+            {
+                priceStr = proArr[0][3] + "元";
+                finalPrice = proArr[0][3];
+            }
+
+            
             for (int i = 0; i < int.Parse(proArr[0][4]); i++)
             {
                 numberDropList.Items.Add((i+1) + "");
@@ -45,6 +65,7 @@ namespace Shopping_Mall.View.ProductInfo
                 productImage.ImageUrl = "../Picture/nonePic.png";
             }
             else productImage.ImageUrl = "../UploadPic/" + proArr[0][5];
+
             introLabel.Text = proArr[0][6];
         }
         //購買btn
@@ -84,7 +105,7 @@ namespace Shopping_Mall.View.ProductInfo
             {
                 schemaArr[i] = attributes[i][0];
             }
-            String[] values = new String[] { "", Session["account"].ToString(), productName.Text, priceLabel.Text, numberDropList.SelectedValue };
+            String[] values = new String[] { "", Session["account"].ToString(), productName.Text, finalPrice, numberDropList.SelectedValue };
             dbPurchase.insert(schemaArr, values);
         }
         //左方menu

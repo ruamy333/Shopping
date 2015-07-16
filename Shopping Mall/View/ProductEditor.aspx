@@ -8,7 +8,7 @@
 			<div class="content-header"></div>
         <div class="formBox">
             <div class="title">商品名稱：</div>
-            <asp:TextBox ID="txtName"  class="form-control textBox " runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtName"  CssClass="form-control textBox " runat="server"></asp:TextBox>
         </div>
         
         <div class="formBox">
@@ -19,11 +19,11 @@
 
         <div class="formBox">
             <div class="title">商品價格：</div>
-            <asp:TextBox ID="txtPrice"  class="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
+            <asp:TextBox ID="txtPrice"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
         </div>
         <div class="formBox">
             <div class="title">商品數量：</div>
-            <asp:TextBox ID="txtNum"  class="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
+            <asp:TextBox ID="txtNum"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
         </div>
         <div class="summaryBox">
             <div class="title">折扣方式：</div>
@@ -33,8 +33,8 @@
                 <asp:ListItem>其他</asp:ListItem>
             </asp:RadioButtonList>
             <div class="discountDetail">
-             <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
-             <%=discountStr[1] %><asp:TextBox ID="txtDiscountContent" runat="server" Visible="false" class="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
+             <%=discountStr[0] %><asp:TextBox ID="txtDiscountType" runat="server" Visible="false" CssClass="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
+             <%=discountStr[1] %><asp:TextBox ID="txtDiscountContent" runat="server" Visible="false" CssClass="discountTextBox form-control" TextMode="Number" min="0"></asp:TextBox>
             </div>
         </div>
         <div class="formBox">
@@ -49,8 +49,8 @@
             <asp:TextBox ID="txtSummary" CssClass="form-control summary" Rows="6" TextMode="MultiLine" runat="server"></asp:TextBox>
         </div>
         <div class="buttonBox">
-            <asp:Button ID="btnSubmit" class="button-style" runat="server" Text="送出" OnClick="btnSubmit_Click"/>
-            <asp:Button ID="btnCancle" class="button-style" runat="server" Text="取消" OnClick="btnCancle_Click"/>
+            <asp:Button ID="btnSubmit" CssClass="button-style" runat="server" Text="送出" OnClick="btnSubmit_Click"/>
+            <asp:Button ID="btnCancle" CssClass="button-style" runat="server" Text="取消" OnClick="btnCancle_Click"/>
         </div>
     </div>
 </asp:Content>

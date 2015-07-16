@@ -31,15 +31,6 @@ namespace Shopping_Mall.View.ProductInfo {
         protected global::System.Web.UI.WebControls.Label productName;
         
         /// <summary>
-        /// priceLabel 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label priceLabel;
-        
-        /// <summary>
         /// numberDropList 控制項。
         /// </summary>
         /// <remarks>

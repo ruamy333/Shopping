@@ -98,10 +98,16 @@ namespace Shopping_Mall.View
                     total += subtotal;
                     dicountStr = discountArr[0];
                 }
+                String imageUrl;
+                if (arrOrder[i][6] == null || arrOrder[i][6].Equals(""))
+                {
+                    imageUrl = "../Picture/nonePic.png";
+                }
+                else imageUrl = "../UploadPic/" + arrOrder[i][6];
 
                 shoppingList +=
                     "<div class='center-column'><div class='column-img'>"
-                    + "<a href='ProductInformation.aspx?product=" + arrOrder[i][0] + "'><img src=../UploadPic/" + arrOrder[i][6] + "></a></div>"
+                    + "<a href='ProductInformation.aspx?product=" + arrOrder[i][0] + "'><img src=" + imageUrl + "></a></div>"
                     + "<div class='column-name'><a href='ProductInformation.aspx?product=" + arrOrder[i][0] + "'>" + arrOrder[i][2] + "</a></div>"
                     + "<div class='column-box'><int>" + arrOrder[i][3] + "</int></div>"
                     + "<div class='column-box'><int>" + arrOrder[i][5] + "</int></div>"
