@@ -14,6 +14,7 @@ namespace Shopping_Mall.View
         public String rightStr = "";
         public String pageStr = "";
         public String buycarStr = "";
+        public String editType = "";
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
         private Discount dis = new Discount();
@@ -25,7 +26,11 @@ namespace Shopping_Mall.View
             {
                 buycarStr += "<div id='buycar'><a href='PurchaseCar.aspx'><img src='../Picture/buycar.png' /></a></div>";
             }
-
+            else
+            {
+                txtType.Visible = true;
+                ImageButton1.Visible = true;
+            }
             String del = Request.QueryString["del"];
             if (del != null)
             {
@@ -67,6 +72,7 @@ namespace Shopping_Mall.View
                 }
                 leftbarStr += "</ul>";
             }
+        
         }
         //刪除
         private void delete(String del)
@@ -252,5 +258,34 @@ namespace Shopping_Mall.View
             }
             #endregion
         }
+
+
+        protected void btnSubmit_Click(object sender, ImageClickEventArgs e)
+        {
+            List<String> list = new List<string>();
+            if (txtType.Text == null)
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入類別名稱');</Script>");
+            }
+            String[][] array = dbType.searchAll();
+            for (int type = 0; type < array.Length; type++)
+            {
+                if (txtType.Text == array[type][1])
+                {
+                    Response.Write("<Script language='JavaScript'>alert('類別名稱已存在');</Script>");
+                    break;
+                }
+                else if (type == array.Length - 1)
+                {
+                    list.Add(txtType.Text);
+                    String[] attribute = new String[1];
+                    attribute[0] = "name";
+                    String str = dbType.insert(attribute, list.ToArray());
+                    Response.Write("<Script language='JavaScript'>alert('新增成功!');</script>");
+                    Response.Redirect("Product.aspx");
+                }
+            }
+        }
+
     }
 }

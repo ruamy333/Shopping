@@ -32,6 +32,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-middle">
         <div class="leftbar">
+            <%=editType %>
+            <div class="formBox">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;" OnClick="btnSubmit_Click" Visible="False" />
+                <asp:TextBox ID="txtType"  class="form-control textBox " runat="server" Visible="False"></asp:TextBox>
+            </div>
+            
                 <%=leftbarStr %>
         </div>
         <div class="rightbar">

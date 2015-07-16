@@ -15,8 +15,10 @@ namespace Shopping_Mall
         private DBFunction dbDiscount = new DBFunction("discount");
         private DBFunction dbType = new DBFunction("type");
         private String[] schemaArr;
+        public String v = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             //判斷帳號
             if (Session["account"] == null || !Session["account"].Equals("admin"))
             {
