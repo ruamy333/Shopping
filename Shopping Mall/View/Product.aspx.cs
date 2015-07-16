@@ -36,7 +36,9 @@ namespace Shopping_Mall.View
             {
                 delete(del);          
             }
-
+            DBFunction db = new DBFunction("indexInfo");
+            String[][] infoArr = db.searchByColumn("phone");
+            String phone = infoArr[0][0].Replace("&nbsp;", " ");
             String num = Request.QueryString["num"];
             String ID = Request.QueryString["ID"];
             if (num != null && num != "")
@@ -47,14 +49,12 @@ namespace Shopping_Mall.View
                 }
                 else
                 {
-                    Response.Write("<Script language='JavaScript'>alert('請登入');</Script>");
+                    Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
                 }
             }
             else if(ID != null && (num == null || num=="")){
-                Response.Write("<Script language='JavaScript'>alert('請輸入數量');</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-
-                    
             pageShow(6);
         }
 
