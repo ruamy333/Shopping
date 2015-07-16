@@ -13,13 +13,15 @@
         <div class="contentRight">
                 <div class="sectionBoxTop">
                     <div class="sectionBoxLeft">
-                        <asp:Image ID="productImage" CssClass="image" runat="server" />
+                        <asp:Image ID="productImage" CssClass="image" runat="server"/>                        
                     </div>
                     <div class="sectionBoxRight">
+                        <%=imageStr %>
 				        <asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label>
                         <br/>             
                         <div class="content-text">價格：
-                            <asp:Label ID="priceLabel" runat="server" ></asp:Label>元 <br/>
+                            <%--<asp:Label ID="priceLabel" runat="server" ></asp:Label>元 --%>
+                            <%=priceStr %><br/>
                         </div>
                         <div class="content-text">數量：
                             <asp:DropDownList ID="numberDropList" runat="server" CssClass="form-control" Width="60"></asp:DropDownList>

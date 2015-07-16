@@ -1,7 +1,7 @@
 ﻿
 /*left bar*/
 .leftbar {
-    height:490px;
+    height:100%;
     width:250px;
     float:left;
     margin-left:75px;
@@ -64,7 +64,7 @@ ul
     height:235px;
     float:left;
     margin-left:40px;
-    line-height:15px;
+    /*line-height:15px;*/
 }
 .sectionBoxBottom {
     border-top: 1px solid #E7E7E7;
@@ -96,4 +96,31 @@ ul
     margin-left:5px;
     font-size:18px;
     line-height:1.5;
+}
+.dis-text {
+    text-align:center;
+    color:#eee;
+    font-size: 14px;
+}
+.dis-title {
+    text-align:center;
+    color:#eee;
+    font-size: 20px;
+    border-bottom:1px solid;
+    width:60px;
+    margin-left:10px;
+}
+
+.dis-box {
+    background-color: #e00;
+    margin-left:10px;
+    width:80px;
+    height:50px;
+    font-weight: bold;
+    box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);
+}
+.discount {
+    color:#FF0000;
+    font-weight: bold;
+    font-size: x-large;
 }
