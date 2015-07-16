@@ -33,9 +33,9 @@
     <div class="content-middle">
         <div class="leftbar">
             <%=editType %>
-            <div class="formBox">
-                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;" OnClick="btnSubmit_Click" Visible="False" />
-                <asp:TextBox ID="txtType"  class="form-control textBox " runat="server" Visible="False"></asp:TextBox>
+            <div class="formBox" style="margin-top:10px;">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;float:left;" OnClick="btnSubmit_Click" Visible="False" />
+                <asp:TextBox ID="txtType"  class="form-control textBox " style="width:180px;" runat="server" Visible="False"></asp:TextBox>
             </div>
             
                 <%=leftbarStr %>

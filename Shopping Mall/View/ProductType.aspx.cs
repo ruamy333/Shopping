@@ -11,7 +11,7 @@ namespace Shopping_Mall
     public partial class ProductType : System.Web.UI.Page
     {
 
-        private DBFunction db = new DBFunction("type");
+        private DBFunction dbType = new DBFunction("type");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,18 +30,14 @@ namespace Shopping_Mall
             }
             else
             {
-                addType();
+                UpdateType();
             }
         }
 
-        private void addType()
+        private void UpdateType()
         {
-            List<String> list = new List<string>();
-            list.Add(txtType.Text);
-            String[] attribute = new String[1];
-            attribute[0] = "name";
-            String str = db.insert(attribute, list.ToArray());
-            Response.Write("<script>alert('新增成功!');location.href='../Index.aspx';</script>");
+            dbType.modify("name", txtType.Text, "ID", Request.QueryString["update"]);
+            Response.Write("<Script language='JavaScript'>alert('修改成功');location.href='Product.aspx';</Script>");
         }
     }
 }
