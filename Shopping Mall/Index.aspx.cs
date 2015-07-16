@@ -15,6 +15,7 @@ namespace Shopping_Mall
         public String editImgStr;
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
+        private DBFunction dbIndex = new DBFunction("indexInfo");
         private String[][] infoArr;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,24 +25,22 @@ namespace Shopping_Mall
                 Path += "/";
 
             //找圖
-            DBFunction db = new DBFunction("indexInfo");
-            infoArr = db.searchAll();
+            infoArr = dbIndex.searchAll();
             indexImage.ImageUrl = infoArr[0][1];
-            txtImg.Visible = false;
+            indexPicUpload.Visible = false;
             btnImgSave.Visible = false;
 
             //判斷管理者
             if (Session["account"] != null && Session["account"].ToString().Equals("admin"))
                 editImgStr = "<a href='" + Path + "Index.aspx?edit=image'><img src=../Picture/edit.png style='width:30px;'></a>";
-            
+
             //修改圖
             if (Request.QueryString["edit"] != null && Request.QueryString["edit"].ToString().Equals("image"))
             {
                 if (!IsPostBack)
                 {
-                    txtImg.Visible = true;
                     btnImgSave.Visible = true;
-                    txtImg.Text = infoArr[0][1];
+                    indexPicUpload.Visible = true;
                     editImgStr = "";
                 }
             }
@@ -58,8 +57,8 @@ namespace Shopping_Mall
         //Img修改儲存按鈕
         protected void btnImgSave_Click(object sender, EventArgs e)
         {
-            String newImg = txtImg.Text;
-            db.modify("index_pic", newImg, "index_pic", infoArr[0][1]);
+            String newImg = fileUpload();
+            dbIndex.modify("index_pic", newImg, "index_pic", infoArr[0][1]);
             Response.Redirect("Index.aspx");
         }
 
@@ -82,6 +81,25 @@ namespace Shopping_Mall
                 }
                 columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div>";
             }
+        }
+
+        //取得檔案路徑
+        private String fileUpload()
+        {
+            if (indexPicUpload.HasFile)
+            {
+                String fileName = indexPicUpload.FileName;
+                String savePath = Server.MapPath("Picture/");
+                String saveResult = savePath + fileName;
+                String fileExtension = System.IO.Path.GetExtension(saveResult).ToLower();  //取得上傳的檔案類型
+                if (fileExtension == ".gif" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".jpg")
+                {
+                    indexPicUpload.SaveAs(saveResult);
+                    return "Picture/" + fileName;
+                }
+                else return "";
+            }
+            else return "";
         }
     }
 }

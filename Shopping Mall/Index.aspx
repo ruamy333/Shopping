@@ -8,8 +8,8 @@
         <asp:Image ID="indexImage" runat="server" width="1200" height="400"/>
         <div class="editBox">
             <div class="edit">
-                <asp:TextBox ID="txtImg" runat="server"></asp:TextBox>
-                <asp:Button ID="btnImgSave" runat="server" Text="Save" OnClick="btnImgSave_Click"/>
+                <asp:FileUpload ID="indexPicUpload" runat="server" />
+                <asp:Button ID="btnImgSave" runat="server" CssClass="button-style-headerNfooter" Text="Save" OnClick="btnImgSave_Click"/>
                 <%=editImgStr %>
             </div>
         </div>
