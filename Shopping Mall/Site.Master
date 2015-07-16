@@ -24,8 +24,9 @@
                             <span><asp:Label ID="headerLab" runat="server" Text="Radiantech"></asp:Label></span></a>
 				        </h1>                                            
 			    </div>
-                    <div class="edit">
+                    <div class="editHeader">
                         <asp:TextBox ID="headerTxt" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnHeaderSave" runat="server" CssClass="button-style-headerNfooter" Text="Save" OnClick="btnHeaderSave_Click"/>
                         <%=editHeaderStr %>
                     </div>
                 </div>
@@ -45,26 +46,40 @@
             </div>
             <div id="footer-content" class="container">
 		    <div id="fbox1">
-			    <h2>Our Mission</h2>
+                <h2>Our Mission <%=editMissionStr %></h2>                
+                <p><asp:Label ID="missionLab" runat="server" Text=""></asp:Label></p>
+                <asp:TextBox ID="txtMission" runat="server" Width="350px" Font-Size="12" TextMode="MultiLine" Rows="12"></asp:TextBox>
+                <asp:Button ID="btnMissionSave" runat="server" CssClass="button-style-headerNfooter" Text="Save" OnClick="btnMissionSave_Click"/>
+<%--			    <h2>Our Mission</h2>
 			    <p>
-                    　　捷耀的使命是藉由啟動光纖網路，規劃讓人類通訊自由流通的新方向。捷耀的理念基礎是必須在準確的量測標準下經過嚴謹的測試後進行網路傳輸。為追求光學量測技術的最終標準，我們集中資源發展高品質的產品，這是我們對客戶所提供的價值核心。<br/>
-                    　　捷耀致力於產品的卓越性能、可靠性和品質，並追求技術進步和製造技術的應用。我們不斷審核和改善品質，且已經深入我們的日常作業中，成為生產作業的其中一部份。為達到此目的，我們不只是挑戰自己，也與供應商合作，以提供尊貴的客戶服務。<br/>
-                </p>
+                    捷耀的使命是藉由啟動光纖網路，規劃讓人類通訊自由流通的新方向。捷耀的理念基礎是必須在準確的量測標準下經過嚴謹的測試後進行網路傳輸。為追求光學量測技術的最終標準，我們集中資源發展高品質的產品，這是我們對客戶所提供的價值核心。<br/>
+                    捷耀致力於產品的卓越性能、可靠性和品質，並追求技術進步和製造技術的應用。我們不斷審核和改善品質，且已經深入我們的日常作業中，成為生產作業的其中一部份。為達到此目的，我們不只是挑戰自己，也與供應商合作，以提供尊貴的客戶服務。<br/>
+                </p>--%>
 		    </div>
 		    <div id="fbox2">
-			    <h2>About</h2>
-			    <%--<p><strong>捷耀光通訊股份有限公司</strong>，在對於電信，網路和企業行銷部分，擁有超過20年的設計和製造光纖測試與測量解決方案與光通信的合作夥伴關係。捷耀光通訊股份有限公司的產品滿足日益增加的頻寬需求的企業和服務提供商的網絡，通過創新技術，提高了系統的性能，縮小產品的尺寸，更低的系統總成本和更快的上市時間。</p>--%>
-                <asp:Label ID="introLab" runat="server" Text=""></asp:Label>
+			    <h2>About <%=editAboutStr %></h2>                
+                <p><asp:Label ID="aboutLab" runat="server" Text=""></asp:Label></p>
+                <asp:TextBox ID="txtAbout" runat="server" Width="350px" Font-Size="12" TextMode="MultiLine" Rows="12"></asp:TextBox>
+                <asp:Button ID="btnAboutSave" runat="server" CssClass="button-style-headerNfooter" Text="Save" OnClick="btnAboutSave_Click"/>
 		    </div>
 		    <div id="fbox3">
-			    <h2>Contact Us</h2>
+			    <h2>Contact Us <%=editContactStr %></h2>
 			    <ul class="style5">
-				    <li class="first"><span class="address">Address</span> <asp:Label ID="addLab" runat="server" CssClass="address-01" Text=""></asp:Label><%--<span class="address-01">30075台灣新竹科學工業園區 <br />
-					    工業東一路2-1號</span> --%></li>
-				    <li> <span class="mail">Mail</span> <asp:Label ID="mailLab" runat="server" CssClass="mail-01" Text=""></asp:Label> <%--<span class="mail-01"><a href="#">service@radiantech.com.tw</a></span>--%> </li>
-				    <li> <span class="phone">Phone</span> <asp:Label ID="phoneLab" runat="server" CssClass="phone-01" Text=""></asp:Label> <%--<span class="phone-01">+886-3-577 7818 分機 8735</span>--%> </li>
-				    <li> <span class="phone">Fax</span> <asp:Label ID="faxLab" runat="server" CssClass="phone-01" Text=""></asp:Label> <%--<span class="phone-01">+886-3-577 7817</span>--%> </li>
+				    <li class="first"><span class="address">Address</span> <asp:Label ID="addLab" runat="server" CssClass="address-01" Text=""></asp:Label>
+                        <asp:TextBox ID="txtAddress" runat="server" CssClass="contact-textbox" Rows="2" TextMode="MultiLine"></asp:TextBox>
+				    </li>
+				    <li> <span class="mail">Mail</span> <asp:Label ID="mailLab" runat="server" CssClass="mail-01" Text=""></asp:Label>
+                        <asp:TextBox ID="txtMail" runat="server" CssClass="contact-textbox" TextMode="MultiLine"></asp:TextBox>
+				    </li>
+				    <li> <span class="phone">Phone</span> <asp:Label ID="phoneLab" runat="server" CssClass="phone-01" Text=""></asp:Label>
+                        <asp:TextBox ID="txtPhone" runat="server" CssClass="contact-textbox" TextMode="MultiLine"></asp:TextBox>
+				    </li>
+				    <li> <span class="phone">Fax</span> <asp:Label ID="faxLab" runat="server" CssClass="phone-01" Text=""></asp:Label>
+                        <asp:TextBox ID="txtFax" runat="server" CssClass="contact-textbox" TextMode="MultiLine"></asp:TextBox>
+				    </li>
 			    </ul>
+                <br/>
+                <asp:Button ID="btnContactSave" runat="server" CssClass="button-style-headerNfooter" Text="Save" OnClick="btnContactSave_Click"/>
 		    </div>
 	    </div>
     </div>

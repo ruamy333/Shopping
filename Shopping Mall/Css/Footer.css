@@ -226,4 +226,9 @@ ul.style5 .first
 	padding-top: 0em !important;
 	border-top: none;
 }
-		
+
+.contact-textbox 
+{
+    margin-top:10px;
+    width:195px;
+}

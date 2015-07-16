@@ -49,6 +49,15 @@ namespace Shopping_Mall {
         protected global::System.Web.UI.WebControls.TextBox headerTxt;
         
         /// <summary>
+        /// btnHeaderSave 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHeaderSave;
+        
+        /// <summary>
         /// ContentPlaceHolder1 控制項。
         /// </summary>
         /// <remarks>
@@ -58,13 +67,58 @@ namespace Shopping_Mall {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// introLab 控制項。
+        /// missionLab 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label introLab;
+        protected global::System.Web.UI.WebControls.Label missionLab;
+        
+        /// <summary>
+        /// txtMission 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMission;
+        
+        /// <summary>
+        /// btnMissionSave 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMissionSave;
+        
+        /// <summary>
+        /// aboutLab 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label aboutLab;
+        
+        /// <summary>
+        /// txtAbout 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAbout;
+        
+        /// <summary>
+        /// btnAboutSave 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAboutSave;
         
         /// <summary>
         /// addLab 控制項。
@@ -76,6 +130,15 @@ namespace Shopping_Mall {
         protected global::System.Web.UI.WebControls.Label addLab;
         
         /// <summary>
+        /// txtAddress 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        
+        /// <summary>
         /// mailLab 控制項。
         /// </summary>
         /// <remarks>
@@ -83,6 +146,15 @@ namespace Shopping_Mall {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label mailLab;
+        
+        /// <summary>
+        /// txtMail 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMail;
         
         /// <summary>
         /// phoneLab 控制項。
@@ -94,6 +166,15 @@ namespace Shopping_Mall {
         protected global::System.Web.UI.WebControls.Label phoneLab;
         
         /// <summary>
+        /// txtPhone 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        
+        /// <summary>
         /// faxLab 控制項。
         /// </summary>
         /// <remarks>
@@ -101,5 +182,23 @@ namespace Shopping_Mall {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label faxLab;
+        
+        /// <summary>
+        /// txtFax 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFax;
+        
+        /// <summary>
+        /// btnContactSave 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContactSave;
     }
 }
