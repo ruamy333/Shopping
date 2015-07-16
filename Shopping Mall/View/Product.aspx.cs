@@ -187,7 +187,7 @@ namespace Shopping_Mall.View
                     rightStr += "<div class='delete'>";
                     rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?u=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
                 }
 
                 rightStr += "</div>"
