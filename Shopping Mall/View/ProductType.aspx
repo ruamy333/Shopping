@@ -7,7 +7,7 @@
     <div class="contentBlock">
 			<div class="content-header"></div>
         <div class="formBox">
-            <div class="title">新增類別：</div>
+            <div class="title">更改類別：</div>
             <asp:TextBox ID="txtType"  class="form-control textBox " runat="server"></asp:TextBox>
         </div>
         <div class="buttonBox">

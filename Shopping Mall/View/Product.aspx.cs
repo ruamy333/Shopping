@@ -60,11 +60,21 @@ namespace Shopping_Mall.View
 
         private void setLeftBar()
         {
+            leftbarStr = "";
             String[][] productTypeArr = dbType.searchAll();
 
             for (int i = 0; i < productTypeArr.Length; i++)
             {
-                leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                if (Session["account"] == null || !Session["account"].Equals("admin"))
+                {
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                }
+                else
+                {
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a></div>"+"</div>"
+                       + ""
+                       + "<ul>";
+                }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
@@ -174,12 +184,12 @@ namespace Shopping_Mall.View
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
-                        + "<div id='" + array[a][0]  + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
+                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
-                        +"</div>"
-                        +"</div></a>";
+                        + "</div>"
+                        + "</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "'><img src=" + imageUrl + "></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -280,11 +290,12 @@ namespace Shopping_Mall.View
                     list.Add(txtType.Text);
                     String[] attribute = new String[1];
                     attribute[0] = "name";
-                    String str = dbType.insert(attribute, list.ToArray());
+                    String str = dbType.insert(attribute, list.ToArray());              
                     Response.Write("<Script language='JavaScript'>alert('新增成功!');</script>");
-                    Response.Redirect("Product.aspx");
+                    setLeftBar();
                 }
             }
+       
         }
 
     }

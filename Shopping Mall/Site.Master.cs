@@ -42,7 +42,6 @@ namespace Shopping_Mall
                 editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=../Picture/edit.png style='width:30px;'></a>";
 
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
-                        + "<li id='producttype'><a href='" + Path + "View/ProductType.aspx'>Add Type</a></li>"
                         + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
                         + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }
