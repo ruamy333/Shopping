@@ -20,7 +20,6 @@
 				        <asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label>
                         <br/>             
                         <div class="content-text">價格：
-                            <%--<asp:Label ID="priceLabel" runat="server" ></asp:Label>元 --%>
                             <%=priceStr %><br/>
                         </div>
                         <div class="content-text">數量：
@@ -29,7 +28,7 @@
                         </div>
                         <div class="content-text">
                             <asp:Button ID="btnPurchase" CssClass="button-style" runat="server" Text="放入購物車" OnClick="btnPurchase_Click"/>
-                            <asp:Label ID="alertLogin" runat="server" Text="欲購買請先登入"></asp:Label>
+                            <asp:Label ID="alertLogin" runat="server" Text="欲購買請洽服務人員"></asp:Label>
                         </div>
                     </div>     
                 </div>

@@ -113,8 +113,12 @@ namespace Shopping_Mall
         protected void btnHeaderSave_Click(object sender, EventArgs e)
         {
             String newHeader = headerTxt.Text;
-            db.modify("header", newHeader, "header", headerLab.Text);
-            Response.Redirect("Index.aspx");
+            if (newHeader.Equals("")) Response.Write("<Script language='JavaScript'>alert('請輸入內容');</Script>");
+            else
+            {
+                db.modify("header", newHeader, "header", headerLab.Text);
+                Response.Redirect("Index.aspx");
+            }
         }
         //Mission修改儲存按鈕
         protected void btnMissionSave_Click(object sender, EventArgs e)
