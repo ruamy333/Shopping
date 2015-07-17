@@ -36,10 +36,10 @@ namespace Shopping_Mall
             else if (Session["account"].ToString().Equals("admin"))
             {
                 //修改連結
-                editHeaderStr = "<a href='" + Path + "Index.aspx?edit=header'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editMissionStr = "<a href='" + Path + "Index.aspx?edit=mission'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editAboutStr = "<a href='" + Path + "Index.aspx?edit=about'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=../Picture/edit.png style='width:30px;'></a>";
+                editHeaderStr = "<a href='" + Path + "Index.aspx?edit=header'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editMissionStr = "<a href='" + Path + "Index.aspx?edit=mission'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editAboutStr = "<a href='" + Path + "Index.aspx?edit=about'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
 
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
                         + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
