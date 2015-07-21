@@ -36,10 +36,10 @@ namespace Shopping_Mall
             else if (Session["account"].ToString().Equals("admin"))
             {
                 //修改連結
-                editHeaderStr = "<a href='" + Path + "Index.aspx?edit=header'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editMissionStr = "<a href='" + Path + "Index.aspx?edit=mission'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editAboutStr = "<a href='" + Path + "Index.aspx?edit=about'><img src=../Picture/edit.png style='width:30px;'></a>";
-                editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=../Picture/edit.png style='width:30px;'></a>";
+                editHeaderStr = "<a href='" + Path + "Index.aspx?edit=header'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editMissionStr = "<a href='" + Path + "Index.aspx?edit=mission'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editAboutStr = "<a href='" + Path + "Index.aspx?edit=about'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
+                editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
 
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
                         + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
@@ -112,8 +112,12 @@ namespace Shopping_Mall
         protected void btnHeaderSave_Click(object sender, EventArgs e)
         {
             String newHeader = headerTxt.Text;
-            db.modify("header", newHeader, "header", headerLab.Text);
-            Response.Redirect("Index.aspx");
+            if (newHeader.Equals("")) Response.Write("<Script language='JavaScript'>alert('請輸入內容');</Script>");
+            else
+            {
+                db.modify("header", newHeader, "header", headerLab.Text);
+                Response.Redirect("Index.aspx");
+            }
         }
         //Mission修改儲存按鈕
         protected void btnMissionSave_Click(object sender, EventArgs e)

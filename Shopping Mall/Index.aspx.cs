@@ -32,7 +32,7 @@ namespace Shopping_Mall
 
             //判斷管理者
             if (Session["account"] != null && Session["account"].ToString().Equals("admin"))
-                editImgStr = "<a href='" + Path + "Index.aspx?edit=image'><img src=../Picture/edit.png style='width:30px;'></a>";
+                editImgStr = "<a href='" + Path + "Index.aspx?edit=image'><img src=Picture/edit.png style='width:30px;'></a>";
 
             //修改圖
             if (Request.QueryString["edit"] != null && Request.QueryString["edit"].ToString().Equals("image"))
