@@ -37,14 +37,17 @@ namespace Shopping_Mall.View
                     }
                     else if (i == type.Length - 1)
                     {
-                        List<String> list = new List<string>();
-                        list.Add("");
-                        list.Add("未分類");
-                        String[] schemaArr = new String[] {"ID","name" };
-                        String str = dbType.insert(schemaArr, list.ToArray());
-                        //先將資料寫入未分類(update)
-                        String [][] s = dbType.searchByRow("name", "未分類");
-                        db.modify("type", s[0][0], "type", dt);
+                        if (db.searchRowByColumn("type", "type", dt).Length > 0)
+                        {
+                            List<String> list = new List<string>();
+                            list.Add("");
+                            list.Add("未分類");
+                            String[] schemaArr = new String[] { "ID", "name" };
+                            String str = dbType.insert(schemaArr, list.ToArray());
+                            //先將資料寫入未分類(update)
+                            String[][] s = dbType.searchByRow("name", "未分類");
+                            db.modify("type", s[0][0], "type", dt);
+                        }     
                         //再將原分類刪除
                         dbType.delete("ID", dt);
                     }
@@ -322,12 +325,17 @@ namespace Shopping_Mall.View
                     Response.Write("<Script language='JavaScript'>alert('類別名稱已存在');</Script>");
                     break;
                 }
+                else if (txtType.Text == null || txtType.Text == "")
+                {
+                    Response.Write("<Script language='JavaScript'>alert('請輸入資料');</Script>");
+                    break;
+                }
                 else if (type == array.Length - 1)
                 {
                     list.Add(txtType.Text);
                     String[] attribute = new String[1];
                     attribute[0] = "name";
-                    String str = dbType.insert(attribute, list.ToArray());              
+                    String str = dbType.insert(attribute, list.ToArray());
                     Response.Write("<Script language='JavaScript'>alert('新增成功!');</script>");
                     setLeftBar();
                 }
