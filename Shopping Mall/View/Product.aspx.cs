@@ -20,6 +20,36 @@ namespace Shopping_Mall.View
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {
+            String dt = Request.QueryString["deleteType"];
+            if (dt != null)
+            {
+                //if沒有未分類ID則創一個
+                String [][] type = dbType.searchAll();
+                for (int i = 0; i < type.Length; i++)
+                {
+                    if (type[i][1] == "未分類")
+                    {
+                        //先將資料寫入未分類(update)
+                        db.modify("type", type[i][0], "type", dt);
+                        //再將原分類刪除
+                        dbType.delete("ID", dt);
+                        break;
+                    }
+                    else if (i == type.Length - 1)
+                    {
+                        List<String> list = new List<string>();
+                        list.Add("");
+                        list.Add("未分類");
+                        String[] schemaArr = new String[] {"ID","name" };
+                        String str = dbType.insert(schemaArr, list.ToArray());
+                        //先將資料寫入未分類(update)
+                        String [][] s = dbType.searchByRow("name", "未分類");
+                        db.modify("type", s[0][0], "type", dt);
+                        //再將原分類刪除
+                        dbType.delete("ID", dt);
+                    }
+                }
+            }
             setLeftBar();
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
             if (Session["account"] == null || !Session["account"].Equals("admin"))
@@ -36,8 +66,8 @@ namespace Shopping_Mall.View
             {
                 delete(del);          
             }
-            DBFunction db = new DBFunction("indexInfo");
-            String[][] infoArr = db.searchByColumn("phone");
+            DBFunction dbIndex = new DBFunction("indexInfo");
+            String[][] infoArr = dbIndex.searchByColumn("phone");
             String phone = infoArr[0][0].Replace("&nbsp;", " ");
             String num = Request.QueryString["num"];
             String ID = Request.QueryString["ID"];
@@ -71,9 +101,16 @@ namespace Shopping_Mall.View
                 }
                 else
                 {
-                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a></div>"+"</div>"
-                       + ""
-                       + "<ul>";
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] 
+                        //更新大類別鈕
+                        +"<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a>"
+                        +"</div>"
+                        //刪除大類別鈕
+                        + "<div class='left-update'><a href='Product.aspx?deleteType=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:10px;'></a>"
+                        + "</div>"
+                        +"</div>"
+                        + ""
+                        + "<ul>";
                 }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
