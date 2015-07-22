@@ -20,11 +20,15 @@ namespace Shopping_Mall.View
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            String dtID = Request.QueryString["deleteTypeID"];
+            if (dtID != null && dtID != "")
+            {
+                Response.Write("<script>if(confirm('確認刪除?')){alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}else{alert('取消');windows.location.href='Product.aspx';}</script>");
+            }
             String dt = Request.QueryString["deleteType"];
             if (dt != null && dt!="")
             {
-                
+
                 //if沒有未分類ID則創一個
                 String [][] type = dbType.searchAll();
                 for (int i = 0; i < type.Length; i++)
@@ -90,12 +94,7 @@ namespace Shopping_Mall.View
             else if(ID != null && (num == null || num=="")){
                 Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-            String dtID = Request.QueryString["deleteTypeID"];
-            if (dtID != null && dtID != "")
-            {
-                Response.Write("<script>if(confirm('確認刪除?')){alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}else{alert('取消');document.location.href='Product.aspx';}</script>");
-                
-            }
+
             pageShow(20);
         }
 
