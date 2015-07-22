@@ -24,9 +24,24 @@ namespace Shopping_Mall
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (txtType.Text.Equals(""))
+            Boolean complicate = false;
+            String[][] type = dbType.searchAll();
+            for(int i=0;i<type.Length;i++)
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入類別名稱');location.href='ProductType.aspx';</Script>");
+                if(txtType.Text==type[i][1])
+                {
+                    complicate=true;             
+                    break;
+                }
+            }
+            if (txtType.Text=="" || txtType.Text==null)
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入類別名稱');location.href='Product.aspx';</Script>");
+            }
+                //不等於類別名稱
+            else if(complicate)
+            {
+                Response.Write("<Script language='JavaScript'>alert('類別名稱重複');location.href='Product.aspx';</Script>");
             }
             else
             {
