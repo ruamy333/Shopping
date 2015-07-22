@@ -23,7 +23,7 @@
 .logoBox 
 {
     float:left;
-    width:300px;
+    width:500px;
 }
 #logo
 {
@@ -49,7 +49,7 @@
 #menu
 {
 	float: right;
-	width: 900px;
+	width: 700px;
 }
 
 #menu ul

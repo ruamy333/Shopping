@@ -10,12 +10,10 @@
         <br/>
         <div class="formBox">
             <div class="title">Account：</div>
-            <br/>
             <asp:TextBox ID="account" class="form-control textBox" runat="server"></asp:TextBox>
         </div>
         <div class="formBox">
             <div class="title">Password：</div>
-            <br/>
             <asp:TextBox ID="password" class="form-control textBox" TextMode="Password" runat="server"></asp:TextBox>
         </div>
         <asp:Button ID="btnLogin" class="button-style" runat="server" Text="Submit" OnClick="btnLogin_Click"/>

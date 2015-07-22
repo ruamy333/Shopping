@@ -41,7 +41,7 @@
                 <%=leftbarStr %>
         </div>
         <div class="rightbar">
-            <%=buycarStr %>
+            <%--<%=buycarStr %>--%>
             <%=rightStr %>
         </div>
         
