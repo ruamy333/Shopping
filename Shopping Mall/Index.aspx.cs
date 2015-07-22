@@ -71,8 +71,16 @@ namespace Shopping_Mall
                 String typeID = productTypeArr[i][0];
                 String type = productTypeArr[i][1];
                 String[][] productArr = db.searchByRow("type", typeID);
-                columnStr += "<div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>"
-                           + "<img src='UploadPic/" + productArr[0][5] + "'/></a>"
+                columnStr += "<div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
+
+                String imgUrl;
+                if (productArr[0][5] == null || productArr[0][5].Equals(""))
+                {
+                    imgUrl = "Picture/nonePic.png";
+                }
+                else imgUrl = "UploadPic/" + productArr[0][5];
+
+                columnStr += "<img src='" + imgUrl + "'/></a>"
                            + "<h2>" + type + "</h2><p>";
 
                 for (int j = 0; j < productArr.Length; j++)
