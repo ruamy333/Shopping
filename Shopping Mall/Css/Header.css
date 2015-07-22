@@ -1,8 +1,7 @@
 ﻿/** WRAPPER */
 #wrapper-bg
 {
-	overflow: hidden;
-	background: url(../Picture/bg05.jpg) repeat;
+	width:1349px;
 }
 
 #wrapper

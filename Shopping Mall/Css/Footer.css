@@ -40,6 +40,8 @@
 
 #footer
 {
+    width:1349px;
+    background-color:white;
 	overflow: hidden;
 	padding: 30px 0px;
 	box-shadow: 0px -10px 0px rgba(0,0,0,0.03);
