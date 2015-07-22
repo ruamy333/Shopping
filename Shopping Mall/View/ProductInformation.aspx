@@ -12,8 +12,9 @@
         </div>
         <div class="contentRight">
                 <div class="sectionBoxTop">
-                    <div class="sectionBoxLeft">
-                        <asp:Image ID="productImage" CssClass="image" runat="server"/>                        
+                    <%=deleteNeditStr %>
+                    <div class="sectionBoxMiddle">
+                        <asp:Image ID="productImage" CssClass="image" runat="server"/>                      
                     </div>
                     <div class="sectionBoxRight">
                         <%=imageStr %>

@@ -16,6 +16,7 @@ namespace Shopping_Mall.View.ProductInfo
         private String visible;
         public String imageStr;
         public String priceStr;
+        public String deleteNeditStr;
         private Discount dis = new Discount();
         private String finalPrice;
 
@@ -24,21 +25,35 @@ namespace Shopping_Mall.View.ProductInfo
             visible = dbIndexInfo.searchAll()[0][8];
             alertLogin.Visible = false;
             btnInvisible.Visible = false;
+            String proID = "";
+            if (Request.QueryString["product"] != null) proID = Request.QueryString["product"];
             if (Session["account"] == null || Session["account"].Equals("admin"))
             {                
                 btnPurchase.Visible = false;
                 alertLogin.Visible = true;
             }
-            if (Session["account"] != null && Session["account"].Equals("admin")) btnInvisible.Visible = true;
-
-            productShow(Request.QueryString["product"]);
+            if (Session["account"] != null && Session["account"].Equals("admin"))
+            {
+                editBtns(proID);
+                btnInvisible.Visible = true;
+            }
+            else deleteNeditStr = "";
+            productShow(proID);
             setLeftBar();
+        }
+        //修改刪除商品
+        private void editBtns(String ID)
+        {
+            deleteNeditStr += "<div class='sectionBoxLeft'><div class='deleteNedit'>";
+            deleteNeditStr += "<a href='Product.aspx?del=" + ID + "'><img src=../Picture/delete.png style='width:30px;'></a>";
+            deleteNeditStr += "</div><div class='deleteNedit'>";
+            deleteNeditStr += "<a href='ProductEditor.aspx?product=" + ID + "'><img src=../Picture/edit.png style='width:30px;'></a></div></div>";
         }
         //讀取產品介紹
         private void productShow(String ID) 
         {
             String[][] proArr;
-            if(ID == null){
+            if(ID == null || ID.Equals("")){
                 proArr = db.searchTop(1);
             }
             else proArr = db.searchByRow("ID", ID);
