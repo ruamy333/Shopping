@@ -78,7 +78,7 @@ $.fn.hoverpulse.defaults = {
 
 
 $(document).ready(function () {
-    $('.sectionBoxLeft img').hoverpulse({
+    $('.sectionBoxMiddle img').hoverpulse({
         size: 80,
         speed: 400 
     });
