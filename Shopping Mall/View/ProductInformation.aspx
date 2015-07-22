@@ -18,7 +18,7 @@
                     <div class="sectionBoxRight">
                         <%=imageStr %>
 				        <asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label>
-                        <br/>             
+                        <br/><br/>
                         <div class="content-text">價格：
                             <%=priceStr %><br/>
                         </div>

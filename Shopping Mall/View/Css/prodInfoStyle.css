@@ -113,8 +113,9 @@ ul
 }
 
 .dis-box {
+    float:left;
     background-color: #e00;
-    margin-left:10px;
+    margin-right:10px;
     width:80px;
     height:50px;
     font-weight: bold;
