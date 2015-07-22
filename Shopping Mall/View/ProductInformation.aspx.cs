@@ -12,6 +12,8 @@ namespace Shopping_Mall.View.ProductInfo
     {
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
+        private DBFunction dbIndexInfo = new DBFunction("indexInfo");
+        private String visible;
         public String imageStr;
         public String priceStr;
         private Discount dis = new Discount();
@@ -19,47 +21,62 @@ namespace Shopping_Mall.View.ProductInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            visible = dbIndexInfo.searchAll()[0][8];
             alertLogin.Visible = false;
+            btnInvisible.Visible = false;
             if (Session["account"] == null || Session["account"].Equals("admin"))
-            {
+            {                
                 btnPurchase.Visible = false;
                 alertLogin.Visible = true;
             }
+            if (Session["account"] != null && Session["account"].Equals("admin")) btnInvisible.Visible = true;
+
             productShow(Request.QueryString["product"]);
             setLeftBar();
         }
         //讀取產品介紹
         private void productShow(String ID) 
         {
+            String[][] proArr;
             if(ID == null){
-                ID = "21";
+                proArr = db.searchTop(1);
             }
-            String[][] proArr = db.searchByRow("ID", ID);
+            else proArr = db.searchByRow("ID", ID);
 
             productName.Text = proArr[0][1];
 
-            //判斷有無優惠方案
-            if (proArr[0][7] != null && proArr[0][7] != "0")
+            if (visible.Equals("true"))
             {
-                String[] discountArr = null;
-                discountArr = dis.findingType(Convert.ToInt32(proArr[0][7]), 1, Convert.ToInt32(proArr[0][3]));
-                imageStr = "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div></div>";
-                priceStr = "<del>" + proArr[0][3] + "元</del><span class = 'discount'>" + discountArr[1] + "元</span>";
-                finalPrice = discountArr[1];
+                //判斷有無優惠方案
+                if (proArr[0][7] != null && proArr[0][7] != "0")
+                {
+                    String[] discountArr = null;
+                    discountArr = dis.findingType(Convert.ToInt32(proArr[0][7]), 1, Convert.ToInt32(proArr[0][3]));
+                    imageStr = "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div></div>";
+                    priceStr = "<div class='content-text'>價格：<del>" + proArr[0][3] + "元</del><span class = 'discount'>" + discountArr[1] + "元</span><br/></div><div class='content-text'>數量：</div>";
+                    finalPrice = discountArr[1];
+                }
+                else
+                {
+                    priceStr = "<div class='content-text'>價格：" + proArr[0][3] + "元<br/></div><div class='content-text'>數量：</div>";
+                    finalPrice = proArr[0][3];
+                }
+
+                for (int i = 0; i < int.Parse(proArr[0][4]); i++)
+                {
+                    numberDropList.Items.Add((i + 1) + "");
+                }
+                if (int.Parse(proArr[0][4]) == 0) laseNum.Text = "　　目前無庫存";
+                else laseNum.Text += proArr[0][4] + " 個";
             }
             else
             {
-                priceStr = proArr[0][3] + "元";
-                finalPrice = proArr[0][3];
+                priceStr = "";
+                numberDropList.Visible = false;
+                laseNum.Visible = false;
             }
-
             
-            for (int i = 0; i < int.Parse(proArr[0][4]); i++)
-            {
-                numberDropList.Items.Add((i+1) + "");
-            }
-            if (int.Parse(proArr[0][4]) == 0) laseNum.Text = "　　目前無庫存";
-            else laseNum.Text += proArr[0][4] + " 個";
+
             if (proArr[0][5] == null || proArr[0][5].Equals(""))
             {
                 productImage.ImageUrl = "../Picture/nonePic.png";
@@ -95,6 +112,15 @@ namespace Shopping_Mall.View.ProductInfo
                 newData(dbPurchase);
             }
             Response.Redirect("Product.aspx");
+        }
+        //隱藏價格和數量
+        protected void btnInvisible_Click(object sender, EventArgs e)
+        { 
+            if(visible.Equals("false"))
+                dbIndexInfo.modify("priceVisible", "true", "priceVisible", visible);
+            else
+                dbIndexInfo.modify("priceVisible", "false", "priceVisible", visible);
+            Response.Redirect("ProductInformation.aspx");
         }
         //新增購物車資料
         private void newData(DBFunction dbPurchase) 
