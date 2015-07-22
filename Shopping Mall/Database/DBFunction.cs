@@ -83,6 +83,14 @@ namespace Shopping_Mall.Database
             return db.sqlSelect(sqlResult);
         }
         //查詢列
+        public String[][] searchTop(int value)
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT TOP " + value + " * FROM " + tableName;
+
+            return db.sqlSelect(sqlStr);
+        }
+        //查詢列
         public String[][] searchByRow(String column, String value)
         {
             DBConnector db = new DBConnector();
@@ -160,7 +168,7 @@ namespace Shopping_Mall.Database
             String s = "INSERT INTO discount ([type],[content]) values ('" + type + "','" + content + "') SELECT TOP 1 [discountID] AS id FROM discount ORDER BY id DESC";
             return db.sqlGetID(s);
         }
-        //修改字串欄位
+        //修改欄位
         public String modifyAll(String modify, String conditionColumn, String conditionValue)
         {
             DBConnector db = new DBConnector();

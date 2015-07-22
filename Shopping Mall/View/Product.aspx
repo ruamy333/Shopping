@@ -35,13 +35,13 @@
             <%=editType %>
             <div class="formBox" style="margin-top:10px;">
                 <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;float:left;" OnClick="btnSubmit_Click" Visible="False" />
-                <asp:TextBox ID="txtType"  class="form-control textBox " style="width:180px;" runat="server" Visible="False"></asp:TextBox>
+                <asp:TextBox ID="txtType"  CssClass="form-control textBox " style="width:180px;" runat="server" Visible="False"></asp:TextBox>
             </div>
             
                 <%=leftbarStr %>
         </div>
         <div class="rightbar">
-            <%=buycarStr %>
+            <%--<%=buycarStr %>--%>
             <%=rightStr %>
         </div>
         

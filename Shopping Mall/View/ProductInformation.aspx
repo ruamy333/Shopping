@@ -19,10 +19,9 @@
                         <%=imageStr %>
 				        <asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label>
                         <br/><br/>
-                        <div class="content-text">價格：
-                            <%=priceStr %><br/>
-                        </div>
-                        <div class="content-text">數量：
+                        <asp:Button ID="btnInvisible" runat="server" CssClass="button-style-headerNfooter" Text="隱藏" OnClick="btnInvisible_Click"/>
+                        <%=priceStr %>
+                        <div class="content-text">
                             <asp:DropDownList ID="numberDropList" runat="server" CssClass="form-control" Width="60"></asp:DropDownList>
                             <asp:Label ID="laseNum" runat="server" Text="　剩餘數量： "></asp:Label>
                         </div>
