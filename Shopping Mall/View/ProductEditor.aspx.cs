@@ -57,7 +57,7 @@ namespace Shopping_Mall
             //避免資料空值或負值
             if (txtName.Text.Equals("") || txtNum.Text.Equals("") || txtPrice.Text.Equals(""))
             {
-                Response.Write("<Script language='JavaScript'>alert('請輸入資料');location.href='ProductEditor.aspx;</Script>");
+                Response.Write("<Script language='JavaScript'>alert('請輸入資料');location.href='ProductEditor.aspx';</script>");
             }
             else if (radiobtnDiscount.SelectedIndex == 1 && txtDiscountType.Text.Equals(""))
             {
