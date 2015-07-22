@@ -112,11 +112,28 @@ namespace Shopping_Mall.View.ProductInfo
         public String leftbarStr = "";
         private void setLeftBar()
         {
+            leftbarStr = "";
             String[][] productTypeArr = dbType.searchAll();
 
             for (int i = 0; i < productTypeArr.Length; i++)
             {
-                leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                if (Session["account"] == null || !Session["account"].Equals("admin"))
+                {
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                }
+                else
+                {
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1]
+                        //更新大類別鈕
+                        + "<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a>"
+                        + "</div>"
+                        //刪除大類別鈕
+                        + "<div class='left-update'><a href='Product.aspx?deleteType=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:10px;'></a>"
+                        + "</div>"
+                        + "</div>"
+                        + ""
+                        + "<ul>";
+                }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
                 for (int j = 0; j < productArr.Length; j++)
                 {
