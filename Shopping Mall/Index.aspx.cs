@@ -65,30 +65,35 @@ namespace Shopping_Mall
         private void setColumn()
         {
             String[][] productTypeArr = dbType.searchAll();
-            
-            for (int i = 0; i < 3; i++)
+            int typeNum = productTypeArr.Length;
+            if (typeNum > 3)
+            {
+                typeNum = 3;
+            }
+            for (int i = 0; i < typeNum; i++)
             {
                 String typeID = productTypeArr[i][0];
                 String type = productTypeArr[i][1];
                 String[][] productArr = db.searchByRow("type", typeID);
-                if(productArr.Length != 0){
-                columnStr += "<div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
-
-                String imgUrl;
-                if (productArr[0][5] == null || productArr[0][5].Equals(""))
+                if(productArr.Length != 0)
                 {
-                    imgUrl = "Picture/nonePic.png";
-                }
-                else imgUrl = "UploadPic/" + productArr[0][5];
+                    columnStr += "<div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
 
-                columnStr += "<img src='" + imgUrl + "'/></a>"
-                           + "<h2>" + type + "</h2><p>";
+                    String imgUrl;
+                    if (productArr[0][5] == null || productArr[0][5].Equals(""))
+                    {
+                        imgUrl = "Picture/nonePic.png";
+                    }
+                    else imgUrl = "UploadPic/" + productArr[0][5];
 
-                for (int j = 0; j < productArr.Length; j++)
-                {
-                    columnStr += "● " + productArr[j][1] + "<br/>";
-                }
-                columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div>";
+                    columnStr += "<img src='" + imgUrl + "'/></a>"
+                               + "<h2>" + type + "</h2><p>";
+
+                    for (int j = 0; j < productArr.Length; j++)
+                    {
+                        columnStr += "● " + productArr[j][1] + "<br/>";
+                    }
+                    columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div>";
                 
                 }
             }
