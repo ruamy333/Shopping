@@ -6,15 +6,23 @@
     float:left;
     margin-left:75px;
 }
+
 .leftbar-type
 {
     height:28px;
-    width:100%;
+    width:80%;
 	font-size: 1.2em;
     font-weight:800;
 	overflow: hidden;
     border-bottom: 1px solid #999;
     margin-top:20px;
+}
+.left-update 
+{
+    height:28px;
+    width:10%;
+    float:left;
+    overflow: hidden;
 }
 
 .leftbar-type:hover
