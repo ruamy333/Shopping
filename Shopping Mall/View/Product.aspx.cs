@@ -104,14 +104,19 @@ namespace Shopping_Mall.View
                 }
                 else
                 {
-                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] 
-                        //更新大類別鈕
-                        +"<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a>"
+                    leftbarStr += 
+                        "<div class='leftbar-type'>" + productTypeArr[i][1] 
+                            //更新大類別鈕
+                            +"<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a>"
+                            +"</div>"
+                            //刪除大類別鈕
+                        //+"<script>if(confirm('視窗內文字')){alert('你按下確定');}else{alert('你按下取消');}"
+                            + "<div class='left-update'><a href='Product.aspx?deleteType=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:10px;'></a>"
+                            + "</div>"
+                            //大類別分類進入
+                            + "<a href='View/Product.aspx?type=" + productTypeArr[i][0] + "' class='button-style'>More</a>"
                         +"</div>"
-                        //刪除大類別鈕
-                        + "<div class='left-update'><a href='Product.aspx?deleteType=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:10px;'></a>"
-                        + "</div>"
-                        +"</div>"
+                       // + "</script>"
                         + ""
                         + "<ul>";
                 }
