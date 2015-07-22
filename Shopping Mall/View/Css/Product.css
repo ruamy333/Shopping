@@ -12,19 +12,30 @@
 .leftbar-type
 {
     height:28px;
-    width:80%;
+    width:100%;
 	font-size: 1.2em;
     font-weight:800;
 	overflow: hidden;
     border-bottom: 1px solid #999;
     margin-top:20px;
 }
+
 .left-update 
 {
-    height:28px;
-    width:10%;
     float:left;
-    overflow: hidden;
+    height:28px;
+    width:20px;
+    line-height:28px;
+	font-size: 1.2em;
+    font-weight:800;
+	overflow: hidden;
+    border-bottom: 1px solid #999;
+    margin-left:5px;
+}
+.leftbar-type-change:hover
+{
+    color: #606060;
+    cursor:pointer;
 }
 .leftbar-type:hover
 {

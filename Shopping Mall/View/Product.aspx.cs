@@ -20,9 +20,11 @@ namespace Shopping_Mall.View
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             String dt = Request.QueryString["deleteType"];
-            if (dt != null)
+            if (dt != null && dt!="")
             {
+                
                 //if沒有未分類ID則創一個
                 String [][] type = dbType.searchAll();
                 for (int i = 0; i < type.Length; i++)
@@ -88,7 +90,13 @@ namespace Shopping_Mall.View
             else if(ID != null && (num == null || num=="")){
                 Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-            pageShow(6);
+            String dtID = Request.QueryString["deleteTypeID"];
+            if (dtID != null && dtID != "")
+            {
+                Response.Write("<script>if(confirm('確認刪除?')){alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}else{alert('取消');document.location.href='Product.aspx';}</script>");
+                
+            }
+            pageShow(20);
         }
 
         private void setLeftBar()
@@ -105,22 +113,25 @@ namespace Shopping_Mall.View
                 else
                 {
                     leftbarStr += 
-                        "<div class='leftbar-type'>" + productTypeArr[i][1] 
-                            //更新大類別鈕
-                            +"<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:10px;'></a>"
-                            +"</div>"
-                            //刪除大類別鈕
-                        //+"<script>if(confirm('視窗內文字')){alert('你按下確定');}else{alert('你按下取消');}"
-                            + "<div class='left-update'><a href='Product.aspx?deleteType=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:10px;'></a>"
-                            + "</div>"
-                            //大類別分類進入
-                            + "<a href='View/Product.aspx?type=" + productTypeArr[i][0] + "' class='button-style'>More</a>"
+
+                    "<div class='leftbar-type'>" + productTypeArr[i][1]
+                        //更新大類別鈕
+                        + "<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:20px;'></a>"
                         +"</div>"
-                       // + "</script>"
-                        + ""
-                        + "<ul>";
+                        //刪除大類別鈕
+                        
+                        + "<div class='left-update'><a href='Product.aspx?deleteTypeID=" + productTypeArr[i][0] + "'><img src=../Picture/delete.png style='width:20px;'></a>"
+                        + "</div>"
+                        
+                        //大類別分類進入
+                        //+ "<div class='left-update'><a href='Product.aspx?type=" + productTypeArr[i][0] + "'><img src=../Picture/more.png style='width:20px;'></a>"
+                        //+ "</div>"               
+                    +"</div>"
+                     
+                    + "<ul>";
                 }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
+                leftbarStr += "<a href='Product.aspx?type=" + productTypeArr[i][0] + "'><li>全部商品</li></a>";
                 for (int j = 0; j < productArr.Length; j++)
                 {
                     leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
@@ -248,35 +259,35 @@ namespace Shopping_Mall.View
                 rightStr += "</div>"
                     + "<div class='name'><a href='ProductInformation.aspx?product=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
 #endregion
-#region 欄位information
-                if (array[a][7] != null && array[a][7] != "0")
-                {
-                    //策略顯示
-                    rightStr += "<div class='information'>價格："
-                        + "<del>" + array[a][3] + "元</del>　"
-                        + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
-                        + "數量：" + array[a][4] + "</div>";
-                }
-                else
-                {
-                    rightStr += "<div class='information'>價格：" + array[a][3] + "元　　　"
-                        + "數量：" + array[a][4] + "</div>";
-                }
-#endregion information
-#region 欄位information
-                //欄位ID,name,type,price,num,picture,discountID
-                //1個ASP.NET擁有多個form
-                if ((String)Session["account"] != "admin")
-                {
-                    rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-                            + "<div class='information'>購買數量："
-                            + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
-                            + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
-#endregion
-                    rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
-                            + "</form>";
+//#region 欄位information
+//                if (array[a][7] != null && array[a][7] != "0")
+//                {
+//                    //策略顯示
+//                    rightStr += "<div class='information'>價格："
+//                        + "<del>" + array[a][3] + "元</del>　"
+//                        + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
+//                        + "數量：" + array[a][4] + "</div>";
+//                }
+//                else
+//                {
+//                    rightStr += "<div class='information'>價格：" + array[a][3] + "元　　　"
+//                        + "數量：" + array[a][4] + "</div>";
+//                }
+//#endregion information
+//#region 欄位information
+//                //欄位ID,name,type,price,num,picture,discountID
+//                //1個ASP.NET擁有多個form
+//                if ((String)Session["account"] != "admin")
+//                {
+//                    rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+//                            + "<div class='information'>購買數量："
+//                            + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
+//                            + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
+//#endregion
+//                    rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
+//                            + "</form>";
                             
-                }
+//                }
                 rightStr += "</div>";
 #endregion
 
