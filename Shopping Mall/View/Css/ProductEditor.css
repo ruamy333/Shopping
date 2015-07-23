@@ -1,8 +1,8 @@
 ﻿
 .contentBlock
 {
-    width:530px;
-    margin-left:231px;
+    width:800px;
+    margin-left:96px;
 }
 .formBox
 { 
@@ -24,27 +24,15 @@
 
 .buttonBox 
 {
-    width:100%;
+    width:150px;
     height:70px;
-    margin-left:210px;
+    margin-left:300px;
 }
-.summaryBox
-{
-    width:100%;
-    height:auto;
-    margin-bottom:0px;
-}
-/*簡介*/
-.summary 
-{ 
-    width:100%;
-    resize: none;
-    overflow-y:no-content;
-}
+
 /*題目內容*/
 .textBox
 {
-    width:350px;
+    width:450px;
     height: auto;
 }
 .content-header

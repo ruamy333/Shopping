@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductEditor.aspx.cs" Inherits="Shopping_Mall.ProductManage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductEditor.aspx.cs" Inherits="Shopping_Mall.ProductManage" validateRequest="False" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Css/Common.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Css/ProductEditor.css" />
+    <script src="../ckeditor/ckeditor.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contentBlock">
@@ -45,9 +46,9 @@
         <div class="formBox">
             <div class="title">商品簡介：</div>
         </div>
-        <div class="summaryBox">
-            <asp:TextBox ID="txtSummary" CssClass="form-control summary" Rows="6" TextMode="MultiLine" runat="server"></asp:TextBox>
-        </div>
+        <div class="editorBox" id="editorBox">
+            <asp:TextBox ID="txtSummary" runat="server"  TextMode="MultiLine" CssClass="ckeditor"></asp:TextBox>
+        </div> 
         <div class="buttonBox">
             <asp:Button ID="btnSubmit" CssClass="button-style" runat="server" Text="送出" OnClick="btnSubmit_Click"/>
             <asp:Button ID="btnCancle" CssClass="button-style" runat="server" Text="取消" OnClick="btnCancle_Click"/>

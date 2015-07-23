@@ -97,7 +97,7 @@ namespace Shopping_Mall
             dropdownType.SelectedValue = productInfo[0][9];
             txtPrice.Text = productInfo[0][3];
             txtNum.Text = productInfo[0][4];
-            txtSummary.Text = productInfo[0][6].Replace("<br/>", System.Environment.NewLine).Replace("&nbsp;", " ");
+            txtSummary.Text = productInfo[0][6];
             
             //無折扣
             if (productInfo[0][7].Equals("0"))
@@ -156,7 +156,8 @@ namespace Shopping_Mall
             list.Add(txtPrice.Text);
             list.Add(txtNum.Text);
             list.Add(fileUpload());
-            list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
+            //list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
+            list.Add(txtSummary.Text.Replace("\r\n", "<br/>"));
             list.Add(getDiscountID());
             String str = db.insert(schemaArr, list.ToArray());
             Response.Write("<script>alert('新增成功!');location.href='../Index.aspx';</script>");
@@ -177,7 +178,7 @@ namespace Shopping_Mall
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
                           schemaArr[5] + "='" + fileName + "', " +
-                          schemaArr[6] + "='" + txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;") + "', " +
+                          schemaArr[6] + "='" + txtSummary.Text + "', " +
                           schemaArr[7] + "='" + getDiscountID();
             db.modifyAll(data,"ID",productID);
             Response.Redirect("ProductInformation.aspx?product=" + productID);
