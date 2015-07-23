@@ -24,7 +24,7 @@ namespace Shopping_Mall.View
             if (dtID != null && dtID != "")
             {
                  
-                    Response.Write(""
+                Response.Write(""
                         + "<script>"
                     + "if(confirm('確認刪除?'))"
                     + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
@@ -215,18 +215,22 @@ namespace Shopping_Mall.View
             }
             //首頁click more進來的畫面
             String[][] array;
-            if (Request.QueryString["type"] == null || Request.QueryString["type"] == "")
-            {
+            if (Request.QueryString["search"] != null) 
+                array = db.searchLikeByRow("name", Request.QueryString["search"]);
+            else if (Request.QueryString["type"] == null || Request.QueryString["type"] == "") 
                 array = db.searchByColumnOrder("ID,name,type,price,num,picture,introduction,discountID");
-            }
             else
-            {
                 array = db.searchByRowOrder("type", Request.QueryString["type"]);
+
+            //判斷array是否有值
+            if (array.Length == 0)
+            {
+                Response.Write("<Script language='JavaScript'>alert('查無資料');location.href='Product.aspx';</Script>");
             }
 
             //index為每頁第一筆資料在array中的位置
             int index = (page - 1) * num;
-            for (int a = index; a < index+num; a++)
+                for (int a = index; a < index + num; a++)
             {
                 String[] discountArr = null;
 
@@ -298,11 +302,13 @@ namespace Shopping_Mall.View
                 rightStr += "</div>";
 #endregion
                 //是否最後一筆資料、是否每頁顯示上限
-                if (a == array.Length - 1 || a == ((page - 1) * num+ num-1))
+                    if (a == array.Length - 1 || a == ((page - 1) * num + num - 1))
                 {
                     break;
                 }
             }
+            }
+            
             #region 欄位page       
             for (int i = 0; i <= (array.Length / num); i++)
             {
@@ -323,7 +329,6 @@ namespace Shopping_Mall.View
             }
             #endregion
         }
-
 
         protected void btnSubmit_Click(object sender, ImageClickEventArgs e)
         {
@@ -358,5 +363,11 @@ namespace Shopping_Mall.View
        
         }
 
+        //Search
+        protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+        {
+            String searchLab = txtSearch.Text;
+            Response.Redirect("Product.aspx?search=" + searchLab);
+        }
     }
 }

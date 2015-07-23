@@ -61,8 +61,14 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
+    <Content Include="Css\Movingboxes.css" />
+    <Content Include="images\arrows.gif" />
+    <Content Include="images\arrows.png" />
+    <Content Include="images\leftshadow.png" />
+    <Content Include="images\rightshadow.png" />
     <Content Include="js\buycar-scroll.js" />
     <Content Include="js\jquery.hoverpulse.js" />
+    <Content Include="js\jquery.movingboxes.js" />
     <Content Include="js\lefrbar-effect.js" />
     <Content Include="Picture\add.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -82,6 +88,7 @@
     <Content Include="Picture\nonePic.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Picture\search.png" />
     <Content Include="UploadPic\派大星.jpg" />
     <Content Include="UploadPic\564507_484779621576439_1408409668_n.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

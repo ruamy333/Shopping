@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Css/Index.css" rel="stylesheet" />
     <link href="Css/Common.css" rel="stylesheet" />
+    <script src="js/jquery.movingboxes.js"></script>
+    <link href="Css/Movingboxes.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="banner" class="container"> 
@@ -14,10 +16,15 @@
             </div>
         </div>
     </div>
-		<div id="three-column" class="container">
-			<header>
-				<h2>Products</h2>
-			</header>
+	<div id="three-column" class="container">
+		<header>
+			<h2>Products</h2>
+		</header>
+        
+        <%--<%=columnStr %>--%>
+	</div>
+
+    <ul id="slider">
             <%=columnStr %>
-		</div>
+	    </ul>
 </asp:Content>

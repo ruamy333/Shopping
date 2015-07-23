@@ -19,7 +19,7 @@
 
 #banner
 {
-	padding: 30px 0px;
+    padding:20px 0px;
 }
 
 /* Three Column Content */
@@ -27,20 +27,20 @@
 #three-column
 {
 	overflow: hidden;
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 #three-column header
 {
 	letter-spacing: -1px;
 	text-transform: uppercase;
-	margin-bottom: 2em;
+	margin-bottom: 10px;
 	font-size: 1.5em;
 }
 
 #three-column .columnbox h2
 {
-	margin-bottom: 1em;
+	margin-bottom: 10px;
 	text-transform: uppercase;
 	color: #515151;
 }
@@ -49,8 +49,8 @@
 {
 	float: left;
 	width: 375px;
-	margin-right: 12px;
-    margin-left: 12px;
+	margin: 12px;
+    margin-bottom: 30px;
 }
 .columnbox img{
     height:250px;

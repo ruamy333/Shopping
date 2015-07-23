@@ -19,13 +19,14 @@ namespace Shopping_Mall.View.ProductInfo
         public String deleteNeditStr;
         private Discount dis = new Discount();
         private String finalPrice;
+        private String proID = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             visible = dbIndexInfo.searchAll()[0][8];
             alertLogin.Visible = false;
             btnInvisible.Visible = false;
-            String proID = "";
+
             if (Request.QueryString["product"] != null) proID = Request.QueryString["product"];
             if (Session["account"] == null || Session["account"].Equals("admin"))
             {                
@@ -62,6 +63,7 @@ namespace Shopping_Mall.View.ProductInfo
 
             if (visible.Equals("true"))
             {
+                btnInvisible.Text = "隱藏";
                 //判斷有無優惠方案
                 if (proArr[0][7] != null && proArr[0][7] != "0")
                 {
@@ -86,6 +88,7 @@ namespace Shopping_Mall.View.ProductInfo
             }
             else
             {
+                btnInvisible.Text = "顯示";
                 priceStr = "";
                 numberDropList.Visible = false;
                 laseNum.Visible = false;
@@ -130,12 +133,12 @@ namespace Shopping_Mall.View.ProductInfo
         }
         //隱藏價格和數量
         protected void btnInvisible_Click(object sender, EventArgs e)
-        { 
-            if(visible.Equals("false"))
-                dbIndexInfo.modify("priceVisible", "true", "priceVisible", visible);
+        {
+            if (visible.Equals("false"))
+                dbIndexInfo.modify("priceVisible", "true", "priceVisible", visible); 
             else
                 dbIndexInfo.modify("priceVisible", "false", "priceVisible", visible);
-            Response.Redirect("ProductInformation.aspx");
+            Response.Redirect("ProductInformation.aspx?product=" + proID);
         }
         //新增購物車資料
         private void newData(DBFunction dbPurchase) 

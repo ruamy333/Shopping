@@ -82,13 +82,22 @@ namespace Shopping_Mall.Database
 
             return db.sqlSelect(sqlResult);
         }
-        //查詢列
+        //查詢前幾筆資料
         public String[][] searchTop(int value)
         {
             DBConnector db = new DBConnector();
             String sqlStr = "SELECT TOP " + value + " * FROM " + tableName;
 
             return db.sqlSelect(sqlStr);
+        }
+        
+        //查詢欄位包含字串
+        public String[][] searchLikeByRow(String column, String value) 
+        {
+            DBConnector db = new DBConnector();
+            String sqlStr = "SELECT * FROM " + tableName + " WHERE " + column + " LIKE '%" + value + "%'";
+
+            return db.sqlSelect(sqlStr); 
         }
         //查詢列
         public String[][] searchByRow(String column, String value)
