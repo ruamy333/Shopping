@@ -49,15 +49,6 @@ namespace Shopping_Mall.View {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
-        /// labNoneSearch 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labNoneSearch;
-        
-        /// <summary>
         /// DropDownList1 控制項。
         /// </summary>
         /// <remarks>
