@@ -1,6 +1,7 @@
 ﻿using Shopping_Mall.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -65,12 +66,7 @@ namespace Shopping_Mall
         private void setColumn()
         {
             String[][] productTypeArr = dbType.searchAll();
-            int typeNum = productTypeArr.Length;
-            //if (typeNum > 3)
-            //{
-            //    typeNum = 3;
-            //}
-            for (int i = 0; i < typeNum; i++)
+            for (int i = 0; i < productTypeArr.Length; i++)
             {
                 String typeID = productTypeArr[i][0];
                 String type = productTypeArr[i][1];
@@ -79,12 +75,16 @@ namespace Shopping_Mall
                 {
                     columnStr += "<li><div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
 
-                    String imgUrl;
-                    if (productArr[0][5] == null || productArr[0][5].Equals(""))
+                    String imgUrl = HttpRuntime.AppDomainAppPath;
+                    imgUrl += "UploadPic\\" + productArr[0][0] + ".png";
+                    if (!File.Exists(imgUrl))
                     {
-                        imgUrl = "Picture/nonePic.png";
+                        imgUrl = "../Picture/nonePic.png";
                     }
-                    else imgUrl = "UploadPic/" + productArr[0][5];
+                    else
+                    {
+                        imgUrl = "../UploadPic/" + productArr[0][0] + ".png";
+                    }
 
                     columnStr += "<img src='" + imgUrl + "'/></a>"
                                + "<h2>" + type + "</h2><p>";
