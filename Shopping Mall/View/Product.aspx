@@ -34,13 +34,13 @@
         <div class="leftbar">
             <%=editType %>
             <div class="formBox" style="margin-top:10px;">
-                <asp:TextBox ID="txtSearch"  CssClass="form-control textBox " style="width:180px;float:left;" runat="server"></asp:TextBox>
+                <div class="textbox-position"><asp:TextBox ID="txtSearch"  CssClass="form-control textBox" placeholder="搜尋關鍵字" runat="server"></asp:TextBox></div>
                 <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="../Picture/search.png" style="width:30px;" OnClick="btnSearch_Click" />
             </div>
 
             <div class="formBox" style="margin-top:10px;">
+                <div class="textbox-position"><asp:TextBox ID="txtType"  CssClass="form-control textBox" placeholder="新增類別" runat="server" Visible="False"></asp:TextBox></div>
                 <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;float:left;" OnClick="btnSubmit_Click" Visible="False" />
-                <asp:TextBox ID="txtType"  CssClass="form-control textBox " style="width:180px;" runat="server" Visible="False"></asp:TextBox>
             </div>
             <%=leftbarStr %>
         </div>
