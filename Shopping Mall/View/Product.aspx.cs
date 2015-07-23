@@ -23,11 +23,12 @@ namespace Shopping_Mall.View
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
-                Response.Write(""
-                    +"<script>"
-                +"if(confirm('確認刪除?'))"
-                +"{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
-                +"else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                 
+                    Response.Write(""
+                        + "<script>"
+                    + "if(confirm('確認刪除?'))"
+                    + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
+                    + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
             }
 
             String dt = Request.QueryString["deleteType"];
@@ -71,7 +72,7 @@ namespace Shopping_Mall.View
                 Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
 
-            pageShow(20);
+            pageShow(20,300);
         }
 
         private void deleteType(String dt)
@@ -201,9 +202,9 @@ namespace Shopping_Mall.View
             dbPurchase.insert(schemaArr, values);
         }
         
-        //num is the amount of items at each page
         //p為分頁碼
-        private void pageShow(int num)
+        //pageShow(num:the amount of items at each page , width: width of each item)
+        private void pageShow(int num,int width)
         {
             String p = Request.QueryString["page"];
             int page = Convert.ToInt32(p);
@@ -222,21 +223,15 @@ namespace Shopping_Mall.View
             {
                 array = db.searchByRowOrder("type", Request.QueryString["type"]);
             }
-            int count=-1;
+
             //index為每頁第一筆資料在array中的位置
             int index = (page - 1) * num;
             for (int a = index; a < index+num; a++)
             {
-                
-                count++;
-#region 欄位product
-                if(count%2==0){
-                    rightStr += "<div class ='product'>";
-                }
                 String[] discountArr = null;
 
 #region 欄位product-inside
-                rightStr += "<div class ='product-inside'>";
+                rightStr += "<div class ='product-inside' style='width:" + width + "px;height:" + width*0.8 + "px'>";
 #region 欄位ImgDel
                 rightStr += "<div class='ImgDel'>";
 
@@ -263,9 +258,9 @@ namespace Shopping_Mall.View
                 if ((String)Session["account"] == "admin")
                 {
                     rightStr += "<div class='delete'>";
-                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:30px;'></a>";
+                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:100%;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:30px;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:100%;'></a></div>";
                 }
 
                 rightStr += "</div>"
@@ -302,19 +297,11 @@ namespace Shopping_Mall.View
 //                }
                 rightStr += "</div>";
 #endregion
-
                 //是否最後一筆資料、是否每頁顯示上限
                 if (a == array.Length - 1 || a == ((page - 1) * num+ num-1))
                 {
-                    rightStr += "</div>";
                     break;
                 }
-                //每兩筆一個product的div
-                else if (count % 2 == 1)
-                {
-                    rightStr += "</div>";
-                }
-#endregion 
             }
             #region 欄位page       
             for (int i = 0; i <= (array.Length / num); i++)
