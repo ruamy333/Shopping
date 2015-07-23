@@ -77,7 +77,7 @@ namespace Shopping_Mall
                 String[][] productArr = db.searchByRow("type", typeID);
                 if(productArr.Length != 0)
                 {
-                    columnStr += "<div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
+                    columnStr += "<li><div class='columnbox'><a href='View/Product.aspx?type=" + typeID + "' class='image image-full'>";
 
                     String imgUrl;
                     if (productArr[0][5] == null || productArr[0][5].Equals(""))
@@ -104,7 +104,7 @@ namespace Shopping_Mall
                             columnStr += "● " + productArr[j][1] + "<br/>";
                         }
                     }
-                    columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div>";
+                    columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div></li>";
                 }
             }
         }
