@@ -1,6 +1,7 @@
 ﻿using Shopping_Mall.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -250,13 +251,16 @@ namespace Shopping_Mall.View
 #region 欄位ImgDel
                 rightStr += "<div class='ImgDel'>";
 
-                String imageUrl;
-                if (array[a][5] == null || array[a][5].Equals(""))
+                String imageUrl = HttpRuntime.AppDomainAppPath;
+                imageUrl += "UploadPic\\" + array[a][0] + ".png";
+                if (!File.Exists(imageUrl))
                 {
                     imageUrl = "../Picture/nonePic.png";
                 }
-                else imageUrl = "../UploadPic/" + array[a][5];
-
+                else
+                {
+                    imageUrl = "../UploadPic/" + array[a][0] + ".png";
+                }
                 //判斷有無優惠方案
                 if (array[a][7] != null && array[a][7] != "0")
                 {

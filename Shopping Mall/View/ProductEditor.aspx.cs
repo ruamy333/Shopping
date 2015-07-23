@@ -155,11 +155,11 @@ namespace Shopping_Mall
             list.Add(typeIDArr[0][0]);
             list.Add(txtPrice.Text);
             list.Add(txtNum.Text);
-            list.Add(fileUpload());
-            //list.Add(txtSummary.Text.Replace(System.Environment.NewLine, "<br/>").Replace(" ", "&nbsp;"));
-            list.Add(txtSummary.Text.Replace("\r\n", "<br/>"));
+            list.Add("");
+            list.Add(txtSummary.Text);
             list.Add(getDiscountID());
-            String str = db.insert(schemaArr, list.ToArray());
+            String ProductID = db.insertAndSearchID(schemaArr, list.ToArray());
+            fileUpload(ProductID);
             Response.Write("<script>alert('新增成功!');location.href='../Index.aspx';</script>");
         }
 
@@ -168,44 +168,31 @@ namespace Shopping_Mall
         {
             String[][] productInfo = db.searchByRow("ID", productID);
             String fileName = productInfo[0][5];
-            if (!fileUpload().Equals(""))
-            {
-                fileName = fileUpload();
-            }
+            fileUpload(productID);
             String[][] typeIDArr = dbType.searchByRow("name", dropdownType.SelectedValue);
             String data = schemaArr[1] + "='" + txtName.Text + "', " +
                           schemaArr[2] + "='" + typeIDArr[0][0] + "', " +
                           schemaArr[3] + "='" + txtPrice.Text + "', " +
                           schemaArr[4] + "='" + txtNum.Text + "', " +
-                          schemaArr[5] + "='" + fileName + "', " +
+                          schemaArr[5] + "='', " +
                           schemaArr[6] + "='" + txtSummary.Text + "', " +
                           schemaArr[7] + "='" + getDiscountID();
             db.modifyAll(data,"ID",productID);
             Response.Redirect("ProductInformation.aspx?product=" + productID);
         }
 
-        //取得檔案路徑
-        private String fileUpload()
+        //儲存圖片檔案
+        private void fileUpload(String ProductID)
         {
             if (FileUpload1.HasFile)
             {
-                String fileName = FileUpload1.FileName;
                 String savePath = Server.MapPath("../UploadPic/");
-                String saveResult = savePath + fileName;
-                String fileExtension = System.IO.Path.GetExtension(saveResult).ToLower();  //取得上傳的檔案類型
+                String fileExtension = System.IO.Path.GetExtension(savePath + FileUpload1.FileName).ToLower();  //取得上傳的檔案類型
                 if (fileExtension == ".gif" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".jpg")
                 {
+                    String saveResult = savePath + ProductID + ".png";
                     FileUpload1.SaveAs(saveResult);
-                    return fileName;
                 }
-                else
-                {
-                    return "";
-                }
-            }
-            else
-            {
-                return "";
             }
         }
 

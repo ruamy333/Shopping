@@ -136,17 +136,17 @@ namespace Shopping_Mall.Database
         {
             DBConnector db = new DBConnector();
             String s = "INSERT INTO [" + tableName + "](";
-            for (int i = 1; i < attributes.Length-1; i++)
+            for (int i = 1; i < attributes.Length - 1; i++)
             {
                 s += "[" + attributes[i] + "],";
             }
             s += "[" + attributes[attributes.Length - 1] + "])VALUES(";
-            
-            for (int i = 1; i < value.Length-1; i++)
+
+            for (int i = 1; i < value.Length - 1; i++)
             {
                 s += "'" + value[i] + "',";
             }
-            s += "'" + value[value.Length-1] + "')";
+            s += "'" + value[value.Length - 1] + "')";
             return db.sql(s);
         }
         //刪除列
@@ -175,6 +175,23 @@ namespace Shopping_Mall.Database
         {
             DBConnector db = new DBConnector();
             String s = "INSERT INTO discount ([type],[content]) values ('" + type + "','" + content + "') SELECT TOP 1 [discountID] AS id FROM discount ORDER BY id DESC";
+            return db.sqlGetID(s);
+        }
+        public String insertAndSearchID(String[] attributes, String[] value)
+        {
+            DBConnector db = new DBConnector();
+            String s = "INSERT INTO [" + tableName + "](";
+            for (int i = 1; i < attributes.Length - 1; i++)
+            {
+                s += "[" + attributes[i] + "],";
+            }
+            s += "[" + attributes[attributes.Length - 1] + "])VALUES(";
+
+            for (int i = 1; i < value.Length - 1; i++)
+            {
+                s += "'" + value[i] + "',";
+            }
+            s += "'" + value[value.Length - 1] + "')SELECT TOP 1 [ID] AS id FROM " + tableName + " ORDER BY id DESC";
             return db.sqlGetID(s);
         }
         //修改欄位

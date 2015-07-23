@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Shopping_Mall.Database;
+using System.IO;
 
 namespace Shopping_Mall.View.ProductInfo
 {
@@ -93,14 +94,17 @@ namespace Shopping_Mall.View.ProductInfo
                 numberDropList.Visible = false;
                 laseNum.Visible = false;
             }
-            
 
-            if (proArr[0][5] == null || proArr[0][5].Equals(""))
+            String imageUrl = HttpRuntime.AppDomainAppPath;
+            imageUrl += "UploadPic\\" + proArr[0][0] + ".png";
+            if (!File.Exists(imageUrl))
             {
                 productImage.ImageUrl = "../Picture/nonePic.png";
             }
-            else productImage.ImageUrl = "../UploadPic/" + proArr[0][5];
-
+            else
+            {
+                productImage.ImageUrl = "../UploadPic/" + proArr[0][0] + ".png";
+            }
             introLabel.Text = proArr[0][6];
         }
         //購買btn
