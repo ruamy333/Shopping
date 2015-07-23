@@ -25,12 +25,22 @@ namespace Shopping_Mall.View
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
-                 
-                Response.Write(""
-                        + "<script>"
-                    + "if(confirm('確認刪除?'))"
-                    + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
-                    + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+
+                if (dbType.searchByRow("name", "未分類").Length != 0)
+                {
+                    if (db.searchByRow("type", dbType.searchByRow("name", "未分類")[0][0]).Length != 0)
+                    {
+                        Response.Write("<Script language='JavaScript'>alert('未分類中尚有商品');</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write(""
+                            + "<script>"
+                        + "if(confirm('確認刪除?'))"
+                        + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
+                        + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                }
             }
 
             String dt = Request.QueryString["deleteType"];
@@ -49,10 +59,21 @@ namespace Shopping_Mall.View
                 txtType.Visible = true;
                 ImageButton1.Visible = true;
             }
+
             String del = Request.QueryString["del"];
-            if (del != null)
+            if (del != null && del != "")
             {
-                delete(del);          
+                Response.Write(""
+                        + "<script>"
+                    + "if(confirm('確認刪除?'))"
+                    + "{alert('刪除成功');document.location.href='Product.aspx?delete=" + del + "';}"
+                    + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                
+            }
+            String deleteStr = Request.QueryString["delete"];
+            if (deleteStr != null)
+            {
+                delete(deleteStr);          
             }
             DBFunction dbIndex = new DBFunction("indexInfo");
             String[][] infoArr = dbIndex.searchByColumn("phone");
@@ -266,12 +287,12 @@ namespace Shopping_Mall.View
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
-                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
+                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         + "</div>"
                         + "</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -405,7 +426,7 @@ namespace Shopping_Mall.View
             }
             else if (int.Parse(DropDownList1.SelectedValue) == 4)
             {
-                width = 150;
+                width = 140;
                 Response.Redirect("Product.aspx");
             }
         }

@@ -151,3 +151,9 @@ ul
     color:#FF0000;
     font-weight: bold;
 }
+.textbox-position {
+    width:190px;
+    float:left;
+    margin-right:30px;
+    margin-bottom:10px;
+}
