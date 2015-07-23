@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="banner" class="container"> 
-        <asp:Image ID="indexImage" runat="server" width="1200" height="400"/>
+        <asp:Image ID="indexImage" runat="server" width="993" height="400"/>
         <div class="editBox">
             <div class="edit">
                 <asp:FileUpload ID="indexPicUpload" runat="server" />

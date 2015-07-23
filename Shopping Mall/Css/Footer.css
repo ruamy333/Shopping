@@ -21,26 +21,26 @@
 #footer-content #fbox1
 {
 	float: left;
-	width: 384px;
-	margin-right: 24px;
+	width: 330px;
+	margin-right: 20px;
 }
 
 #footer-content #fbox2
 {
 	float: left;
-	width: 446px;
-	padding: 0px 20px;
+	width: 330px;
+	margin-right: 20px;
 }
 
 #footer-content #fbox3
 {
-	float: right;
+	float: left;
 	width: 282px;
 }
 
 #footer
 {
-    width:1349px;
+    width:auto;
     background-color:white;
 	overflow: hidden;
 	padding: 30px 0px;
