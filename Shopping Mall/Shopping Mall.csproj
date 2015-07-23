@@ -61,7 +61,7 @@
     <Content Include="Css\Index.css" />
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
-    <Content Include="Css\movingboxes.css" />
+    <Content Include="Css\Movingboxes.css" />
     <Content Include="images\arrows.gif" />
     <Content Include="images\arrows.png" />
     <Content Include="images\leftshadow.png" />

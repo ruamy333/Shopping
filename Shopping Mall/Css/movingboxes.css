@@ -114,3 +114,5 @@ a.mb-scrollButtons.disabled {
 .mb-active-slider .mb-controls {
 	background: #333;
 }
+#slider { width: 1200px; }
+#slider li { width: 300px; }
