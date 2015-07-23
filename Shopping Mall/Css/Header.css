@@ -1,7 +1,7 @@
 ﻿/** WRAPPER */
 #wrapper-bg
 {
-	width:1349px;
+	width:auto;
 }
 
 #wrapper
@@ -23,7 +23,7 @@
 .logoBox 
 {
     float:left;
-    width:500px;
+    width:440px;
 }
 #logo
 {
@@ -37,7 +37,7 @@
 	text-transform: uppercase;
 	text-decoration: none;
 	font-family: '微軟正黑體', 'Archivo Narrow', sans-serif;
-	font-size: 1.3em;
+	font-size: 36px;
 	color: #3E3E3E;
 }
 
@@ -49,7 +49,7 @@
 #menu
 {
 	float: right;
-	width: 700px;
+	width: 553px;
 }
 
 #menu ul
@@ -70,8 +70,8 @@
 #menu a
 {
 	display: block;
-	padding: 10px 15px;
-	margin: 0em 0.8em;
+	padding: 10px 10px;
+	margin: 0em 10px;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-family: 'Archivo Narrow', sans-serif;

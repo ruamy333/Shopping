@@ -1,6 +1,6 @@
 /*** Overall MovingBoxes Slider ***/
 .mb-wrapper {
-	border: 5px solid #ccc;
+	border: 5px solid #333;
 	margin: 0 auto 20px;
 	position: relative;
 	left: 0;
@@ -91,7 +91,7 @@ a.mb-scrollButtons.disabled {
 .mb-controls {
 	margin: 0 auto;
 	text-align: center;
-	background: #ccc;
+	background: #333;
 	position: relative;
 	z-index: 100;
 }
@@ -114,5 +114,9 @@ a.mb-scrollButtons.disabled {
 .mb-active-slider .mb-controls {
 	background: #333;
 }
-#slider { width: 1200px; }
-#slider li { width: 300px; }
+#slider { 
+    width: 993px; 
+}
+#slider li {
+     width: 300px; 
+}

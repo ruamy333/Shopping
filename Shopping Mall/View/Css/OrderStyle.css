@@ -1,17 +1,15 @@
 ﻿/*各種框*/
 .content {
-    width:1200px;
+    width:993px;
     /*height:1200px;*/
-    overflow:auto;
 }
 .content-top {
     margin-top:20px;
-    width:1180px;
+    width:100%;
 }
 .content-center {
-    margin-left:10px;
     margin-top:20px;
-    width:1180px;
+    width:100%;
 }
 .center-column {
     margin-bottom:10px;
@@ -25,14 +23,14 @@
     margin-left:5px;
     height:35px;
     float:left;
-    width:115px;
+    width:100px;
 }
 .column-boxM{
     margin-top:33px;
     margin-left:5px;
     height:35px;
     float:left;
-    width:155px;
+    width:150px;
 
 }
 .column-boxL{
@@ -40,7 +38,7 @@
     margin-left:5px;
     height:auto;
     float:left;
-    width:375px;
+    width:250px;
 }
 .column-retractable {
     height:35px;

@@ -42,13 +42,13 @@ namespace Shopping_Mall
                 editContactStr = "<a href='" + Path + "Index.aspx?edit=contact'><img src=" + Path + "Picture/edit.png style='width:30px;'></a>";
 
                 linkStr = "<li id='producteditor'><a href='" + Path + "View/ProductEditor.aspx'>Add Product</a></li>"
-                        + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
+                        //+ "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"
                         + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }
             //使用者登入
             else
             {
-                linkStr = "<li id='purchasecar'><a href='" + Path + "View/PurchaseCar.aspx'>Shopping car</a></li>"
+                linkStr = "<li id='purchasecar'><a href='" + Path + "View/PurchaseCar.aspx'>Buy car</a></li>"
                     + "<li id='order'><a href='" + Path + "View/Orders.aspx'>Order</a></li>"    
                     + "<li id='logout'><a href='" + Path + "Index.aspx?l=0'>Logout</a></li>";
             }
