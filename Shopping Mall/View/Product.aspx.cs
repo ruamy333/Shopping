@@ -262,12 +262,12 @@ namespace Shopping_Mall.View
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
                     rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
-                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'>"
+                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         + "</div>"
                         + "</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat; background-size:300px 200px;'></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -401,7 +401,7 @@ namespace Shopping_Mall.View
             }
             else if (int.Parse(DropDownList1.SelectedValue) == 4)
             {
-                width = 150;
+                width = 140;
                 Response.Redirect("Product.aspx");
             }
         }
