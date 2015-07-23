@@ -66,10 +66,10 @@ namespace Shopping_Mall
         {
             String[][] productTypeArr = dbType.searchAll();
             int typeNum = productTypeArr.Length;
-            if (typeNum > 3)
-            {
-                typeNum = 3;
-            }
+            //if (typeNum > 3)
+            //{
+            //    typeNum = 3;
+            //}
             for (int i = 0; i < typeNum; i++)
             {
                 String typeID = productTypeArr[i][0];
@@ -88,13 +88,23 @@ namespace Shopping_Mall
 
                     columnStr += "<img src='" + imgUrl + "'/></a>"
                                + "<h2>" + type + "</h2><p>";
-
-                    for (int j = 0; j < productArr.Length; j++)
+                    int productNum = productArr.Length;
+                    if (productNum > 3)
                     {
-                        columnStr += "● " + productArr[j][1] + "<br/>";
+                        productNum = 3;
+                    }
+                    for (int j = 0; j < productNum; j++)
+                    {
+                        if (j == productNum - 1)
+                        {
+                            columnStr += "● " + productArr[j][1] + "...<br/>";
+                        }
+                        else
+                        {
+                            columnStr += "● " + productArr[j][1] + "<br/>";
+                        }
                     }
                     columnStr += "</p><a href='View/Product.aspx?type=" + typeID + "' class='button-style'>More</a></div>";
-                
                 }
             }
         }
