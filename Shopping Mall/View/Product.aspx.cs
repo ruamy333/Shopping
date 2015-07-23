@@ -307,7 +307,7 @@ namespace Shopping_Mall.View
                     break;
                 }
             }
-            }
+            
             
             #region 欄位page       
             for (int i = 0; i <= (array.Length / num); i++)
