@@ -20,7 +20,7 @@
                         <%=imageStr %>
 				        <asp:Label ID="productName" CssClass="content-header" runat="server" ></asp:Label>
                         <br/><br/>
-                        <asp:Button ID="btnInvisible" runat="server" CssClass="button-style-headerNfooter" Text="隱藏" OnClick="btnInvisible_Click"/>
+                        <asp:Button ID="btnInvisible" runat="server" CssClass="button-style-headerNfooter" Text="顯示" OnClick="btnInvisible_Click"/>
                         <%=priceStr %>
                         <div class="content-text">
                             <asp:DropDownList ID="numberDropList" runat="server" CssClass="form-control" Width="60"></asp:DropDownList>
