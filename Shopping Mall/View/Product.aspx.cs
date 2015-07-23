@@ -384,12 +384,12 @@ namespace Shopping_Mall.View
 
         protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            if (DropDownList1.SelectedValue == "1")
+            if (int.Parse(DropDownList1.SelectedValue) == 1)
             {
                 width = 400;
                 Response.Redirect("Product.aspx");
             }
-            else if (DropDownList1.SelectedValue == "2")
+            else if (int.Parse(DropDownList1.SelectedValue) == 2)
             {
                 width = 300;
                 Response.Redirect("Product.aspx");
