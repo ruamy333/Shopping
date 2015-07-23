@@ -15,6 +15,7 @@ namespace Shopping_Mall.View
         public String pageStr = "";
         public String buycarStr = "";
         public String editType = "";
+        public static int width =0 ;
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
         private Discount dis = new Discount();
@@ -71,8 +72,15 @@ namespace Shopping_Mall.View
             else if(ID != null && (num == null || num=="")){
                 Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-
-            pageShow(20,300);
+            if (width==0)
+            {
+                pageShow(20, 300);
+            }
+            else
+            {
+                pageShow(20, width);
+            }
+            
         }
 
         private void deleteType(String dt)
@@ -115,6 +123,7 @@ namespace Shopping_Mall.View
 
             for (int i = 0; i < productTypeArr.Length; i++)
             {
+
                 if (Session["account"] == null || !Session["account"].Equals("admin"))
                 {
                     leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
@@ -206,6 +215,7 @@ namespace Shopping_Mall.View
         //pageShow(num:the amount of items at each page , width: width of each item)
         private void pageShow(int num,int width)
         {
+
             String p = Request.QueryString["page"];
             int page = Convert.ToInt32(p);
             //第一次進入沒有回傳值，強制為第一頁
@@ -227,10 +237,11 @@ namespace Shopping_Mall.View
             {
                 Response.Write("<Script language='JavaScript'>alert('查無資料');location.href='Product.aspx';</Script>");
             }
+            
 
             //index為每頁第一筆資料在array中的位置
             int index = (page - 1) * num;
-                for (int a = index; a < index + num; a++)
+            for (int a = index; a < index + num; a++)
             {
                 String[] discountArr = null;
 
@@ -368,6 +379,31 @@ namespace Shopping_Mall.View
         {
             String searchLab = txtSearch.Text;
             Response.Redirect("Product.aspx?search=" + searchLab);
+        }
+
+
+        protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue == "1")
+            {
+                width = 400;
+                Response.Redirect("Product.aspx");
+            }
+            else if (DropDownList1.SelectedValue == "2")
+            {
+                width = 300;
+                Response.Redirect("Product.aspx");
+            }
+            else if (int.Parse(DropDownList1.SelectedValue) == 3)
+            {
+                width = 200;
+                Response.Redirect("Product.aspx");
+            }
+            else if (int.Parse(DropDownList1.SelectedValue) == 4)
+            {
+                width = 150;
+                Response.Redirect("Product.aspx");
+            }
         }
     }
 }
