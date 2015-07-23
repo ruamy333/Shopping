@@ -34,13 +34,18 @@
         <div class="leftbar">
             <%=editType %>
             <div class="formBox" style="margin-top:10px;">
+                <asp:TextBox ID="txtSearch"  CssClass="form-control textBox " style="width:180px;float:left;" runat="server"></asp:TextBox>
+                <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="../Picture/search.png" style="width:30px;" OnClick="btnSearch_Click" />
+            </div>
+
+            <div class="formBox" style="margin-top:10px;">
                 <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;float:left;" OnClick="btnSubmit_Click" Visible="False" />
                 <asp:TextBox ID="txtType"  CssClass="form-control textBox " style="width:180px;" runat="server" Visible="False"></asp:TextBox>
             </div>
-            
-                <%=leftbarStr %>
+            <%=leftbarStr %>
         </div>
         <div class="rightbar">
+            <asp:Label ID="labNoneSearch" runat="server" style="align-content:center;font-size:24px" Text="查無資料" Visible="false"></asp:Label>
             <%--<%=buycarStr %>--%>
             <%=rightStr %>
         </div>

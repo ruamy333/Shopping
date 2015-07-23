@@ -88,6 +88,7 @@
     <Content Include="Picture\nonePic.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Picture\search.png" />
     <Content Include="UploadPic\派大星.jpg" />
     <Content Include="UploadPic\564507_484779621576439_1408409668_n.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
