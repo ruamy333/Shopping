@@ -24,12 +24,22 @@ namespace Shopping_Mall.View
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
-                 
-                Response.Write(""
-                        + "<script>"
-                    + "if(confirm('確認刪除?'))"
-                    + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
-                    + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+
+                if (dbType.searchByRow("name", "未分類").Length != 0)
+                {
+                    if (db.searchByRow("type", dbType.searchByRow("name", "未分類")[0][0]).Length != 0)
+                    {
+                        Response.Write("<Script language='JavaScript'>alert('未分類中尚有商品');</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write(""
+                            + "<script>"
+                        + "if(confirm('確認刪除?'))"
+                        + "{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
+                        + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                }
             }
 
             String dt = Request.QueryString["deleteType"];
@@ -48,10 +58,21 @@ namespace Shopping_Mall.View
                 txtType.Visible = true;
                 ImageButton1.Visible = true;
             }
+
             String del = Request.QueryString["del"];
-            if (del != null)
+            if (del != null && del != "")
             {
-                delete(del);          
+                Response.Write(""
+                        + "<script>"
+                    + "if(confirm('確認刪除?'))"
+                    + "{alert('刪除成功');document.location.href='Product.aspx?delete=" + del + "';}"
+                    + "else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                
+            }
+            String deleteStr = Request.QueryString["delete"];
+            if (deleteStr != null)
+            {
+                delete(deleteStr);          
             }
             DBFunction dbIndex = new DBFunction("indexInfo");
             String[][] infoArr = dbIndex.searchByColumn("phone");
