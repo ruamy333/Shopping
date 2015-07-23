@@ -23,41 +23,17 @@ namespace Shopping_Mall.View
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
-                Response.Write("<script>if(confirm('確認刪除?')){alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}else{alert('取消');windows.location.href='Product.aspx';}</script>");
+                Response.Write(""
+                    +"<script>"
+                +"if(confirm('確認刪除?'))"
+                +"{alert('刪除成功');document.location.href='Product.aspx?deleteType=" + dtID + "';}"
+                +"else{alert('取消');windows.location.href='Product.aspx';}</script>");
             }
+
             String dt = Request.QueryString["deleteType"];
             if (dt != null && dt!="")
             {
-
-                //if沒有未分類ID則創一個
-                String [][] type = dbType.searchAll();
-                for (int i = 0; i < type.Length; i++)
-                {
-                    if (type[i][1] == "未分類")
-                    {
-                        //先將資料寫入未分類(update)
-                        db.modify("type", type[i][0], "type", dt);
-                        //再將原分類刪除
-                        dbType.delete("ID", dt);
-                        break;
-                    }
-                    else if (i == type.Length - 1)
-                    {
-                        if (db.searchRowByColumn("type", "type", dt).Length > 0)
-                        {
-                            List<String> list = new List<string>();
-                            list.Add("");
-                            list.Add("未分類");
-                            String[] schemaArr = new String[] { "ID", "name" };
-                            String str = dbType.insert(schemaArr, list.ToArray());
-                            //先將資料寫入未分類(update)
-                            String[][] s = dbType.searchByRow("name", "未分類");
-                            db.modify("type", s[0][0], "type", dt);
-                        }     
-                        //再將原分類刪除
-                        dbType.delete("ID", dt);
-                    }
-                }
+                deleteType(dt);
             }
             setLeftBar();
             //0708每次load都先判斷是否有回傳值，第一次開網頁並沒有回傳
@@ -98,6 +74,39 @@ namespace Shopping_Mall.View
             pageShow(20);
         }
 
+        private void deleteType(String dt)
+        {
+            //if沒有未分類ID則創一個
+            String[][] type = dbType.searchAll();
+            for (int i = 0; i < type.Length; i++)
+            {
+                if (type[i][1] == "未分類")
+                {
+                    //先將資料寫入未分類(update)
+                    db.modify("type", type[i][0], "type", dt);
+                    //再將原分類刪除
+                    dbType.delete("ID", dt);
+                    break;
+                }
+                else if (i == type.Length - 1)
+                {
+                    if (db.searchRowByColumn("type", "type", dt).Length > 0)
+                    {
+                        List<String> list = new List<string>();
+                        list.Add("");
+                        list.Add("未分類");
+                        String[] schemaArr = new String[] { "ID", "name" };
+                        String str = dbType.insert(schemaArr, list.ToArray());
+                        //先將資料寫入未分類(update)
+                        String[][] s = dbType.searchByRow("name", "未分類");
+                        db.modify("type", s[0][0], "type", dt);
+                    }
+                    //再將原分類刪除
+                    dbType.delete("ID", dt);
+                }
+            }
+        }
+
         private void setLeftBar()
         {
             leftbarStr = "";
@@ -130,7 +139,11 @@ namespace Shopping_Mall.View
                     + "<ul>";
                 }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
-                leftbarStr += "<a href='Product.aspx?type=" + productTypeArr[i][0] + "'><li>全部商品</li></a>";
+                if (db.searchByRow("type", productTypeArr[i][0]).Length >= 1)
+                {
+                    leftbarStr += "<a href='Product.aspx?type=" + productTypeArr[i][0] + "'><li>全部商品</li></a>";
+                }
+
                 for (int j = 0; j < productArr.Length; j++)
                 {
                     leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
