@@ -13,6 +13,24 @@ namespace Shopping_Mall.View {
     public partial class WebForm1 {
         
         /// <summary>
+        /// txtSearch 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        
+        /// <summary>
+        /// btnSearch 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnSearch;
+        
+        /// <summary>
         /// ImageButton1 控制項。
         /// </summary>
         /// <remarks>
@@ -29,5 +47,14 @@ namespace Shopping_Mall.View {
         /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtType;
+        
+        /// <summary>
+        /// labNoneSearch 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 將移動欄位宣告從設計檔案修改為程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labNoneSearch;
     }
 }
