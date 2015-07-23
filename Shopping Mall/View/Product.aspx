@@ -45,7 +45,6 @@
             <%=leftbarStr %>
         </div>
         <div class="rightbar">
-            <asp:Label ID="labNoneSearch" runat="server" style="align-content:center;font-size:24px" Text="查無資料" Visible="false"></asp:Label>
             <%--<%=buycarStr %>--%>
             <%=rightStr %>
         </div>
