@@ -14,6 +14,7 @@ namespace Shopping_Mall.View.ProductInfo
         private DBFunction dbType = new DBFunction("type");
         private DBFunction dbIndexInfo = new DBFunction("indexInfo");
         private String visible;
+        public String editType = "";
         public String imageStr;
         public String priceStr;
         public String deleteNeditStr;
@@ -37,6 +38,8 @@ namespace Shopping_Mall.View.ProductInfo
             {
                 editBtns(proID);
                 btnInvisible.Visible = true;
+                txtType.Visible = true;
+                ImageButton1.Visible = true;
             }
             else deleteNeditStr = "";
             productShow(proID);
@@ -195,6 +198,44 @@ namespace Shopping_Mall.View.ProductInfo
                 }
                 leftbarStr += "</ul>";
             }
+        }
+        //新增類別名稱
+        protected void btnSubmit_Click(object sender, ImageClickEventArgs e)
+        {
+            List<String> list = new List<string>();
+            if (txtType.Text == null)
+            {
+                Response.Write("<Script language='JavaScript'>alert('請輸入類別名稱');</Script>");
+            }
+            String[][] array = dbType.searchAll();
+            for (int type = 0; type < array.Length; type++)
+            {
+                if (txtType.Text == array[type][1])
+                {
+                    Response.Write("<Script language='JavaScript'>alert('類別名稱已存在');</Script>");
+                    break;
+                }
+                else if (txtType.Text == null || txtType.Text == "")
+                {
+                    Response.Write("<Script language='JavaScript'>alert('請輸入資料');</Script>");
+                    break;
+                }
+                else if (type == array.Length - 1)
+                {
+                    list.Add(txtType.Text);
+                    String[] attribute = new String[1];
+                    attribute[0] = "name";
+                    String str = dbType.insert(attribute, list.ToArray());
+                    Response.Write("<Script language='JavaScript'>alert('新增成功!');</script>");
+                    setLeftBar();
+                }
+            }
+        }
+        //Search
+        protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+        {
+            String searchLab = txtSearch.Text;
+            Response.Redirect("Product.aspx?search=" + searchLab);
         }
     }
 }
