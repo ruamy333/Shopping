@@ -6,27 +6,6 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
-    <script>
-        $(document).ready(function () {
-            var productID = "";
-            $(".image").draggable({
-                drag: function (event, ui) {
-                    productID = $(this).attr("id");
-                },
-                revert: true,
-                containment: "#containment-wrapper",
-                scroll: false
-            });
-            
-            $("#buycar").droppable({
-                drop: function (event, ui) {
-                    var txtID = "txt" + productID;
-                    var number = document.getElementById(txtID).value;
-                    document.location.href = "Product.aspx?ID=" + productID + "&num=" + number;
-                }
-            });
-        });
-  </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
