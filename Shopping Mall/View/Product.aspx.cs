@@ -406,29 +406,20 @@ namespace Shopping_Mall.View
             Response.Redirect("Product.aspx?search=" + searchLab);
         }
 
-
-        protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
+        protected void btnView2_Click(object sender, EventArgs e)
         {
-            if (int.Parse(DropDownList1.SelectedValue) == 1)
-            {
-                width = 400;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 2)
-            {
-                width = 300;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 3)
-            {
-                width = 200;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 4)
-            {
-                width = 140;
-                Response.Redirect("Product.aspx");
-            }
+            width = 300;
+            Response.Redirect("Product.aspx");
+        }
+        protected void btnView3_Click(object sender, EventArgs e)
+        {
+            width = 200;
+            Response.Redirect("Product.aspx");
+        }
+        protected void btnView4_Click(object sender, EventArgs e)
+        {
+            width = 140;
+            Response.Redirect("Product.aspx");
         }
     }
 }
