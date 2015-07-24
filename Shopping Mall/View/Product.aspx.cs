@@ -16,12 +16,36 @@ namespace Shopping_Mall.View
         public String pageStr = "";
         public String buycarStr = "";
         public String editType = "";
+        public String frame = "";
         public static int width =0 ;
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
+            frame += "<div class='button-style'><a href='Product.aspx?frame=1'>一格</a></div>"
+                + "<div class='button-style'><a href='Product.aspx?frame=2'>二格</a></div>"
+                + "<div class='button-style'><a href='Product.aspx?frame=3'>三格</a></div>"
+                + "<div class='button-style'><a href='Product.aspx?frame=4'>四格</a></div>";
+            String frameID = Request.QueryString["frame"];
+            if (frameID == "1")
+            {
+                width = 400;
+            }
+            else if (frameID == "2")
+            {
+                width = 300;
+            }
+            else if (frameID == "3")
+            {
+                width = 200;
+            }
+            else
+            {
+                width = 140;
+            }
+            */
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
@@ -268,7 +292,7 @@ namespace Shopping_Mall.View
                 String[] discountArr = null;
 
 #region 欄位product-inside
-                rightStr += "<div class ='product-inside' style='width:" + width + "px;height:" + width*0.8 + "px'>";
+                rightStr += "<div class ='product-inside' style='width:" + width + "px;height:" + width/3*2 + "px'>";
 #region 欄位ImgDel
                 rightStr += "<div class='ImgDel'>";
 
@@ -298,9 +322,9 @@ namespace Shopping_Mall.View
                 if ((String)Session["account"] == "admin")
                 {
                     rightStr += "<div class='delete'>";
-                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:100%;'></a>";
+                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:80%;margin:10%;'></a>";
                     rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:100%;'></a></div>";
+                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:80%;margin:10%;'></a></div>";
                 }
 
                 rightStr += "</div>"
@@ -354,7 +378,7 @@ namespace Shopping_Mall.View
                 {
                     if (page != i + 1)
                     {
-                        pageStr += "<a href='Product.aspx?page=" + (i + 1) + "&type=" + Request.QueryString["type"] + "'>" + (i + 1) + "</a>　";
+                        pageStr += "<a href='Product.aspx?page=" + (i + 1) + "&type=" + Request.QueryString["type"] + "' style='font-size:20px;'>" + (i + 1) + "</a>　";
                     }
 
                     else

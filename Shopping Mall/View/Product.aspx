@@ -44,13 +44,17 @@
             </div>
             <%=leftbarStr %>
         </div>
-            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" AutoPostBack="True">
+            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" AutoPostBack="True" Visible="True">
                 <asp:ListItem Value="0">請選擇View</asp:ListItem>
                 <asp:ListItem Selected="False" Value="1"></asp:ListItem>
                 <asp:ListItem Selected="False" Value="2"></asp:ListItem>
                 <asp:ListItem Selected="False" Value="3"></asp:ListItem>
                 <asp:ListItem Selected="False" Value="4"></asp:ListItem>
             </asp:DropDownList>
+        <!--<div class ="rightbar-frame">
+            <%=frame %>
+        </div>
+        -->
         <div class="rightbar">
             <%--<%=buycarStr %>--%>
             <%=rightStr %>
