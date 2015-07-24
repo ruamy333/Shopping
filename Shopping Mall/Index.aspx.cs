@@ -79,11 +79,11 @@ namespace Shopping_Mall
                     imgUrl += "UploadPic\\" + productArr[0][0] + ".png";
                     if (!File.Exists(imgUrl))
                     {
-                        imgUrl = "../Picture/nonePic.png";
+                        imgUrl = "Picture/nonePic.png";
                     }
                     else
                     {
-                        imgUrl = "../UploadPic/" + productArr[0][0] + ".png";
+                        imgUrl = "UploadPic/" + productArr[0][0] + ".png";
                     }
 
                     columnStr += "<img src='" + imgUrl + "'/></a>"

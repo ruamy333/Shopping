@@ -164,13 +164,17 @@ namespace Shopping_Mall.View.ProductInfo
         private void setLeftBar()
         {
             leftbarStr = "";
+            if (Request.QueryString["type"] != null)
+            {
+                leftbarStr += "<script type='text/javascript'>$(document).ready(function () {$('#ul" + Request.QueryString["type"] + "').show();});</script>";
+            }
             String[][] productTypeArr = dbType.searchAll();
 
             for (int i = 0; i < productTypeArr.Length; i++)
             {
                 if (Session["account"] == null || !Session["account"].Equals("admin"))
                 {
-                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul id='ul" + productTypeArr[i][0] + "'>";
                 }
                 else
                 {
@@ -198,7 +202,7 @@ namespace Shopping_Mall.View.ProductInfo
                 }
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "&type=" + productTypeArr[i][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }

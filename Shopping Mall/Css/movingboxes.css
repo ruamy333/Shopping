@@ -48,7 +48,6 @@ change .current class name using plugin option, currentPanel : 'current' */
 /*** Inside the panel ***/
 .mb-inside {
 	padding: 10px;
-	border: 1px solid #999;
 }
 
 .mb-inside * {

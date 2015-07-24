@@ -6,27 +6,6 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
-    <script>
-        $(document).ready(function () {
-            var productID = "";
-            $(".image").draggable({
-                drag: function (event, ui) {
-                    productID = $(this).attr("id");
-                },
-                revert: true,
-                containment: "#containment-wrapper",
-                scroll: false
-            });
-            
-            $("#buycar").droppable({
-                drop: function (event, ui) {
-                    var txtID = "txt" + productID;
-                    var number = document.getElementById(txtID).value;
-                    document.location.href = "Product.aspx?ID=" + productID + "&num=" + number;
-                }
-            });
-        });
-  </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,27 +19,20 @@
 
             <div class="formBox" style="margin-top:10px;">
                 <div class="textbox-position"><asp:TextBox ID="txtType"  CssClass="form-control textBox" placeholder="新增類別" runat="server" Visible="False"></asp:TextBox></div>
-                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;float:left;" OnClick="btnSubmit_Click" Visible="False" />
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="../Picture/add.png" style="width:30px;" OnClick="btnSubmit_Click" Visible="False" />
             </div>
             <%=leftbarStr %>
         </div>
-            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1" AutoPostBack="True" Visible="True">
-                <asp:ListItem Value="0">請選擇View</asp:ListItem>
-                <asp:ListItem Selected="False" Value="1"></asp:ListItem>
-                <asp:ListItem Selected="False" Value="2"></asp:ListItem>
-                <asp:ListItem Selected="False" Value="3"></asp:ListItem>
-                <asp:ListItem Selected="False" Value="4"></asp:ListItem>
-            </asp:DropDownList>
-        <!--<div class ="rightbar-frame">
-            <%=frame %>
-        </div>
-        -->
         <div class="rightbar">
+            <div class="viewbox">
+                <asp:Label ID="labView" runat="server" CssClass="position" Text="View:"></asp:Label>
+                <asp:ImageButton ID="view2" runat="server" CssClass="position" ImageUrl="../Picture/view2.png" OnClick="btnView2_Click"/>
+                <asp:ImageButton ID="view3" runat="server" CssClass="position" ImageUrl="../Picture/view3.png" OnClick="btnView3_Click"/>
+                <asp:ImageButton ID="view4" runat="server" CssClass="position" ImageUrl="../Picture/view4.png" OnClick="btnView4_Click"/>
+            </div>
             <%--<%=buycarStr %>--%>
             <%=rightStr %>
-            
         </div>
-        
         <div class="page">
             <%=pageStr %>
         </div>

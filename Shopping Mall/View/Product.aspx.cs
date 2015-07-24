@@ -165,6 +165,10 @@ namespace Shopping_Mall.View
         private void setLeftBar()
         {
             leftbarStr = "";
+            if (Request.QueryString["type"] != null)
+            {
+                leftbarStr += "<script type='text/javascript'>$(document).ready(function () {$('#ul" + Request.QueryString["type"] + "').show();});</script>";
+            }
             String[][] productTypeArr = dbType.searchAll();
 
             for (int i = 0; i < productTypeArr.Length; i++)
@@ -172,7 +176,7 @@ namespace Shopping_Mall.View
 
                 if (Session["account"] == null || !Session["account"].Equals("admin"))
                 {
-                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul>";
+                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul id='ul" + productTypeArr[i][0] + "'>";
                 }
                 else
                 {
@@ -202,7 +206,7 @@ namespace Shopping_Mall.View
 
                 for (int j = 0; j < productArr.Length; j++)
                 {
-                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "'><li>" + productArr[j][1] + "</li></a>";
+                    leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "&type=" + productTypeArr[i][0] + "'><li>" + productArr[j][1] + "</li></a>";
                 }
                 leftbarStr += "</ul>";
             }
@@ -273,7 +277,7 @@ namespace Shopping_Mall.View
             String[][] array;
             if (Request.QueryString["search"] != null) 
                 array = db.searchLikeByRow("name", Request.QueryString["search"]);
-            else if (Request.QueryString["type"] == null || Request.QueryString["type"] == "") 
+            else if (Request.QueryString["type"] == null || Request.QueryString["type"] == "")
                 array = db.searchByColumnOrder("ID,name,type,price,num,picture,introduction,discountID");
             else
                 array = db.searchByRowOrder("type", Request.QueryString["type"]);
@@ -430,29 +434,20 @@ namespace Shopping_Mall.View
             Response.Redirect("Product.aspx?search=" + searchLab);
         }
 
-
-        protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
+        protected void btnView2_Click(object sender, EventArgs e)
         {
-            if (int.Parse(DropDownList1.SelectedValue) == 1)
-            {
-                width = 400;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 2)
-            {
-                width = 300;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 3)
-            {
-                width = 200;
-                Response.Redirect("Product.aspx");
-            }
-            else if (int.Parse(DropDownList1.SelectedValue) == 4)
-            {
-                width = 140;
-                Response.Redirect("Product.aspx");
-            }
+            width = 300;
+            Response.Redirect("Product.aspx");
+        }
+        protected void btnView3_Click(object sender, EventArgs e)
+        {
+            width = 200;
+            Response.Redirect("Product.aspx");
+        }
+        protected void btnView4_Click(object sender, EventArgs e)
+        {
+            width = 140;
+            Response.Redirect("Product.aspx");
         }
     }
 }
