@@ -6,6 +6,25 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
+    <script>
+        $(function () {
+            $("#view2").click(function () {
+                $(".product-inside").addClass("test2", 1000);
+                $(".product-inside").removeClass("test3", 1000);
+                $(".product-inside").removeClass("test4", 1000);
+            });
+            $("#view3").click(function () {
+                $(".product-inside").addClass("test3", 1000);
+                $(".product-inside").removeClass("test2", 1000);
+                $(".product-inside").removeClass("test4", 1000);
+            });
+            $("#view4").click(function () {
+                $(".product-inside").addClass("test4", 1000);
+                $(".product-inside").removeClass("test3", 1000);
+                $(".product-inside").removeClass("test2", 1000);
+            });
+        });
+  </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -25,10 +44,10 @@
         </div>
         <div class="rightbar">
             <div class="viewbox">
-                <asp:Label ID="labView" runat="server" CssClass="position" Text="View:"></asp:Label>
-                <asp:ImageButton ID="view2" runat="server" CssClass="position" ImageUrl="../Picture/view2.png" OnClick="btnView2_Click"/>
-                <asp:ImageButton ID="view3" runat="server" CssClass="position" ImageUrl="../Picture/view3.png" OnClick="btnView3_Click"/>
-                <asp:ImageButton ID="view4" runat="server" CssClass="position" ImageUrl="../Picture/view4.png" OnClick="btnView4_Click"/>
+                <div class="position">View：</div>
+                <div id="view2" class="position"></div>
+                <div id="view3" class="position"></div>
+                <div id="view4" class="position"></div>
             </div>
             <%--<%=buycarStr %>--%>
             <%=rightStr %>

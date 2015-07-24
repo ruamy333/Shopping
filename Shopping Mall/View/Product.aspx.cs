@@ -17,35 +17,11 @@ namespace Shopping_Mall.View
         public String buycarStr = "";
         public String editType = "";
         public String frame = "";
-        public static int width =0 ;
         private DBFunction db = new DBFunction("product");
         private DBFunction dbType = new DBFunction("type");
         private Discount dis = new Discount();
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            frame += "<div class='button-style'><a href='Product.aspx?frame=1'>一格</a></div>"
-                + "<div class='button-style'><a href='Product.aspx?frame=2'>二格</a></div>"
-                + "<div class='button-style'><a href='Product.aspx?frame=3'>三格</a></div>"
-                + "<div class='button-style'><a href='Product.aspx?frame=4'>四格</a></div>";
-            String frameID = Request.QueryString["frame"];
-            if (frameID == "1")
-            {
-                width = 400;
-            }
-            else if (frameID == "2")
-            {
-                width = 300;
-            }
-            else if (frameID == "3")
-            {
-                width = 200;
-            }
-            else
-            {
-                width = 140;
-            }
-            */
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
@@ -118,15 +94,7 @@ namespace Shopping_Mall.View
             else if(ID != null && (num == null || num=="")){
                 Response.Write("<Script language='JavaScript'>alert('請聯絡電話：" + phone + "');location.href='Product.aspx';</Script>");
             }
-            if (width==0)
-            {
-                pageShow(20, 300);
-            }
-            else
-            {
-                pageShow(20, width);
-            }
-            
+            pageShow(20);
         }
 
         private void deleteType(String dt)
@@ -263,7 +231,7 @@ namespace Shopping_Mall.View
         
         //p為分頁碼
         //pageShow(num:the amount of items at each page , width: width of each item)
-        private void pageShow(int num,int width)
+        private void pageShow(int num)
         {
 
             String p = Request.QueryString["page"];
@@ -296,7 +264,7 @@ namespace Shopping_Mall.View
                 String[] discountArr = null;
 
 #region 欄位product-inside
-                rightStr += "<div class ='product-inside' style='width:" + width + "px;height:" + width/3*2 + "px'>";
+                rightStr += "<div class ='product-inside test2'>";
 #region 欄位ImgDel
                 rightStr += "<div class='ImgDel'>";
 
@@ -314,13 +282,13 @@ namespace Shopping_Mall.View
                 if (array[a][7] != null && array[a][7] != "0")
                 {
                     discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
-                    rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'>"
+                    rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'>"
                         + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'>"
                         + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
                         + "</div>"
                         + "</div></a>";
                 }
-                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
+                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
 
                 //刪除按鈕visible的判斷
                 if ((String)Session["account"] == "admin")
@@ -426,28 +394,12 @@ namespace Shopping_Mall.View
             }
        
         }
-
+        
         //Search
         protected void btnSearch_Click(object sender, ImageClickEventArgs e)
         {
             String searchLab = txtSearch.Text;
             Response.Redirect("Product.aspx?search=" + searchLab);
-        }
-
-        protected void btnView2_Click(object sender, EventArgs e)
-        {
-            width = 300;
-            Response.Redirect("Product.aspx");
-        }
-        protected void btnView3_Click(object sender, EventArgs e)
-        {
-            width = 200;
-            Response.Redirect("Product.aspx");
-        }
-        protected void btnView4_Click(object sender, EventArgs e)
-        {
-            width = 140;
-            Response.Redirect("Product.aspx");
         }
     }
 }

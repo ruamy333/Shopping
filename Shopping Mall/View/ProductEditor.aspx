@@ -20,11 +20,11 @@
 
         <div class="formBox">
             <div class="title">商品價格：</div>
-            <asp:TextBox ID="txtPrice"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
+            <asp:TextBox ID="txtPrice"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1" Text="1"></asp:TextBox>
         </div>
         <div class="formBox">
             <div class="title">商品數量：</div>
-            <asp:TextBox ID="txtNum"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1"></asp:TextBox>
+            <asp:TextBox ID="txtNum"  CssClass="textBox form-control " runat="server" TextMode="Number" min="1" Text="1"></asp:TextBox>
         </div>
         <div class="summaryBox">
             <div class="title">折扣方式：</div>
