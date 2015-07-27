@@ -6,25 +6,7 @@
     <link href="Css/Product.css" rel="stylesheet" />
     <script src="../js/lefrbar-effect.js"></script>
     <script src="../js/buycar-scroll.js"></script>
-    <script>
-        $(function () {
-            $("#view2").click(function () {
-                $(".product-inside").addClass("test2", 1000);
-                $(".product-inside").removeClass("test3", 1000);
-                $(".product-inside").removeClass("test4", 1000);
-            });
-            $("#view3").click(function () {
-                $(".product-inside").addClass("test3", 1000);
-                $(".product-inside").removeClass("test2", 1000);
-                $(".product-inside").removeClass("test4", 1000);
-            });
-            $("#view4").click(function () {
-                $(".product-inside").addClass("test4", 1000);
-                $(".product-inside").removeClass("test3", 1000);
-                $(".product-inside").removeClass("test2", 1000);
-            });
-        });
-  </script>
+    <script src="../js/view-effect.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -56,21 +38,4 @@
             <%=pageStr %>
         </div>
     </div>
-    <%--<!--防止空值-->
-    <script type="text/javascript">
-        function validate_required(field, alerttxt) {
-            with (field) {
-                if (value == null || value == "")
-                { alert(alerttxt); return false }
-                else { return true }
-            }
-        }
-
-        function validate_form(thisform) {
-            with (thisform) {
-                if (validate_required(num, "請選擇數量") == false)
-                { email.focus(); return false }
-            }
-        }
-    </script>--%>
 </asp:Content>

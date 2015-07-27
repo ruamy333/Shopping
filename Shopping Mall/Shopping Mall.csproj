@@ -352,6 +352,7 @@
     <Content Include="Css\Footer.css" />
     <Content Include="Css\Header.css" />
     <Content Include="Css\Movingboxes.css" />
+    <Content Include="js\view-effect.js" />
     <Content Include="Picture\arrows.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
