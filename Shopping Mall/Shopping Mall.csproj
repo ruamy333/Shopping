@@ -388,9 +388,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Picture\search.png" />
-    <Content Include="Picture\view2.png" />
-    <Content Include="Picture\view3.png" />
-    <Content Include="Picture\view4.png" />
+    <Content Include="Picture\view2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\view3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Picture\view4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UploadPic\108.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
