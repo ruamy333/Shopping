@@ -25,8 +25,7 @@ namespace Shopping_Mall.View
             String dtID = Request.QueryString["deleteTypeID"];
             if (dtID != null && dtID != "")
             {
-
-                if (dbType.searchByRow("name", "未分類").Length != 0)
+                if (dbType.searchRowByColumn("name","id",dtID)[0][0]=="未分類" && dbType.searchByRow("name", "未分類").Length != 0)
                 {
                     if (db.searchByRow("type", dbType.searchByRow("name", "未分類")[0][0]).Length != 0)
                     {
@@ -259,111 +258,113 @@ namespace Shopping_Mall.View
             {
                 Response.Write("<Script language='JavaScript'>alert('查無資料');location.href='Product.aspx';</Script>");
             }
-            
-
-            //index為每頁第一筆資料在array中的位置
-            int index = (page - 1) * num;
-            for (int a = index; a < index + num; a++)
+            else
             {
-                String[] discountArr = null;
 
-#region 欄位product-inside
-                rightStr += "<div class ='product-inside test2'>";
-#region 欄位ImgDel
-                rightStr += "<div class='ImgDel'>";
+                //index為每頁第一筆資料在array中的位置
+                int index = (page - 1) * num;
+                for (int a = index; a < index + num; a++)
+                {
+                    String[] discountArr = null;
 
-                String imageUrl = HttpRuntime.AppDomainAppPath;
-                imageUrl += "UploadPic\\" + array[a][0] + ".png";
-                if (!File.Exists(imageUrl))
-                {
-                    imageUrl = "../Picture/nonePic.png";
-                }
-                else
-                {
-                    imageUrl = "../UploadPic/" + array[a][0] + ".png";
-                }
-                //判斷有無優惠方案
-                if (array[a][7] != null && array[a][7] != "0")
-                {
-                    discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
-                    rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'>"
-                        + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'>"
-                        + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
-                        + "</div>"
-                        + "</div></a>";
-                }
-                else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
+                    #region 欄位product-inside
+                    rightStr += "<div class ='product-inside test2'>";
+                    #region 欄位ImgDel
+                    rightStr += "<div class='ImgDel'>";
 
-                //刪除按鈕visible的判斷
-                if ((String)Session["account"] == "admin")
-                {
-                    rightStr += "<div class='delete'>";
-                    rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:80%;margin:10%;'></a>";
-                    rightStr += "</div><div class='delete'>";
-                    rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:80%;margin:10%;'></a></div>";
-                }
-
-                rightStr += "</div>"
-                    + "<div class='name'><a href='ProductInformation.aspx?product=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
-#endregion
-//#region 欄位information
-//                if (array[a][7] != null && array[a][7] != "0")
-//                {
-//                    //策略顯示
-//                    rightStr += "<div class='information'>價格："
-//                        + "<del>" + array[a][3] + "元</del>　"
-//                        + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
-//                        + "數量：" + array[a][4] + "</div>";
-//                }
-//                else
-//                {
-//                    rightStr += "<div class='information'>價格：" + array[a][3] + "元　　　"
-//                        + "數量：" + array[a][4] + "</div>";
-//                }
-//#endregion information
-//#region 欄位information
-//                //欄位ID,name,type,price,num,picture,discountID
-//                //1個ASP.NET擁有多個form
-//                if ((String)Session["account"] != "admin")
-//                {
-//                    rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
-//                            + "<div class='information'>購買數量："
-//                            + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
-//                            + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
-//#endregion
-//                    rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
-//                            + "</form>";
-                            
-//                }
-                rightStr += "</div>";
-#endregion
-                //是否最後一筆資料、是否每頁顯示上限
-                    if (a == array.Length - 1 || a == ((page - 1) * num + num - 1))
-                {
-                    break;
-                }
-            }
-            
-            
-            #region 欄位page       
-            for (int i = 0; i <= (array.Length / num); i++)
-            {
-                //若資料少於num筆數的頁碼呈現
-                //以及資料筆數等於總資料長度停止
-                if (num * i != array.Length)
-                {
-                    if (page != i + 1)
+                    String imageUrl = HttpRuntime.AppDomainAppPath;
+                    imageUrl += "UploadPic\\" + array[a][0] + ".png";
+                    if (!File.Exists(imageUrl))
                     {
-                        pageStr += "<a href='Product.aspx?page=" + (i + 1) + "&type=" + Request.QueryString["type"] + "' style='font-size:20px;'>" + (i + 1) + "</a>　";
+                        imageUrl = "../Picture/nonePic.png";
                     }
-
                     else
                     {
-                        pageStr += "<span class='here'>" + page + "</span>　";
+                        imageUrl = "../UploadPic/" + array[a][0] + ".png";
+                    }
+                    //判斷有無優惠方案
+                    if (array[a][7] != null && array[a][7] != "0")
+                    {
+                        discountArr = dis.findingType(Convert.ToInt32(array[a][7]), 1, Convert.ToInt32(array[a][3]));
+                        rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'>"
+                            + "<div id='" + array[a][0] + "' class='image' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'>"
+                            + "<div class='dis-box'><div class='dis-title'>Sale</div><div class='dis-text'>" + discountArr[0] + "</div>"
+                            + "</div>"
+                            + "</div></a>";
+                    }
+                    else rightStr += "<a href='ProductInformation.aspx?product=" + array[a][0] + "&type=" + array[a][2] + "'><div class='image' id='" + array[a][0] + "' style='background:url(" + imageUrl + ") no-repeat;background-size:100% 100%;'></div></a>";
+
+                    //刪除按鈕visible的判斷
+                    if ((String)Session["account"] == "admin")
+                    {
+                        rightStr += "<div class='delete'>";
+                        rightStr += "<a href='Product.aspx?del=" + array[a][0] + "'><img src=../Picture/delete.png style='width:80%;margin:10%;'></a>";
+                        rightStr += "</div><div class='delete'>";
+                        rightStr += "<a href='ProductEditor.aspx?product=" + array[a][0] + "'><img src=../Picture/edit.png style='width:80%;margin:10%;'></a></div>";
+                    }
+
+                    rightStr += "</div>"
+                        + "<div class='name'><a href='ProductInformation.aspx?product=" + array[a][0] + "'>" + array[a][1] + "</a></div>";
+                    #endregion
+                    //#region 欄位information
+                    //                if (array[a][7] != null && array[a][7] != "0")
+                    //                {
+                    //                    //策略顯示
+                    //                    rightStr += "<div class='information'>價格："
+                    //                        + "<del>" + array[a][3] + "元</del>　"
+                    //                        + "<span class = 'discount'>" + discountArr[1] + "元</span>　　"
+                    //                        + "數量：" + array[a][4] + "</div>";
+                    //                }
+                    //                else
+                    //                {
+                    //                    rightStr += "<div class='information'>價格：" + array[a][3] + "元　　　"
+                    //                        + "數量：" + array[a][4] + "</div>";
+                    //                }
+                    //#endregion information
+                    //#region 欄位information
+                    //                //欄位ID,name,type,price,num,picture,discountID
+                    //                //1個ASP.NET擁有多個form
+                    //                if ((String)Session["account"] != "admin")
+                    //                {
+                    //                    rightStr += "</form><form runat'server' action='Product.aspx' method='get' onsubmit='return validate_form(this)'>"
+                    //                            + "<div class='information'>購買數量："
+                    //                            + "<input type='number' id='txt" + array[a][0] + "' class='form-control' name='num' min='0' max='" + array[a][4] + "' style=width:50px runat'server'>"
+                    //                            + "<input type='hidden' name='ID' value='" + array[a][0] + "' runat'server'></div>";
+                    //#endregion
+                    //                    rightStr += "<input class='button-style' type='submit' value='加入購物車'>"
+                    //                            + "</form>";
+
+                    //                }
+                    rightStr += "</div>";
+                    #endregion
+                    //是否最後一筆資料、是否每頁顯示上限
+                    if (a == array.Length - 1 || a == ((page - 1) * num + num - 1))
+                    {
+                        break;
                     }
                 }
+
+
+                #region 欄位page
+                for (int i = 0; i <= (array.Length / num); i++)
+                {
+                    //若資料少於num筆數的頁碼呈現
+                    //以及資料筆數等於總資料長度停止
+                    if (num * i != array.Length)
+                    {
+                        if (page != i + 1)
+                        {
+                            pageStr += "<a href='Product.aspx?page=" + (i + 1) + "&type=" + Request.QueryString["type"] + "' style='font-size:20px;'>" + (i + 1) + "</a>　";
+                        }
+
+                        else
+                        {
+                            pageStr += "<span class='here'>" + page + "</span>　";
+                        }
+                    }
+                }
+                #endregion
             }
-            #endregion
         }
 
         protected void btnSubmit_Click(object sender, ImageClickEventArgs e)

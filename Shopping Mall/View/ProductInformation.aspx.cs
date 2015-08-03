@@ -174,13 +174,19 @@ namespace Shopping_Mall.View.ProductInfo
             {
                 if (Session["account"] == null || !Session["account"].Equals("admin"))
                 {
-                    leftbarStr += "<div class='leftbar-type'>" + productTypeArr[i][1] + "</div><ul id='ul" + productTypeArr[i][0] + "'>";
+                    leftbarStr += "<div class='leftbar-type'>"
+                        + "<a href='Product.aspx?type="
+                        + productTypeArr[i][0] + "'>" 
+                        + productTypeArr[i][1] + "</a></div><ul id='ul" + productTypeArr[i][0] + "'>";
                 }
                 else
                 {
                     leftbarStr +=
 
-                    "<div class='leftbar-type'>" + productTypeArr[i][1]
+                    "<div class='leftbar-type'>"
+                        + "<a href='Product.aspx?type="
+                        + productTypeArr[i][0] + "'>" 
+                        + productTypeArr[i][1] + "</a>"
                     //更新大類別鈕
                         + "<div class='left-update'><a href='ProductType.aspx?update=" + productTypeArr[i][0] + "'><img src=../Picture/edit.png style='width:20px;'></a>"
                         + "</div>"
@@ -193,13 +199,13 @@ namespace Shopping_Mall.View.ProductInfo
                         //+ "</div>"
                     + "</div>"
                     // + "</script>"
-                    + "<ul>";                    
+                    + "<ul id='ul" + productTypeArr[i][0] + "'>";                    
                 }
                 String[][] productArr = db.searchByRow("type", productTypeArr[i][0]);
-                if (db.searchByRow("type", productTypeArr[i][0]).Length >= 1)
+                /*if (db.searchByRow("type", productTypeArr[i][0]).Length >= 1)
                 {
                     leftbarStr += "<a href='Product.aspx?type=" + productTypeArr[i][0] + "'><li>全部商品</li></a>";
-                }
+                }*/
                 for (int j = 0; j < productArr.Length; j++)
                 {
                     leftbarStr += "<a href='ProductInformation.aspx?product=" + productArr[j][0] + "&type=" + productTypeArr[i][0] + "'><li>" + productArr[j][1] + "</li></a>";
