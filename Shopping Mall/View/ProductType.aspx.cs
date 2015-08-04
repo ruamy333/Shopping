@@ -14,12 +14,16 @@ namespace Shopping_Mall
         private DBFunction dbType = new DBFunction("type");
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //判斷帳號
+            if (Session["account"] == null || !Session["account"].Equals("admin"))
+            {
+                Response.Redirect("../Index.aspx");
+            }
         }
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Index.aspx");
+            Response.Redirect("Product.aspx");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -52,7 +56,14 @@ namespace Shopping_Mall
         private void UpdateType()
         {
             dbType.modify("name", txtType.Text, "ID", Request.QueryString["update"]);
-            Response.Write("<Script language='JavaScript'>alert('修改成功');location.href='Product.aspx';</Script>");
+            //Response.Write("<Script language='JavaScript'>alert('修改成功');location.href='Product.aspx';</Script>");
+            
+            Response.Write(""
+                      + "<script type='text/javascript' language='javascript'>"
+                  + "if(confirm('確認更改?'))"
+                  + "{alert('更改成功');location.href='Product.aspx';}"
+                  + "else{alert('取消');location.href='Product.aspx';}</script>");
+            
         }
     }
 }
